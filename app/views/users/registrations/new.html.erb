@@ -1,29 +1,72 @@
-<h2>Sign up</h2>
+ <div class="container">
+   <div class="row">
+     <h3 class="text-center">会員情報入力</h3>
+     　　　　<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+     <%= render "users/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+     <%= f.label :name, "氏名"%>
+     <span
+       class="label.label-danger"><%= f.text_field :name, autofocus: true, placeholder: "例) 阿部 優", autocomplete: "name", class: "form-control"%></span>
+     <br>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+     <%= f.label :sex, "性別"%>
+     <span class="label.label-danger"><%= f.text_field :sex, class: "form-control"%></span>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+     <br>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+     <%= f.label :introduction, "自己紹介文"%>
+     <span
+       class="label.label-default"><%= f.text_area :introduction, placeholder: "例) 好きなサウナはかるまるです。", autocomplete: "introduction", class: "form-control"%></span>
+     <br>
 
-<%= render "users/shared/links" %>
+     <%= f.label :postcode, "郵便番号"%>
+     <span
+       class="label.label-default"><%= f.text_field :postcode, placeholder: "例) 222-810", autofocus: true, autocomplete: "postcode", class: "form-control"%></span>
+
+     <br>
+
+     <%= f.label :prefecture, "都道府県"%>
+     <span class="label.label-default"><%= f.text_field :prefecture , class: "form-control"%></span>
+     <br>
+
+     <%= f.label :address_city, "市区町村"%>
+     <span
+       class="label.label-default"><%= f.text_field :address_city, placeholder: "例) 品川区", autocomplete: "address_city", class: "form-control"%></span>
+
+     <br>
+
+     <%= f.label :address_street, "番地"%>
+     <span
+       class="label.label-default"><%= f.text_field :address_street, placeholder: "例) 西五反田2-3-4", autocomplete: "address_street", class: "form-control"%></span>
+     <br>
+
+     <%= f.label :address_building, "建物"%>
+     <span class="label.label-default">
+       <%= f.text_field :address_building, placeholder: "例) ライオンズマンション 5号", autocomplete: "address_building", class: "form-control"%></span>
+
+     <br>
+
+     <%= f.label :email, "メールアドレス"%>
+     <span
+       class="label.label-danger"><%= f.email_field :email, placeholder: "例) azx@abc", autocomplete: "email", class: "form-control"%></span>
+
+     <br>
+
+     <%= f.label :password, "パスワード"%>
+     <span
+       class="label.label-danger"><%= f.password_field :password, placeholder: "6文字以上", autocomplete: "new-password", class: "form-control"%></span>
+
+     <br>
+
+     <%= f.label :password_confirmation, "パスワード(再確認)"%>
+     <br>
+     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"%>
+     <br>
+
+     <%= f.submit "新規会員登録", class: "btn btn-success btn-lg btn-block" %>
+
+     <%= render "users/shared/links" %>
+     <% end %>
+   </div>
+ </div>

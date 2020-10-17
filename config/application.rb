@@ -10,6 +10,8 @@ module TotonouSauna
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.i18n.default_locale = :ja # 日本語に変換
+    config.time_zone = 'Tokyo' # 日本時間に変換
     config.generators do |g|
       g.assets false          # CSS, JavaScriptファイルは生成しない
       g.test_framework false  # testファイルは生成しない
