@@ -1,0 +1,56 @@
+<h2><登録情報編集/h2> 
+<%= form_with(model:@user, url:user_user_path(@user), local: true ,method: :patch) do |f| %>
+		<%= f.label :name, "氏名"%> <span class="label.label-danger">
+		<%= f.text_field :name, autofocus: true, placeholder: "例) 阿部 優", autocomplete: "name", class: "form-control"%></span>
+		<br>
+
+
+		<%= f.label :sex, "性別"%>
+		<span class="label.label-danger"><%= f.text_field :sex, class: "form-control"%></span>
+
+		<br>
+
+		<%= f.label :introduction, "自己紹介文"%>
+		<span
+			class="label.label-default"><%= f.text_area :introduction, placeholder: "例) 好きなサウナはかるまるです。", autocomplete: "introduction", class: "form-control"%></span>
+		<br>
+
+		<%= f.label :postcode, "郵便番号"%>
+		<span
+			class="label.label-default"><%= f.text_field :postcode, placeholder: "例) 222-810", autofocus: true, autocomplete: "postcode", class: "form-control"%></span>
+
+		<br>
+
+		<%= f.label :prefecture, "都道府県"%>
+		<span class="label.label-default"><%= f.text_field :prefecture , class: "form-control"%></span>
+		<br>
+
+		<%= f.label :address_city, "市区町村"%>
+		<span
+			class="label.label-default"><%= f.text_field :address_city, placeholder: "例) 品川区", autocomplete: "address_city", class: "form-control"%></span>
+
+		<br>
+
+		<%= f.label :address_street, "番地"%>
+		<span
+			class="label.label-default"><%= f.text_field :address_street, placeholder: "例) 西五反田2-3-4", autocomplete: "address_street", class: "form-control"%></span>
+		<br>
+
+		<%= f.label :address_building, "建物"%>
+		<span class="label.label-default">
+			<%= f.text_field :address_building, placeholder: "例) ライオンズマンション 5号", autocomplete: "address_building", class: "form-control"%></span>
+
+		<br>
+
+		<%= f.label :email, "メールアドレス"%>
+		<span
+			class="label.label-danger"><%= f.email_field :email, placeholder: "例) azx@abc", autocomplete: "email", class: "form-control"%></span>
+
+		<br>
+
+		<%= f.submit "編集内容を保存する", class: "btn btn-primary col-md-4" %>
+
+		<% end %>
+
+		</div>
+		</div>

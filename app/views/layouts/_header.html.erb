@@ -1,10 +1,27 @@
-<header class="navbar navbar-fixed-top">
- <div class="container">
-   <%= link_to(image_tag("sauna.jpg", :alt => ""), root_url, id: 'logo') %>
-   <nav>
-     <ul class="nav navbar-nav navbar-right">
-       <li><%= link_to 'ととのうとは？', about_path %></li>
-     </ul>
-   </nav>
- </div>
-</header>
+<div class="container">
+	<header class="navbar">
+		<nav class="nav navbar-nav navbar-left">
+			<%= link_to root_path do %>
+			<%= image_tag "sauna.jpg", :size =>'180x70' %>
+			<% end %>
+		</nav>
+		<nav>
+			<ul class="nav navbar-nav navbar-right">
+				<% if user_signed_in? %>
+				<li><%= link_to "About", about_path %></li>
+				<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+				<li><%= link_to 'マイページ', user_user_path(current_user) %></li>
+				
+				<% else %>
+				<% if admin_signed_in? %>
+				<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+				<% else %>
+				<li> <%= link_to 'About', about_path %></li>
+				<li><%= link_to '新規登録', new_user_registration_path %></li>
+				<li><%= link_to 'ログイン', new_user_session_path %></li>
+				<% end %>
+				<% end %>
+			</ul>
+		</nav>
+	</header>
+</div>
