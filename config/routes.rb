@@ -10,4 +10,18 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations',
   }
+
+  namespace :user do
+    resources :sounas, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resources :food, only: [:new, :create, :show, :edit, :update, :destroy]
+			resource :favorites, only: [:create, :destroy]
+			resources :reviews do
+				resource :likes, only: [:index, :create, :destroy]
+				resources :comments, only: [:create, :edit, :update, :destroy]
+			end
+		end
+
+    resources :users, only: [:show, :edit, :update, :destroy]
+
+  end
 end
