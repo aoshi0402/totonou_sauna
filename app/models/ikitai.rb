@@ -1,0 +1,2 @@
+class Ikitai < ApplicationRecord
+end

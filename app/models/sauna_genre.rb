@@ -1,0 +1,2 @@
+class SaunaGenre < ApplicationRecord
+end
