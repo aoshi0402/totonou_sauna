@@ -1,0 +1,85 @@
+<h2>サウナ詳細画面</h2>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tbody>
+
+      <tr>
+        <td>写真のプレビュー</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>地名・施設名</td>
+        <td><%= @sauna.name %></td>
+      </tr>
+
+      <tr>
+        <td>ジャンル</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>郵便番号</td>
+        <td><%= @sauna.postcode %></td>
+      </tr>
+
+      <tr>
+        <td>都道府県</td>
+        <td><%= @sauna.prefecture %></td>
+      </tr>
+
+      <tr>
+        <td>市区町村</td>
+        <td><%= @sauna.address_city%></td>
+      </tr>
+
+      <tr>
+        <td>番地</td>
+        <td><%= @sauna.address_street %></td>
+      </tr>
+
+      <tr>
+        <td>建物</td>
+        <td><%= @sauna.address_building %></td>
+      </tr>
+
+      <tr>
+        <td>紹介文</td>
+        <td><%= @sauna.introduction %></td>
+      </tr>
+
+      <tr>
+        <td>サウナ室温度</td>
+        <td><%= @sauna.sauna_temperature %></td>
+      </tr>
+
+      <tr>
+        <td>水風呂温度</td>
+        <td><%= @sauna.water_temperature%></td>
+      </tr>
+      
+      <tr>
+        <td>営業時間</td>
+        <td><%= @sauna.business_hour %></td>
+      </tr>
+
+      <tr>
+        <td>電話番号</td>
+        <td><%= @sauna.tel %></td>
+      </tr>
+
+      <tr>
+        <td>ホームページ</td>
+        <td><%= @sauna.home_page %></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<% if @sauna.user == current_user %>
+  <%= link_to "編集", edit_user_sauna_path(@sauna), class: "btn btn-primary", "data-turbolinks": false %>
+  <%= link_to "削除", user_sauna_path(@sauna), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger margin-left--10px"%>
+
+<% end %>

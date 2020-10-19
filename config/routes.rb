@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   namespace :user do
-    resources :sounas, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :saunas, only: [:new, :create, :show, :edit, :update, :destroy] do
       resources :food, only: [:new, :create, :show, :edit, :update, :destroy]
 			resource :favorites, only: [:create, :destroy]
 			resources :reviews do
