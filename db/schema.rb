@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
   end
 
   create_table "ikitais", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sauna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -91,14 +93,16 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
     t.string "name", null: false
     t.string "image_id", null: false
     t.string "postcode", null: false
-    t.integer "prefecture", null: false
+    t.string "prefecture", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false
     t.string "address_building"
     t.text "introduction", null: false
+    t.string "business_hour", null: false
     t.string "tel", null: false
     t.string "home_page", null: false
-    t.string "business_hour", null: false
+    t.string "water_temperature", null: false
+    t.string "sauna_temperature", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
