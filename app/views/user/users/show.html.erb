@@ -11,6 +11,20 @@
 				<td>名前</td>
 				<td><%= @user.name %></td>
 			</tr>
+			  <td><%= link_to "フォロー数: #{@user.followings.count}", user_followings_path(user_id: @user.id)%></td>
+        <td><%= link_to "フォロワー数: #{@user.followers.count}", user_followers_path(user_id: @user.id)%></td>
+			</tr>
+			<tr>
+			<td>
+				<% if current_user != @user %>
+					<% if current_user.following?(@user) %>
+						<%= link_to "フォロー外す", user_relationships_path(user_id: @user.id), method: :delete, class: "btn btn-primary" %>
+					<% else %>
+						<%= link_to "フォローする", user_relationships_path(user_id: @user.id), method: :post , class: "btn btn-primary"%>
+					<% end %>
+				<% end %>
+			</td>
+      </tr>
 			<tr>
 				<td>性別</td>
 				<td><%= @user.sex %></td>
