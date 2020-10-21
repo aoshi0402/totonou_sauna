@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
     t.integer "user_id", null: false
     t.integer "sauna_id", null: false
     t.string "title", null: false
+    t.integer "score", null: false
     t.text "body", null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false

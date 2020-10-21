@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer "user_id", null: false
       t.integer "sauna_id", null: false
       t.string "title", null: false
+      t.integer "score", null: false
       t.text "body", null: false
       t.boolean "is_deleted", default: false, null: false
       t.timestamps

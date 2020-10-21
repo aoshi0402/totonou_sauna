@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  attachment :image
   has_many :favorites, dependent: :destroy
-        
+
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # 自分がフォローする（与フォロー）側の関係性
@@ -25,7 +25,7 @@ class User < ApplicationRecord
     relationships.find_by(followed_id: user_id).destroy
   end
 
-    # フォローしているかを確認
+  # フォローしているかを確認
   def following?(user)
     followings.include?(user)
   end
