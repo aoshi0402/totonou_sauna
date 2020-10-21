@@ -2,56 +2,56 @@
 <% if @user == current_user %>
 	<span><%= link_to "プロフィールを編集", edit_user_user_path(@user), class: "btn btn-primary" %></span>
 	<span><%= link_to "退会", user_user_path(@user), method: :delete, data: { confirm: "本当に退会しますか？" }, class:"btn btn-danger"%></span>
-	<span><%= link_to " パスワードを変更する", edit_user_password_path, class: "glyphicon btn btn-info" %></span>
+	<span><%= link_to " パスワードを変更する", edit_user_registration_path, class: "glyphicon btn btn-info" %></span>
 <% end %>
 
-	<table class="table table-bordered" >
-		<tbody>
-			<tr>
-				<td>名前</td>
-				<td><%= @user.name %></td>
-			</tr>
-			  <td><%= link_to "フォロー数: #{@user.followings.count}", user_followings_path(user_id: @user.id)%></td>
-        <td><%= link_to "フォロワー数: #{@user.followers.count}", user_followers_path(user_id: @user.id)%></td>
-			</tr>
-			<tr>
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+		<td>名前</td>
+			<td><%= @user.name %></td>
+		</tr>
+		     <td><%= link_to "フォロー数: #{@user.followings.count}", user_followings_path(user_id: @user.id)%></td>
+		<td><%= link_to "フォロワー数: #{@user.followers.count}", user_followers_path(user_id: @user.id)%></td>
+		</tr>
+		<tr>
 			<td>
 				<% if current_user != @user %>
-					<% if current_user.following?(@user) %>
-						<%= link_to "フォロー外す", user_relationships_path(user_id: @user.id), method: :delete, class: "btn btn-primary" %>
-					<% else %>
-						<%= link_to "フォローする", user_relationships_path(user_id: @user.id), method: :post , class: "btn btn-primary"%>
-					<% end %>
+				<% if current_user.following?(@user) %>
+				<%= link_to "フォロー外す", user_relationships_path(user_id: @user.id), method: :delete, class: "btn btn-primary" %>
+				<% else %>
+				<%= link_to "フォローする", user_relationships_path(user_id: @user.id), method: :post , class: "btn btn-primary"%>
+				<% end %>
 				<% end %>
 			</td>
-      </tr>
-			<tr>
-				<td>性別</td>
-				<td><%= @user.sex %></td>
-			</tr>
-			<tr>
-				<td>郵便番号</td>
-				<td><%= @user.postcode %></td>
-			</tr>
-			<tr>
-				<td>都道府県</td>
-				<td><%= @user.prefecture %></td>
-			</tr>
-			<tr>
-				<td>市区町村</td>
-				<td><%= @user.address_city%></td>
-			</tr>
-			<tr>
-				<td>番地</td>
-				<td><%= @user.address_street %></td>
-			</tr>
-			<tr>
-				<td>建物</td>
-				<td><%= @user.address_building %></td>
-			</tr>
-			<tr>
-				<td>メールアドレス</td>
-				<td><%= @user.email %></td>
-			</tr>
-		</tbody>
-	</table>
+		</tr>
+		<tr>
+			<td>性別</td>
+			<td><%= @user.sex %></td>
+		</tr>
+		<tr>
+			<td>郵便番号</td>
+			<td><%= @user.postcode %></td>
+		</tr>
+		<tr>
+			<td>都道府県</td>
+			<td><%= @user.prefecture %></td>
+		</tr>
+		<tr>
+			<td>市区町村</td>
+			<td><%= @user.address_city%></td>
+		</tr>
+		<tr>
+			<td>番地</td>
+			<td><%= @user.address_street %></td>
+		</tr>
+		<tr>
+			<td>建物</td>
+			<td><%= @user.address_building %></td>
+		</tr>
+		<tr>
+			<td>メールアドレス</td>
+			<td><%= @user.email %></td>
+		</tr>
+	</tbody>
+</table>

@@ -1,5 +1,4 @@
 class User::SaunasController < ApplicationController
-
   def new
     @sauna = Sauna.new
   end
@@ -60,5 +59,4 @@ class User::SaunasController < ApplicationController
       :image_id,
     )
   end
-
 end

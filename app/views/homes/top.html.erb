@@ -1,1 +1,8 @@
 <h1>top</top>
+
+  <% @saunas.each do |sauna| %>
+  <div class="pick-up-sauna col-xs-3">
+    <%= link_to user_sauna_path(sauna) do %>
+    <%= sauna.name %>
+  <% end %>
+  <% end %>

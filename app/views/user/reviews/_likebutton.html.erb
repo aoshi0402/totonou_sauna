@@ -1,0 +1,9 @@
+<%= if review.liked_by?(current_user) %>
+  <%= link_to user_sauna_path(@book), method: :delete do %>
+    <span class="glyphicon glyphicon-heart"><%= review.likes.count%></span>
+  <% end %>
+<% else %>
+  <%= link_to sauna_likes_path(@sauna), method: :post do %>
+    <span class="glyphicon glyphicon-heart-empty"><%= @sauna.favorites.count %></span>
+  <% end %>
+<% end %>

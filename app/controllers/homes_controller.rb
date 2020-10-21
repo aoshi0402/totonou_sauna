@@ -1,7 +1,8 @@
 class HomesController < ApplicationController
-def top
-end
+  def top
+    @saunas = Sauna.all
+  end
 
-def about
-end
+  def about
+  end
 end
