@@ -4,12 +4,12 @@
       <div class="caption">
         <p class="score"><%= review.score %>点</p>
         <%= attachment_image_tag review.user, :image, fallback: "images/no-image.png", size: "50x50"%>
-        <%= link_to review.user.name, user_user_path(review.user), class: "margin-left--10px"%>
+        <%= link_to review.user.name, user_user_path(review.user)%>
         <%= review.user.sex %>
         <p><%= link_to review.title, user_sauna_review_path(review.sauna, review) %></p>
         <%= review.body %>
       </div>
-    <%= link_to user_sauna_review_path(review.sauna, review), class: "margin-left--10px" do %>
+    <%= link_to user_sauna_review_path(review.sauna, review) do %>
       <p>コメント<p>
       <%=review.comments.count %>
     <% end %>

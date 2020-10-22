@@ -4,6 +4,8 @@
 
 <% if user_signed_in? %>
    <%= @review.score %>点 </div> 
+
+<span id="likebutton_<%= @review.id %>"><%= render "user/reviews/likebutton", review: @review %></span>
     <table class="table">
     <tbody>
       <tr>
@@ -40,7 +42,6 @@
   <br>
   <%= f.text_area :body, class: "form-control", style: "height: 100px;" %>
   <br>
-  
   <%= f.submit "投稿", class: "btn btn-success btn-block" %>
   <% end %>
 <% end %>
