@@ -35,6 +35,7 @@ class User::ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+     
     if @review.update(review_params)
     redirect_to user_sauna_review_path(@review.sauna, @review)
     else
@@ -51,6 +52,6 @@ class User::ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:sauna, :title, :body, :score)
+      params.require(:review).permit(:sauna_id, :title, :body, :score)
     end
 end
