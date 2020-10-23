@@ -2,10 +2,10 @@ class User::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.review_id = params[:review_id] 
+    @comment.review_id = params[:review_id]
     if @comment.save
       flash[:success] = "コメントが送信されました"
-      redirect_to user_sauna_review_path(params[:sauna_id],params[:review_id])
+      redirect_to user_sauna_review_path(params[:sauna_id], params[:review_id])
     else
       render '/user/reviews/show'
     end
@@ -35,7 +35,7 @@ class User::CommentsController < ApplicationController
   end
 
   private
- 
+
     def comment_params
       params.require(:comment).permit(:review_id, :title, :body)
     end
