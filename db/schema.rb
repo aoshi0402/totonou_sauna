@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
 
   create_table "foods", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "sauna_id", null: false
     t.string "name", null: false
     t.string "image_id", null: false
     t.text "introduction", null: false
@@ -124,6 +125,8 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
     t.string "introduction"
     t.string "image_id"
     t.boolean "is_deleted", default: false, null: false
+    t.string "uid"
+    t.string "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

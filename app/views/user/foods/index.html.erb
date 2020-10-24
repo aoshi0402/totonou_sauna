@@ -1,0 +1,13 @@
+<h2>フード飯 一覧<h2>
+    <% if @foods.present?%>
+    <% @foods.each do |food|%>
+    <div class="-">
+      <%= attachment_image_tag food.user, :image, fallback: "images/no-image.png", size: "50x50"%>
+      <%= link_to food.user.name, user_user_path(food.user)%>
+      <p><%= link_to food.name, user_sauna_food_path(food.sauna, food) %></p>
+      <%= food.body %>
+    </div>
+        <% end %>
+        <% else %>
+        <p class="”>フード飯は存在しません</p>
+        <% end %>
