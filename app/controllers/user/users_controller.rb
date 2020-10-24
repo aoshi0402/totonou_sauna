@@ -39,7 +39,7 @@ class User::UsersController < ApplicationController
       :address_street,
       :address_building,
       :introduction,
-      :image_id,
+      :image,
     )
   end
 end

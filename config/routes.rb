@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     passwords: 'users/passwords',
     registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks',
   }
 
   namespace :user do
     resources :saunas, only: [:new, :create, :show, :edit, :update, :destroy] do
-      resources :foods, only: [:new, :create, :show, :edit, :update, :destroy]
+      resources :foods
 			resource :ikitais, only: [:create, :destroy]
 			resources :reviews do
 				resource :likes, only: [:index, :create, :destroy]

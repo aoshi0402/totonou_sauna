@@ -1,10 +1,9 @@
 
 <%= form_with model: @sauna, url: user_saunas_path, local: true, method: :post do |f| %>
 
-<%= f.label :image_id, "写真"%>
-  <span><p> <%= f.file_field :image_id, class: "btn slide-grey" %> </p>
-</span>
-
+<%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
+<%= attachment_image_tag @sauna, :image, size: "300x300",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+'center-block img-thumbnail img-responsive img_prev'%>
 
 <br>
 <%=f.label :name, "地名・施設名" %>

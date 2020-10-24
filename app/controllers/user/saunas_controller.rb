@@ -56,7 +56,7 @@ class User::SaunasController < ApplicationController
       :home_page,
       :water_temperature,
       :sauna_temperature,
-      :image_id,
+      :image,
     )
   end
 end
