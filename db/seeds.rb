@@ -1,3 +1,8 @@
+Admin.create!(
+  email: ENV['admin_email'],
+  password: ENV['admin_password']
+)
+
 10.times do |n|
   User.create!(
     email: "test#{n+1}@test",
