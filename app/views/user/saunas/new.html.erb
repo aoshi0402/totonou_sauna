@@ -1,0 +1,66 @@
+
+<%= form_with model: @sauna, url: user_saunas_path, local: true, method: :post do |f| %>
+
+<%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
+<%= attachment_image_tag @sauna, :image, size: "300x300",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+'center-block img-thumbnail img-responsive img_prev'%>
+
+<br>
+<%=f.label :name, "地名・施設名" %>
+<span class=""><%=f.text_field :name, placeholder: "例 天空のアジトマルシンスパ", autofocus: true, class: "form-control" %></span>
+
+<br>
+<%=f.label :ジャンル %>
+<span class=""></span>
+<br>
+
+<%=f.label :postcode, "郵便番号" %>
+<span><%=f.text_field :postcode, placeholder: "例 222-1222", class: "form-control" %></span>
+<br>
+<%=f.label :prefecture, "都道府県" %>
+<span><%= f.text_field :prefecture, placeholder: "例 東京都", class: "form-control"%></span>
+
+<br>
+<%=f.label :address_city, "市区町村" %>
+<span><%=f.text_field :address_city, placeholder: "例 大田区", class: "form-control" %> </span>
+
+<br>
+<%=f.label :address_street, "番地" %>
+<span><%=f.text_field :address_street, placeholder: "例 4-5-8", class: "form-control" %></span>
+
+<br>
+<%=f.label :address_building, "建物" %>
+<span><%=f.text_field :address_building, placeholder: "例 梅田スカイビル39・40F・屋上", class: "form-control" %></span>
+
+<br>
+<%=f.label :introduction, "紹介文" %>
+<span>
+  <%=f.text_area :introduction, placeholder: "例 国内最大級のサウナ施設でととのいスポットも充実しています", class: "form-control", style: "height: 200px;" %>
+</span>
+
+<br>
+<%=f.label :sauna_temperature, "サウナ室温度" %>
+<span><%=f.text_field :sauna_temperature, placeholder: "例 100度", class: "form-control" %></span>
+
+<br>
+<%=f.label :water_temperature, "水風呂温度" %>
+<span> <%=f.text_field :water_temperature, placeholder: "例 18度", class: "form-control" %></span>
+
+<br>
+<%=f.label :business_hour, "営業時間" %>
+<span>
+  <%=f.text_area :business_hour, placeholder: "例 08:00～22:30（最終入場22:00）", class: "form-control", style: "height: 100px;" %>
+</span>
+
+<br>
+<%=f.label :tel, "電話番号" %>
+<span> <%=f.text_field :tel, placeholder: "例 07-4444-2133", class: "form-control" %></span>
+
+<br>
+<%=f.label :home_page, "ホームページ" %>
+<span><%=f.text_area :home_page, placeholder: "例 https://www.totonou.sauna.co.jp/", class: "form-control" %></span>
+<br>
+
+<%=f.submit "新規登録", class: "btn btn-success btn-lg btn-block" %>
+
+<% end %>

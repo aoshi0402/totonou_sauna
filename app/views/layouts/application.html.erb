@@ -1,15 +1,20 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <title>TotonouSauna</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= render 'layouts/rails_default' %>
+</head>
 
-  <body>
+<body>
+  <div id="page">
+    <%= render 'layouts/header' %>
+    <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
     <%= yield %>
-  </body>
+  </div>
+  <%= render 'layouts/footer' %>
+</body>
+
 </html>

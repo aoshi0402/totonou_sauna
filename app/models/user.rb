@@ -1,0 +1,52 @@
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :omniauthable
+  attachment :image
+  has_many :reviews, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :ikitais, dependent: :destroy
+  has_many :foods, dependent: :destroy
+  has_many :saunas, through: :ikitais, source: :sauna
+
+  # 自分がフォローされる（被フォロー）側の関係性
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # 自分がフォローする（与フォロー）側の関係性
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  # 被フォロー関係を通じて参照→自分をフォローしている人
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+  # 与フォロー関係を通じて参照→自分がフォローしている人
+  has_many :followings, through: :relationships, source: :followed
+
+  # ユーザーをフォローする
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+
+  # ユーザーをアンフォローする
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+
+  # フォローしているかを確認
+  def following?(user)
+    followings.include?(user)
+  end
+
+  def self.find_for_oauth(auth)
+  user = User.where(uid: auth.uid, provider: auth.provider).first
+
+  user ||= User.create(
+    uid: auth.uid,
+    provider: auth.provider,
+    email: auth.info.email,
+    name: auth.info.name,
+    password: Devise.friendly_token[0, 20],
+    image: auth.info.image
+  )
+
+  user
+end
+end
