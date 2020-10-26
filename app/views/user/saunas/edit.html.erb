@@ -10,10 +10,7 @@
   <%=f.label :name, "地名・施設名" %>
   <span class=""><%=f.text_field :name, placeholder: "例 天空のアジトマルシンスパ", autofocus: true, class: "form-control" %></span>
 
-  <%=f.label :ジャンル %>
-  <span class=""></span>
   <br>
-
   <%=f.label :postcode, "郵便番号" %>
   <span><%=f.text_field :postcode, placeholder: "例 222-1222", class: "form-control" %></span>
   <br>
@@ -46,6 +43,12 @@
   <br>
   <%=f.label :water_temperature, "水風呂温度" %>
   <span> <%=f.text_field :water_temperature, placeholder: "例 18度", class: "form-control" %></span>
+
+  <%=f.label :genre_ids, "ジャンル機能" %>
+  <span><% Genre.all.each do |genre| %>
+  <%= f.check_box :genre_ids, { multiple: true, checked: @sauna.genres.find_by(id: genre.id).present?, include_hidden: false }, genre[:id] %>
+  <label class="form-check-label"><%= genre.name %></label>
+  <% end %></span>
 
   <br>
   <%=f.label :business_hour, "営業時間" %>
