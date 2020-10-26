@@ -57,6 +57,7 @@ class User::SaunasController < ApplicationController
       :water_temperature,
       :sauna_temperature,
       :image,
+      { genre_ids: [] }
     )
   end
 end
