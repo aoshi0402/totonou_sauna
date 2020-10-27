@@ -26,6 +26,24 @@
 			</td>
 		</tr>
 		<tr>
+			<td>
+			<% unless @user.id == current_user.id %>
+			  <% if (current_user.following? @user) && (@user.following? current_user)  %>
+				<% if @is_room == true %>
+					<%= link_to "メッセージ", user_room_path(@room_id), class: "btn-sm btn-success"%>
+				<% else %>
+					<%= form_with model: @room, url: user_rooms_path, local: true do |f| %>
+					<%= fields_for @entry do |e| %>
+					<%= e.hidden_field :user_id, value: @user.id %>
+				<% end %>
+				<%= f.submit "メッセージ", class: "btn-sm btn-success" %>
+  			<% end %>
+			<% end %>	
+  		<% end %>
+ 			<% end %>
+			</td>
+		</tr>
+		<tr>
 			<td>性別</td>
 			<td><%= @user.sex %></td>
 		</tr>
@@ -35,7 +53,7 @@
 		</tr>
 		<tr>
 			<td>都道府県</td>
-			<td><%= @user.prefecture %></td>
+			<td><%= @user.prefecture_code %></td>
 		</tr>
 		<tr>
 			<td>市区町村</td>

@@ -1,0 +1,44 @@
+
+<% if @room.messages.present? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>送信者</th>
+        <th>メッセージ</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @room.messages.each do |message| %>
+        <tr>
+          <td>
+            <%= link_to user_user_path(message.user) do %>
+              <%= message.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= message.body %>
+          </td>
+          <td>
+          <% if message.user == current_user %>
+            <%= link_to "削除", user_message_path(message), method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: "btn-sm btn-danger" %>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p>メッセージはまだありません</p>
+<% end %>
+
+
+<%= form_with model: @message, url: user_messages_path, local: true do |f| %>
+
+  <%= f.text_field :body, placeholder: "新しいメッセージを作成", class: "form-control"%> 
+  <%= f.hidden_field :room_id, value: @room.id %>
+
+  <%= f.submit "送信", class: "btn btn-info btn-block" %>
+
+<% end %>

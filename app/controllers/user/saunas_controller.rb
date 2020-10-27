@@ -45,7 +45,7 @@ class User::SaunasController < ApplicationController
     params.require(:sauna).permit(
       :name,
       :postcode,
-      :prefecture,
+      :prefecture_code,
       :address_city,
       :address_street,
       :address_building,

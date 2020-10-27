@@ -8,7 +8,7 @@ Admin.create!(
     email: "test#{n+1}@test",
     name: "test#{n+1}",
     postcode: "1500041",
-    prefecture: "東京都",
+    prefecture_code: "東京都",
     address_city: "北区",
     sex: "男",
     address_street: "神南123",
