@@ -4,8 +4,8 @@ class CreateSaunas < ActiveRecord::Migration[5.2]
       t.integer "user_id", null: false
       t.string "name", null: false
       t.string "image_id", null: false
-      t.string "postcode", null: false
-      t.string "prefecture", null: false
+      t.integer "postcode", null: false
+      t.integer "prefecture_code", null: false
       t.string "address_city", null: false
       t.string "address_street", null: false
       t.string "address_building"

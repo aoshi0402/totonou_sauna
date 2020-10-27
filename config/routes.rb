@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :edit, :update, :destroy]
     resource :relationships, only: [:create, :destroy]
+    resources :messages, only: [:create, :destroy]
+    resources :rooms, only: [:create, :show, :index]
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
 

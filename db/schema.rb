@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_022532) do
+ActiveRecord::Schema.define(version: 2020_10_26_044414) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -65,6 +74,16 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -83,6 +102,11 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sauna_genres", force: :cascade do |t|
     t.integer "genre_id"
     t.integer "sauna_id"
@@ -94,8 +118,8 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
     t.integer "user_id", null: false
     t.string "name", null: false
     t.string "image_id", null: false
-    t.string "postcode", null: false
-    t.string "prefecture", null: false
+    t.integer "postcode", null: false
+    t.integer "prefecture_code", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false
     t.string "address_building"
@@ -117,8 +141,8 @@ ActiveRecord::Schema.define(version: 2020_10_19_022532) do
     t.datetime "remember_created_at"
     t.string "name"
     t.integer "sex"
-    t.string "postcode"
-    t.string "prefecture"
+    t.integer "postcode"
+    t.integer "prefecture_code"
     t.string "address_city"
     t.string "address_street"
     t.string "address_building"

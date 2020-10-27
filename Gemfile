@@ -74,6 +74,7 @@ gem 'dotenv-rails'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'jp_prefecture'
 
 group :production do
   gem 'mysql2'

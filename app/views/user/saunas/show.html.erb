@@ -30,7 +30,7 @@
 
       <tr>
         <td>都道府県</td>
-        <td><%= @sauna.prefecture %></td>
+        <td><%= @sauna.prefecture_code %></td>
       </tr>
 
       <tr>
@@ -86,5 +86,5 @@
   <%= link_to "編集", edit_user_sauna_path(@sauna), class: "btn btn-primary", "data-turbolinks": false %>
   <%= link_to "削除", user_sauna_path(@sauna), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger margin-left--10px"%>
   <%= link_to "#{ @sauna.reviews.count }レビュー", user_sauna_reviews_path(@sauna) %>
-　<%= link_to "レビュー投稿", new_user_sauna_review_path(@sauna)%>
+  <%= link_to "レビュー投稿", new_user_sauna_review_path(@sauna)%>
 <% end %>

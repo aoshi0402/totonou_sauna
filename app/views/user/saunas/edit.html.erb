@@ -15,8 +15,9 @@
   <span><%=f.text_field :postcode, placeholder: "例 222-1222", class: "form-control" %></span>
   <br>
   
-  <%=f.label :prefecture, "都道府県" %>
-  <span><%= f.text_field :prefecture, placeholder: "例 東京都", class: "form-control"%></span>
+  <%=f.label :prefecture_code, "都道府県" %>
+  <span
+    class="label.label-default"><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: "選択してください" }, class: "form-control" %></span>
 
   <br>
   <%=f.label :address_city, "市区町村" %>
