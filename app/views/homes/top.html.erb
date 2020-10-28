@@ -1,5 +1,43 @@
 <h1>top</top>
 
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th class="text-center">順位</th>
+      <th class="text-center">サウナ</th>
+      <th class="text-center">イキタイ！数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @saunas_ikitai.each.with_index(1) do |sauna, index| %>
+      <tr>
+        <td class="text-center"><%= index %></td>
+        <td class="text-center"><%= sauna.name %></td>
+        <td class="text-center"><%= sauna.ikitais.count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th class="text-center">順位</th>
+      <th class="text-center">サウナ</th>
+      <th class="text-center">PV数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @saunas_pv.each.with_index(1) do |sauna, index| %>
+    <tr>
+      <td class="text-center"><%= index %></td>
+      <td class="text-center"><%= sauna.name %></td>
+      <td class="text-center"><%= sauna.impressions_count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
   <% @saunas.each do |sauna| %>
   <div class="pick-up-sauna col-xs-3">
     <%= link_to user_sauna_path(sauna) do %>

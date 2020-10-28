@@ -12,7 +12,6 @@
 //
 
 //= require rails-ujs
-//= require turbolinks
 //= require activestorage
 //= require jquery3
 //= require popper
