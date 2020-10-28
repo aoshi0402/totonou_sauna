@@ -9,11 +9,8 @@
   <tbody>
     <% @another_entries.each do |entry| %>
     <tr>
-    <td><%= link_to entry.user.name, user_room_path(entry.user) %></td>
-    <td><%= link_to user_room_path(entry.room) do %>
-     <%# 最後に送られたメッセージを表示 %>
-    <%= Message.find_by(id: entry.room.message_ids.last)&.body %></td>
-    <% end %>
+    <td><%= link_to entry.user.name, user_room_path(entry.room) %></td>
+    <td><%= Message.find_by(id: entry.room.message_ids.last)&.body %></td>
     </tr>
     <% end %>
   </tbody>

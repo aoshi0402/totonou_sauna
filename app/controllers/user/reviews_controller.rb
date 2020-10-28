@@ -11,7 +11,7 @@ class User::ReviewsController < ApplicationController
     if @review.save
       redirect_to user_sauna_review_path(@review.sauna, @review)
     else
-      render 'new'
+      render "new"
     end
   end
 
