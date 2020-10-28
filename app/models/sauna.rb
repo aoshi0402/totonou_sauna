@@ -7,7 +7,7 @@ class Sauna < ApplicationRecord
   has_many :genres, through: :sauna_genres
   attachment :image
 
- # 住所自動入力
+  # 住所自動入力
   include JpPrefecture
   jp_prefecture :prefecture_code
 

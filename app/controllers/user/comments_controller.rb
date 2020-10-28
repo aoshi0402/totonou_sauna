@@ -7,7 +7,7 @@ class User::CommentsController < ApplicationController
       flash[:success] = "コメントが送信されました"
       redirect_to user_sauna_review_path(params[:sauna_id], params[:review_id])
     else
-      render '/user/reviews/show'
+      render "/user/reviews/show"
     end
   end
 
@@ -23,7 +23,7 @@ class User::CommentsController < ApplicationController
     if @comment.update(comment_params)
     redirect_to user_sauna_review_path(@comment.review.sauna, @comment.review)
     else
-    render 'edit'
+    render "edit"
     end
   end
 

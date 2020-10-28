@@ -13,7 +13,7 @@ class User::RoomsController < ApplicationController
     current_entries = current_user.entries
     my_room_ids = []
     current_entries.each do |entry|
-      my_room_ids << entry.room.id
+    my_room_ids << entry.room.id
     end
     # さらにuser_idがログインユーザーでは無いレコードを抽出
     @another_entries = Entry.where(room_id: my_room_ids).where.not(user_id: current_user.id)
@@ -23,6 +23,6 @@ class User::RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @message = Message.new
     # メッセージ相手を抽出
-    @another_entry = @room.entries.find_by('user_id != ?', current_user.id)
+    @another_entry = @room.entries.find_by("user_id != ?", current_user.id)
   end
 end
