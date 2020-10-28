@@ -7,6 +7,9 @@ class Sauna < ApplicationRecord
   has_many :genres, through: :sauna_genres
   attachment :image
 
+  # PV数取得
+  is_impressionable counter_cache: true 
+
   # 住所自動入力
   include JpPrefecture
   jp_prefecture :prefecture_code
@@ -21,8 +24,20 @@ class Sauna < ApplicationRecord
    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  # 「イキタイ」ランキング
+  def self.ikitai_ranking
+    self.find(Ikitai.group(:sauna_id).order('count(sauna_id) DESC').limit(10).pluck(:sauna_id))
+  end
+
+  # 「PV数」ランキング
+  def self.pv_ranking
+    self.order(impressions_count: 'DESC').limit(10)
+  end
+
   # 「イキタイ」が既に押してあるかの確認
   def iktaied_by?(user)
     ikitais.where(user_id: user.id).exists?
   end
+
+ 
 end

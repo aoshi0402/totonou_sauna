@@ -121,6 +121,8 @@ GEM
       domain_name (~> 0.5)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     io-like (0.3.1)
     jaro_winkler (1.5.4)
     jbuilder (2.10.1)
@@ -353,6 +355,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   font-awesome-sass (~> 5.4.1)
+  impressionist (~> 1.6.1)
   jbuilder (~> 2.5)
   jp_prefecture
   jquery-rails

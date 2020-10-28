@@ -16,6 +16,7 @@ class CreateSaunas < ActiveRecord::Migration[5.2]
       t.string "business_hour", null: false
       t.string "water_temperature", null: false
       t.string "sauna_temperature", null: false
+      t.integer "impressions_count", default: 0
       t.timestamps
     end
   end

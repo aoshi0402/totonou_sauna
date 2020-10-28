@@ -16,6 +16,7 @@ class User::SaunasController < ApplicationController
 
   def show
     @sauna = Sauna.find(params[:id])
+    impressionist(@sauna, nil, unique: [:impressionable_id, :ip_address])
   end
 
   def edit
