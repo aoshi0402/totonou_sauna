@@ -167,6 +167,8 @@ ActiveRecord::Schema.define(version: 2020_10_28_081650) do
     t.string "water_temperature", null: false
     t.string "sauna_temperature", null: false
     t.integer "impressions_count", default: 0
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

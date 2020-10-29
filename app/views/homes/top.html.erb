@@ -1,4 +1,4 @@
-<h1>top</top>
+<h1>top</h1>
 
 <table class="table table-responsive">
   <thead>
@@ -10,10 +10,10 @@
   </thead>
   <tbody>
     <% @saunas_ikitai.each.with_index(1) do |sauna, index| %>
-      <tr>
-        <td class="text-center"><%= index %></td>
-        <td class="text-center"><%= sauna.name %></td>
-        <td class="text-center"><%= sauna.ikitais.count %></td>
+    <tr>
+      <td class="text-center"><%= index %></td>
+      <td class="text-center"><%= sauna.name %></td>
+      <td class="text-center"><%= sauna.ikitais.count %></td>
     </tr>
     <% end %>
   </tbody>
@@ -38,40 +38,78 @@
   </tbody>
 </table>
 
-  <% @saunas.each do |sauna| %>
-  <div class="pick-up-sauna col-xs-3">
-    <%= link_to user_sauna_path(sauna) do %>
-    <%= sauna.name %>
-  <% end %>
-  <% end %>
+<% @saunas.each do |sauna| %>
+<%= link_to user_sauna_path(sauna) do %>
+<%= sauna.name %>
+<% end %>
+<% end %>
 
 
 <h2>gmap</h2>
-<div id='map' style="width:500px; height:500px"></div>
+<div id='map' style="width:1000px; height:600px"></div>
 
 <script>
   let map
+  let marker = [];
+  let infoWindow = [];
+  let markerData = gon.saunas;
 
   function initMap() {
-    geocoder = new google.maps.Geocoder()
+    
+      if (!navigator.geolocation) {
+        alert('Geolocation not supported');
+        return;
+      }
+    // 位置情報を取得
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        
+        // 取得した位置情報を中心に表示
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: LatLng,
+          zoom: 15
+        });
+        
+        // 繰り返し処理でマーカーと吹き出しを複数表示
+        for (var i = 0; i < markerData.length; i++) {
+          let id = markerData[i]['id']
 
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {
-        lat: 40.7828,
-        lng: -73.9653
-      },
-      zoom: 12,
-    });
+          // 各地点にマーカーを立てる
+          markerLatLng = new google.maps.LatLng({
+            lat: markerData[i]['latitude'],
+            lng: markerData[i]['longitude']
+          });
+          marker[i] = new google.maps.Marker({
+            position: markerLatLng,
+            map: map
+          });
 
-    marker = new google.maps.Marker({
-      position: {
-        lat: 40.7828,
-        lng: -73.9653
+          // 各地点の吹き出しを作成
+          infoWindow[i] = new google.maps.InfoWindow({
+            // 吹き出しに表示する内容
+            content: `<a href='/user/saunas/${id}'>サウナ詳細を見る</a>` + markerData[i]['name']
+          });
+
+          // マーカーにクリックイベントを追加
+          markerEvent(i);
+        }
       },
-      map: map
+      function() {
+        alert('Geolocation failed!');
+        return;
+      }
+    );
+  }
+  // マーカーをクリックすると吹き出しが表示される
+  function markerEvent(i) {
+    marker[i].addListener('click', function () {
+      infoWindow[i].open(map, marker[i]);
     });
   }
-
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async
-  defer></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap"
+  async defer>
+</script>
+

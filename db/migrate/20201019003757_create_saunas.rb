@@ -17,6 +17,8 @@ class CreateSaunas < ActiveRecord::Migration[5.2]
       t.string "water_temperature", null: false
       t.string "sauna_temperature", null: false
       t.integer "impressions_count", default: 0
+      t.float "latitude"
+      t.float "longitude"
       t.timestamps
     end
   end

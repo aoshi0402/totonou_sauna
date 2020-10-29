@@ -76,6 +76,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'jp_prefecture'
 gem 'impressionist', '~>1.6.1'
+gem 'gon'
+gem 'geocoder'
 
 group :production do
   gem 'mysql2'
