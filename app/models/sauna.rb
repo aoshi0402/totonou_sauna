@@ -34,6 +34,15 @@ class Sauna < ApplicationRecord
     self.order(impressions_count: 'DESC').limit(10)
   end
 
+  # 緯度経度を取得
+  geocoded_by :geocode_full_address
+  after_validation :geocode
+
+  # geocoder専用住所
+  def geocode_full_address
+    self.address_city + self.address_street
+  end
+  
   # 「イキタイ」が既に押してあるかの確認
   def iktaied_by?(user)
     ikitais.where(user_id: user.id).exists?

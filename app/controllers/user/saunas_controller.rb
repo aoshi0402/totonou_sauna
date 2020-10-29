@@ -42,6 +42,12 @@ class User::SaunasController < ApplicationController
     redirect_to root_path
   end
 
+  def map
+    @sauna = Sauna.find(params[:sauna_id])
+    gon.latitude = @sauna.latitude
+    gon.longitude = @sauna.longitude
+  end
+
   def sauna_params
     params.require(:sauna).permit(
       :name,
