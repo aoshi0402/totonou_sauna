@@ -1,0 +1,36 @@
+
+<div class="table-responsive">
+  <thead>
+    <tr class="active">
+      <th class="text-center">ID</th>
+      <th class="text-center">写真</th>
+      <th class="text-center">氏名</th>
+      <th class="text-center">メールアドレス</th>
+      <th class="text-center">会員ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="text-center"><%= user.id %></td>
+        <td class="text-center">
+          <%= link_to admin_user_path(user) do %>
+          <%= user.name %>
+          <% end %>
+        </td>
+        <td class="text-center"><%= user.email %></td>
+        <td class="text-center"><%= user.is_deleted %></td>
+    <% end %>  
+      </tr>
+  </tbody>
+</div>
+
+  <%= link_to "CSVエクスポート", admin_users_path(format: :csv), class: "btn btn-success" %>
+
+  <%= form_tag import_admin_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "インポート", class: "btn btn-info" %>
+  <% end %>
+
+
+
