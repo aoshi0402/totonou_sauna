@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:create, :destroy]
     resources :rooms, only: [:create, :show, :index]
     resources :notifications, only: [:index, :destroy]
+    resources :contacts, only: [:new, :create]
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
 

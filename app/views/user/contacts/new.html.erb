@@ -1,0 +1,18 @@
+<%= form_with model: @contact, url: user_contacts_path, local: true do |f| %>
+
+  <%= f.label :name, "氏名"%>
+  <span><%= f.text_field :name, class: "form-control"%></span>
+  
+  <%= f.label :email, "メールアドレス"%>
+  <span><%= f.text_field :email, class: "form-control"%></span>
+  
+
+  <%= f.label :title, "タイトル" %>
+  <span><%= f.text_field :title, class: "form-control"%></span>
+
+  <%= f.label :body, "本文" %>
+  <span><%= f.text_area :body, class: "form-control", style: "height: 100px;"%></span>
+
+  <%= f.submit "送信", class: "btn btn-success btn-lg btn-block" %>
+  
+<% end %>
