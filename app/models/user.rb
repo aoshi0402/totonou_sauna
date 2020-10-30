@@ -53,6 +53,21 @@ class User < ApplicationRecord
    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  # CSVインポート
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      user = find_by(id: row["id"]) || new # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
+      user.attributes = row.to_hash.slice(*updatable_attributes) # CSVからデータを取得し、設定する
+      user.save!(validate: false)
+    end
+  end
+
+  # CSVインポートで許可するカラムを定義
+  def self.updatable_attributes
+    ['id', 'name', 'email']
+  end
+
+  # facebookログイン
   def self.find_for_oauth(auth)
   user = User.where(uid: auth.uid, provider: auth.provider).first
 
@@ -64,7 +79,5 @@ class User < ApplicationRecord
     password: Devise.friendly_token[0, 20],
     image: auth.info.image
   )
-
-  user
-end
+  end
 end

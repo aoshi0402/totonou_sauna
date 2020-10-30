@@ -14,7 +14,10 @@ Rails.application.routes.draw do
 
   	namespace :admin do
 		get 'top', to: 'homes#top'
-		resources :genres, only: [:create, :index, :edit, :update]
+    resources :genres, only: [:create, :index, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update] do
+			collection { post :import }
+		end
   end
 
   namespace :user do

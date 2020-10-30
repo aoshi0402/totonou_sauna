@@ -78,6 +78,7 @@ gem 'jp_prefecture'
 gem 'impressionist', '~>1.6.1'
 gem 'gon'
 gem 'geocoder'
+gem 'roo'
 
 group :production do
   gem 'mysql2'

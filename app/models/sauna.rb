@@ -8,7 +8,7 @@ class Sauna < ApplicationRecord
   attachment :image
 
   # PV数取得
-  is_impressionable counter_cache: true 
+  is_impressionable counter_cache: true
 
   # 住所自動入力
   include JpPrefecture
@@ -42,11 +42,9 @@ class Sauna < ApplicationRecord
   def geocode_full_address
     self.address_city + self.address_street
   end
-  
+
   # 「イキタイ」が既に押してあるかの確認
   def iktaied_by?(user)
     ikitais.where(user_id: user.id).exists?
   end
-
- 
 end
