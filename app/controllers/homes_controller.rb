@@ -8,4 +8,8 @@ class HomesController < ApplicationController
 
   def about
   end
+
+  def login_select
+  end
+  
 end
