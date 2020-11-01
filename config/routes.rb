@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'homes#top'
   get '/about' => "homes#about"
+   get 'login/select' => 'homes#login_select', as: 'login_select'
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',

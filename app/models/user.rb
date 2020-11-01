@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+        :recoverable, :rememberable, :validatable, :omniauthable
   attachment :image
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -59,12 +59,13 @@ class User < ApplicationRecord
       user = find_by(id: row["id"]) || new # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
       user.attributes = row.to_hash.slice(*updatable_attributes) # CSVからデータを取得し、設定する
       user.save!(validate: false)
+
     end
   end
 
   # CSVインポートで許可するカラムを定義
   def self.updatable_attributes
-    ['id', 'name', 'email']
+    ['name', 'email']
   end
 
   # facebookログイン

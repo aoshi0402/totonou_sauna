@@ -1,20 +1,202 @@
 <!DOCTYPE HTML>
 <html>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= include_gon %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application" %>
+  </head> 
 
-<head>
-  <title><%= full_title(yield(:title)) %></title>
-  <%= render 'layouts/rails_default' %>
-</head>
+  <body id ="all">
+    <header>
+      <nav class="navbar navbar-default default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbarEexample7">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to root_path, class: "navbar-brand" do %>
+            <%= image_tag "sauna.jpg", class: "logo" %>
+            <% end %>
+          </div>
 
-<body>
-  <div id="page">
-    <%= render 'layouts/header' %>
-    <% flash.each do |message_type, message| %>
-    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-    <% end %>
-    <%= yield %>
-  </div>
-  <%= render 'layouts/footer' %>
-</body>
-
+          <div class="collapse navbar-collapse" id="navbarEexample7">
+            <% if user_signed_in? %>
+            <p class="navbar-text">
+              <span>ようこそ</span>
+              <%= link_to current_user.name, user_user_path(current_user) %>さん！
+            </p>
+            <% end %>
+            <ul class="nav navbar-nav navbar-right">
+              <% unless admin_signed_in? %>
+                <li class="dropdown" role="presentation">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    <i class="fas fa-list-ul"></i>
+                    <span>ジャンルから探す</span>
+                    <span class="caret"></span>
+                  </a>
+                </li>
+                  <%# ジャンル検索入れる %>
+                <li class="dropdown" role="presentation">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"
+                    <i class="fas fa-globe-asia"></i>
+                    <span>都道府県から探す</span>
+                    <span class="caret"></span>
+                  </a>
+                </li>
+                  <%# 都道府県検索入れる %>
+              <% end %>
+              <% if user_signed_in? %>
+                <li class="dropdown" role="presentation">
+                  <% if unchecked_notifications(current_user).present? %>
+                    <i class="fa fa-circle notifications-icon-1" style="color: gold;"></i>
+                  <% end %>
+                  <a class="dropdown-toggle header_acount" data-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">
+                    <%= attachment_image_tag current_user, :image, size:"30x30", fallback: "no-image.png", class: "img-thumbnail img-responsive img-hover"%>
+                    <span>アカウント</span>
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li role="presentation">
+                      <%= link_to user_user_path(current_user) do %>
+                      <i class="fas.fa-user">マイページ</i>
+                      <% end %>
+                    </li>
+                    <li>
+                      <% if unchecked_notifications(current_user).present? %>
+                      <i class="fa fa-circle notifications-icon-2" style="color: gold;"></i>
+                      <% end %>
+                      <%= link_to user_notifications_path, class: "notifications-link" do %>
+                      <i class="fas fa-bell">通知</i>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to user_rooms_path do %>
+                      <i class="fas fa-envelope">メッセージ</i>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_user_sauna_path do %>
+                      <i class="fas fa-pen-square">新規サウナ登録</i>
+                      <% end %>
+                      <%= link_to root_path do %>
+                      <i class="fas fa-star">イキタイ！</i>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to edit_user_user_path(current_user) do %>
+                      <i class="fas fa-user-cog">プロフィール編集</i>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to destroy_user_session_path, method: :delete do %>
+                      <i class="fas fa-sign-out-alt">ログアウト</i>
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li>
+                  <%= link_to "管理者画面トップ", admin_top_path %>
+                </li>
+                <li>
+                  <%= link_to "ユーザー一覧", admin_users_path %>
+                </li>
+                <li>
+                  <%= link_to "ジャンル一覧", admin_genres_path %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to new_user_registration_path do %>
+                    <i class="fas fa-user-plus">新規会員登録</i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path do %>
+                    <i class="fas fa-sign-in-alt">ログイン</i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to about_path do %>
+                    <i class="fas fa-info-circle">サイト説明</i>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div> 
+      </nav>
+    </header>
+    <main>
+      <% if current_page?(root_path) %>
+        <div class="main-visual">
+        </div>
+      <% end %>
+      <div>
+        <%= yield %>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4">
+            <span class="footer_logo">
+              <i class="fab fa-apple">サウナで"ととのう"</i>
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+          <div class="col-xs-4">
+            <ul class="menu">
+              <span>Menu</span>
+              <li><%= link_to root_path do %>
+                <i class="fas fa-home">トップ</i>
+              <% end %>
+              </li>
+              <li><%= link_to about_path do %>
+                <i class="fas fa-info-circle">サイト説明</i>
+              <% end %>
+              </li>
+            </ul>
+          </div>
+          <div class ="col-xs-4">
+            <ul class="share">
+              <span>Contact</span>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fab fa-twitter">Twitter
+                  </i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fab fa-instagram">Instagram
+                  </i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fab fa-github">
+                  GitHub</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_contact_path do %>
+                  <i class="fa fa-envelope">お問い合わせ</i>
+                <% end %>
+              </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
