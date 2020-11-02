@@ -39,16 +39,29 @@
                     <span>ジャンルから探す</span>
                     <span class="caret"></span>
                   </a>
+                  <ul class="dropdown-menu" role='menu'>
+                    <li role='presentation'>
+                      <% Genre.all.each do |genre| %>
+                        <%= link_to genre.name, user_sauna_genre_search_path(genre_search: genre.id) %>
+                      <% end %>
+                    </li>
+                  </ul>
                 </li>
-                  <%# ジャンル検索入れる %>
+                
                 <li class="dropdown" role="presentation">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"
                     <i class="fas fa-globe-asia"></i>
                     <span>都道府県から探す</span>
                     <span class="caret"></span>
                   </a>
+                  <ul class="dropdown-menu" role='menu'>
+                    <li role='presentation'>
+                      <% JpPrefecture::Prefecture.all.each do |prefecture| %>
+                        <%= link_to prefecture.name, user_sauna_prefecture_search_path(prefecture_search: prefecture.code) %>
+                      <% end %>
+                    </li>
+                  </ul>
                 </li>
-                  <%# 都道府県検索入れる %>
               <% end %>
               <% if user_signed_in? %>
                 <li class="dropdown" role="presentation">

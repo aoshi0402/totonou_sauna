@@ -37,8 +37,11 @@ Rails.application.routes.draw do
     resources :rooms, only: [:create, :show, :index]
     resources :notifications, only: [:index, :destroy]
     resources :contacts, only: [:new, :create]
-  	get 'followings' => 'relationships#followings', as: 'followings'
-  	get 'followers' => 'relationships#followers', as: 'followers'
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+    get 'sauna/keyword/search', to: 'saunas#keyword_search'
+    get 'sauna/prefecture/search', to: 'saunas#prefecture_search'
+    get 'sauna/genre/search', to: 'saunas#genre_search'
 
   end
 end
