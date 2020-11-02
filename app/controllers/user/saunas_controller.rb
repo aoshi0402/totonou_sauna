@@ -45,7 +45,24 @@ class User::SaunasController < ApplicationController
   def map
     @sauna = Sauna.find(params[:sauna_id])
     gon.latitude = @sauna.latitude
-    gon.longitude = @sauna.longitude
+    gon.longitude = @sauna.longitude 
+  end
+
+  def keyword_search
+    @saunas = Sauna.keyword_search(params[:keyword_search])
+    @keyword_search = params[:keyword_search]
+  end
+
+  def prefecture_search
+    @saunas = Sauna.prefecture_search(params[:prefecture_search])
+    @prefecture_search = params[:prefecture_search]
+    @prefecture = JpPrefecture::Prefecture.find(code: @prefecture_search)
+  end
+
+  def genre_search
+    @saunas = Sauna.genre_search(params[:genre_search])
+    @genre_search = params[:genre_search]
+    @genre = Genre.find_by(id: @genre_search)
   end
 
   def sauna_params

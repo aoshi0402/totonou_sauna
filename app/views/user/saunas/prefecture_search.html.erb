@@ -1,0 +1,17 @@
+<h1><%= @prefecture %>県のサウナ一覧</h1>
+
+<table class="table">
+  <thead>
+    <tr class="active">
+      <th>サウナID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @saunas.each do |sauna| %>
+    <tr>
+      <td><%= sauna.id %></td>
+      <td><%= sauna.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

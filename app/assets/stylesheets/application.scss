@@ -13,9 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import "bootstrap";
+
+* {
+  font-family: 'Kosugi Maru', sans-serif;
+}
 
 body{
 background-color: #fff;
@@ -125,6 +130,4 @@ footer {
   background-image: image-url("sauna_top.jpg");
   background-size: contain;
   background-position: center;
-
-
   }
