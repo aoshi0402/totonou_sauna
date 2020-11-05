@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
   }
 
-  	namespace :admin do
-		get 'top', to: 'homes#top'
-    resources :genres, only: [:create, :index, :edit, :update]
-    resources :users, only: [:index, :show, :edit, :update] do
-			collection { post :import }
+    namespace :admin do
+      get 'top', to: 'homes#top'
+      resources :genres, only: [:create, :index, :edit, :update]
+      resources :users, only: [:index, :show, :edit, :update] do
+        collection { post :import }
 		end
   end
 

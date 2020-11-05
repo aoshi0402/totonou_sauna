@@ -23,7 +23,7 @@ class User::SaunasController < ApplicationController
     @sauna = Sauna.find(params[:id])
     if current_user.id == @sauna.user_id
     else
-      redirect_to user_path
+      redirect_to user_sauna_path
     end
   end
 

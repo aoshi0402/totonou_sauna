@@ -14,7 +14,6 @@ Admin.create!(
     address_street: "神南123",
     address_building: "ライオンズマンション123号室",
     introduction: "サウナ好きの人です。よろしくお願いします",
-    image_id:1,
     password: "111111",
     )
   end
@@ -25,7 +24,6 @@ Admin.create!(
     Sauna.create!(
       user_id: user.id,
       name:"かるまる#{user.id}",
-      image_id:"1#{user.id}",
       postcode:"123456",
       prefecture_code:"東京都",
       address_city:"豊島区",
@@ -39,3 +37,4 @@ Admin.create!(
       sauna_temperature:"40"
     )
   end
+  

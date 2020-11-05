@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
   create_table "saunas", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
-    t.string "image_id", null: false
+    t.string "image_id"
     t.integer "postcode", null: false
     t.integer "prefecture_code", null: false
     t.string "address_city", null: false
