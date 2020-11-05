@@ -1,93 +1,119 @@
-<div class="row">
-  <%= form_with url: user_sauna_keyword_search_path, method: :get, local: true do %>
-    <div class="col-xs-10">
-      <%= text_field_tag :keyword_search, "", placeholder: "サウナキーワード検索", class: "form-control" %>
+<section class="text-black text-center">
+  <div class="container">
+    <div>
+      <h3 class="text-secondary">Services</h3>
+      <h2>サウナで"ととのう"ではこんなことが可能です</h2>
     </div>
-    <div class="col-xs-2">
-      <%= button_tag type: "submit", name: nil, class: "btn btn-primary btn-block" do %>
-        <i class="fas fa-search">検索</i>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-<div class="row">
-  <div class="col-xs-7">
     <div class="row">
-      <h3>
-        <i class="fas fa-list-ul">ジャンルから探す
-        </i>
-      </h3>
-    </div>
+      <div class="col-md-4">
+        <span class="service-icon img-circle center-block">
+          <i class="fas fa-search-location icon-1" aria-hidden="true"></i>
+        </span>
+        <h4>
+          <strong>サウナを検索</strong>
+        </h4>
+        <p class="text-left">キーワードの検索はもちろん、ジャンルや都道府県、現在地から検索することができます。サウナ飯検索も魅力の一つです</p>
+      </div>
 
-    <div class="row">
-      <h3>
-        <i class="fas fa-utensils">サウナ飯から探す</i>　
-      </h3>
-    </div>
-
-    <div class="row">
-      <h3>
-        <i class="fas fa-globe-asia">都道府県から探す</i>
-      </h3>
+      <div class="col-md-4">
+        <span class="service-icon img-circle center-block">
+          <i class="far fa-comments icon-1" aria-hidden="true"></i>
+        </span>
+        <h4>
+          <strong>口コミを見る</strong>
+        </h4>
+        <p class="text-left">サウナに対してのレビューやコメントいいね、ランキング機能が充実しているので生の声をすぐ表示することができます。</p>
+      </div>
+      <div class="col-md-4">
+        <span class="service-icon img-circle center-block">
+          <i class="far fa-handshake icon-1" aria-hidden="true"></i>
+        </span>
+        <h4>
+          <strong>サウナ好きと繋がる</strong>
+        </h4>
+        <p class="text-left">投稿されたレビューにはいいね！やコメントをすることができます。さらにフォロー機能、DM機能もあるのでサウナーと繋がることもできます</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="col-xs-1">
+<div class="box">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="box-part text-center">
+        <div class="title">PV数ランキング</div>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="text-center">順位</th>
+              <th class="text-center">サウナ</th>
+              <th class="text-center">PV数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @saunas_pv.each.with_index(1) do |sauna, index| %>
+            <tr>
+              <td class="text-center"><%= index %></td>
+              <td class="text-center"><%= sauna.name %></td>
+              <td class="text-center"><%= sauna.impressions_count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="box-part text-center">
+        <div class="title">イキタイランキング</div>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="text-center">順位</th>
+              <th class="text-center">サウナ</th>
+              <th class="text-center">PV数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @saunas_pv.each.with_index(1) do |sauna, index| %>
+            <tr>
+              <td class="text-center"><%= index %></td>
+              <td class="text-center"><%= sauna.name %></td>
+              <td class="text-center"><%= sauna.impressions_count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="box-part text-center">
+        <div class="title">サウナ飯ランキング </div>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="text-center">順位</th>
+              <th class="text-center">サウナ</th>
+              <th class="text-center">PV数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @saunas_pv.each.with_index(1) do |sauna, index| %>
+            <tr>
+              <td class="text-center"><%= index %></td>
+              <td class="text-center"><%= sauna.name %></td>
+              <td class="text-center"><%= sauna.impressions_count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-
-  <div class="col-xs-4">
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th class="text-center">順位</th>
-        <th class="text-center">サウナ</th>
-        <th class="text-center">イキタイ！数</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @saunas_ikitai.each.with_index(1) do |sauna, index| %>
-      <tr>
-        <td class="text-center"><%= index %></td>
-        <td class="text-center"><%= sauna.name %></td>
-        <td class="text-center"><%= sauna.ikitais.count %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th class="text-center">順位</th>
-        <th class="text-center">サウナ</th>
-        <th class="text-center">PV数</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @saunas_pv.each.with_index(1) do |sauna, index| %>
-      <tr>
-        <td class="text-center"><%= index %></td>
-        <td class="text-center"><%= sauna.name %></td>
-        <td class="text-center"><%= sauna.impressions_count %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <% @saunas.each do |sauna| %>
-    <%= link_to user_sauna_path(sauna) do %>
-    <%= sauna.name %>
-    <% end %>
-  <% end %>
-  </div> 
 </div>
 
-
-
-<div class="row">
+<div class="row center-block">
   <h3>
-      <i class="fas fa-map-marker-alt">現在地から探す</i>
+      <i class="fas fa-map-marker-alt" aria-hidden="true">現在地から探す</i>
   </h3>
   <div id="map" style="width:1000px; height:600px"></div>
 
@@ -113,7 +139,7 @@
           // 取得した位置情報を中心に表示
           map = new google.maps.Map(document.getElementById("map"), {
             center: LatLng,
-            zoom: 10
+            zoom: 13
           });
           for (var i = 0; i < markerData.length; i++) {
             let id = markerData[i]["id"]

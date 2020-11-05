@@ -20,7 +20,7 @@
               <span class="icon-bar"></span>
             </button>
             <%= link_to root_path, class: "navbar-brand" do %>
-            <%= image_tag "sauna.jpg", class: "logo" %>
+            <%= image_tag "sauna.png", class: "logo" %>
             <% end %>
           </div>
 
@@ -35,7 +35,7 @@
               <% unless admin_signed_in? %>
                 <li class="dropdown" role="presentation">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                    <i class="fas fa-list-ul"></i>
+                    <i class="fas fa-list-ul" aria-hidden="true"></i>
                     <span>ジャンルから探す</span>
                     <span class="caret"></span>
                   </a>
@@ -50,7 +50,7 @@
                 
                 <li class="dropdown" role="presentation">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"
-                    <i class="fas fa-globe-asia"></i>
+                    <i class="fas fa-globe-asia" aria-hidden="true"></i>
                     <span>都道府県から探す</span>
                     <span class="caret"></span>
                   </a>
@@ -77,38 +77,38 @@
                   <ul class="dropdown-menu" role="menu">
                     <li role="presentation">
                       <%= link_to user_user_path(current_user) do %>
-                      <i class="fas.fa-user">マイページ</i>
+                        <i class="fas fa-user" aria-hidden="true">マイページ</i>
                       <% end %>
                     </li>
                     <li>
                       <% if unchecked_notifications(current_user).present? %>
-                      <i class="fa fa-circle notifications-icon-2" style="color: gold;"></i>
+                        <i class="fa fa-circle notifications-icon-2" style="color: gold;" ></i>
                       <% end %>
                       <%= link_to user_notifications_path, class: "notifications-link" do %>
-                      <i class="fas fa-bell">通知</i>
+                        <i class="fas fa-bell" aria-hidden="true">通知</i>
                       <% end %>
                     </li>
                     <li>
                       <%= link_to user_rooms_path do %>
-                      <i class="fas fa-envelope">メッセージ</i>
+                        <i class="fas fa-envelope" aria-hidden="true">メッセージ</i>
                       <% end %>
                     </li>
                     <li>
                       <%= link_to new_user_sauna_path do %>
-                      <i class="fas fa-pen-square">新規サウナ登録</i>
+                        <i class="fas fa-pen-square" aria-hidden="true">新規サウナ登録</i>
                       <% end %>
                       <%= link_to root_path do %>
-                      <i class="fas fa-star">イキタイ！</i>
+                      < i class="fas fa-star" aria-hidden="true">イキタイ！</i>
                       <% end %>
                     </li>
                     <li>
                       <%= link_to edit_user_user_path(current_user) do %>
-                      <i class="fas fa-user-cog">プロフィール編集</i>
+                        <i class="fas fa-user-cog" aria-hidden="true">プロフィール編集</i>
                       <% end %>
                     </li>
                     <li>
                       <%= link_to destroy_user_session_path, method: :delete do %>
-                      <i class="fas fa-sign-out-alt">ログアウト</i>
+                        <i class="fas fa-sign-out-alt" aria-hidden="true">ログアウト</i>
                       <% end %>
                     </li>
                   </ul>
@@ -129,17 +129,17 @@
               <% else %>
                 <li>
                   <%= link_to new_user_registration_path do %>
-                    <i class="fas fa-user-plus">新規会員登録</i>
+                    <i class="fas fa-user-plus" aria-hidden="true">新規会員登録</i>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to new_user_session_path do %>
-                    <i class="fas fa-sign-in-alt">ログイン</i>
+                    <i class="fas fa-sign-in-alt" aria-hidden="true">ログイン</i>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to about_path do %>
-                    <i class="fas fa-info-circle">サイト説明</i>
+                    <i class="fas fa-info-circle" aria-hidden="true">サイト説明</i>
                   <% end %>
                 </li>
               <% end %>
@@ -151,6 +151,26 @@
     <main>
       <% if current_page?(root_path) %>
         <div class="main-visual">
+          <div class="main-visual-content">
+            <div class="text-center">
+              <h4>サウナ専門口コミ検索サイト</h4>
+              <h1 class="top_title">サウナで"ととのう"</h1>
+            </div>
+            <div>
+              <%= form_with url: user_sauna_keyword_search_path, method: :get, local: true do %>
+                <div class="col-xs-3">
+                </div>
+                <div class="col-xs-5">
+                  <%= text_field_tag :keyword_search, "", placeholder: "サウナキーワード検索", class: "form-control input-lg" %>
+                </div>
+                <div class="col-xs-2">
+                  <%= button_tag type: "submit", name: nil, class: "btn btn-primary btn-lg btn-block" do %>
+                    <i class="fas fa-search">検索</i>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       <% end %>
       <div>
@@ -162,19 +182,19 @@
         <div class="row">
           <div class="col-xs-4">
             <span class="footer_logo">
-              <i class="fab fa-apple">サウナで"ととのう"</i>
-              <i class="fas fa-search"></i>
+              <i class="fab fa-apple" aria-hidden="true">サウナで"ととのう"</i>
+              <i class="fas fa-search" aria-hidden="true"></i>
             </span>
           </div>
           <div class="col-xs-4">
             <ul class="menu">
               <span>Menu</span>
               <li><%= link_to root_path do %>
-                <i class="fas fa-home">トップ</i>
+                <i class="fas fa-home" aria-hidden="true">トップ</i>
               <% end %>
               </li>
               <li><%= link_to about_path do %>
-                <i class="fas fa-info-circle">サイト説明</i>
+                <i class="fas fa-info-circle" aria-hidden="true">サイト説明</i>
               <% end %>
               </li>
             </ul>
@@ -184,25 +204,25 @@
               <span>Contact</span>
               <li>
                 <%= link_to root_path do %>
-                  <i class="fab fa-twitter">Twitter
+                  <i class="fab fa-twitter" aria-hidden="true">Twitter
                   </i>
                 <% end %>
               </li>
               <li>
                 <%= link_to root_path do %>
-                  <i class="fab fa-instagram">Instagram
+                  <i class="fab fa-instagram" aria-hidden="true">Instagram
                   </i>
                 <% end %>
               </li>
               <li>
                 <%= link_to root_path do %>
-                  <i class="fab fa-github">
+                  <i class="fab fa-github" aria-hidden="true">
                   GitHub</i>
                 <% end %>
               </li>
               <li>
                 <%= link_to new_user_contact_path do %>
-                  <i class="fa fa-envelope">お問い合わせ</i>
+                  <i class="fa fa-envelope" aria-hidden="true">お問い合わせ</i>
                 <% end %>
               </li>
               </ul>

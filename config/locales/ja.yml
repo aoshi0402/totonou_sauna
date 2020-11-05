@@ -23,17 +23,7 @@ ja:
         home_page: ホームページ
         latitude: 緯度
         longitude: 経度
-   
-    prefecture_code:"東京都",
-    address_city:"豊島区",
-    address_street:"池袋233",
-    address_building:"かるまるビル2階",
-    introduction:"国内最大級のサウナ施設です",
-    business_hour:"8:30から20:00",
-    tel:"0429673344",
-    home_page:"http/wwwwwwwwwwwwwww",
-    water_temperature:"100",
-    sauna_temperature:"40"
+
       user:
         email: メールアドレス
         encrypted_password: パスワード

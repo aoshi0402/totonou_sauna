@@ -22,15 +22,27 @@
   font-family: 'Kosugi Maru', sans-serif;
 }
 
+.row{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
 body{
-background-color: #fff;
+background-color: #EEEEEE;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+main{
+margin-bottom: 30px;
 }
 
 footer {
 	width: 100%;
 	background-color: #070707;
 	margin-top: auto;
-	padding: 30px 0px;
+  padding: 10px 0px;
 }
 
 .img_prev:hover {
@@ -126,8 +138,140 @@ footer {
 .main-visual {
   width: 100%;
   height: 600px;
-  margin-bottom: 50px;
-  background-image: image-url("sauna_top.jpg");
+  background-image: image-url("sauna_top-2.jpg");
   background-size: contain;
   background-position: center;
   }
+
+.main-visual-content{
+	width: 100%;
+	height: 200px;
+	line-height: 600px;
+  padding:100px;
+  margin-top: 120px;
+}
+
+.top_title{
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  }
+
+  // 新規登録、ログインCSS
+
+.card-container.card {
+    max-width: 500px;
+    padding: 40px 40px;
+}
+
+.card {
+    background-color: #fffaf0;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+
+.btn.btn-signin {
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 38px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+
+.btn.btn-signin2 {
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 14px;
+}
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+    background-color: rgb(142, 146, 218);
+}
+
+.btn.btn-signin2:hover,
+.btn.btn-signin2:active,
+.btn.btn-signin2:focus {
+    background-color: rgb(142, 146, 218);
+}
+
+.newform {
+  margin-top: 10px
+}
+
+// topsectioncss
+
+section {
+  background-color: #FFFAF0;
+}
+
+.text-secondary {
+  color: #ecb807 !important;
+}
+
+.service-icon {
+  background-color: #fff;
+  height: 10rem;
+  width: 10rem;
+  display: block;
+  line-height: 7.5rem;
+  font-size: 2.25rem;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.icon-1 {
+  font-size: 60px;
+  color: 	#65A2FF;
+  margin: 20px 8px 0px 9px;
+}
+
+.box {
+  padding: 60px 0px;
+}
+
+.box-part {
+  background: #FFF;
+  border-radius: 10px;
+  padding: 20px 10px;
+  margin: 20px 0px;
+}
+
+.title{
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom:solid 5px #65A2FF;
+}

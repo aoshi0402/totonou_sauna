@@ -1,26 +1,44 @@
-<%= form_with model: @food, url: user_sauna_foods_path, local: true do |f| %>
+<div class="container">
+  <div class="card card-container">
+    <h4 class="text-center">サウナ飯登録</h4>
+    <%= form_with model: @food, url: user_sauna_foods_path, local: true do |f| %>
+      <div class="newform">
+        <%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
+        <%= attachment_image_tag @food, :image, size: "200x200",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+        'center-block img-thumbnail img-responsive img_prev'%>
+      </div>
 
-<span>
-<%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
-<%= attachment_image_tag @food, :image, size: "300x300",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
-  'center-block img-thumbnail img-responsive img_prev'%></span>
+      <div class="newform">
+        <%=f.label :name, "サウナ飯名" %>
+        <span>
+          <%=f.text_field :name, placeholder: "例) チーズたっぷりボロネーゼ", autofocus: true, class: "form-control" %>
+        </span>
+      </div>
 
-<%= f.label :name, "サウナ飯名" %>
-<span class="label.label-danger">
-  <%= f.text_field :name, placeholder: "例) チーズたっぷりボロネーゼ", autofocus: true, class: "form-control"%></span>
+      <div class="newform">
+        <%=f.label :introduction, "紹介文、感想" %>
+        <span>
+          <%=f.text_field :introduction, placeholder: "例 222-1222", class: "form-control" %>
+        </span>
+      </div>
 
-<%= f.label :introduction, "紹介文・感想"%>
-<span class="label.label-danger">
-  <%= f.text_area :introduction, placeholder: "例) 500円から飲めるグラスワインと、野菜のピクルス、お店の推しパスタ「チーズたっぷりボロネーゼ900円」で一杯。カウンターの立ち飲みスペースで食べるパスタがこれまたたまらないのです。サウナ終わりに求めてしまう塩気を満たすには、生ハムの盛り合わせもGOODです。", class: "form-control", style: "height: 200px;"%></span>
+      <div class="newform">
+        <%=f.label :tel, "電話番号" %>
+        <span class="label.label-default">
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: "選択してください" }, class: "form-control" %>
+        </span>
+      </div>
+    
+      <div class="newform">
+        <%=f.label :home_page, "ホームページ" %>
+        <span>
+          <%=f.text_area :home_page, placeholder: "例 https://www.totonou.sauna.co.jp/", class: "form-control" %>
+        </span>
+      </div>
 
-<%= f.label :tel, "電話番号" %>
-<span class="label.label-danger">
-  <%= f.text_field :tel, placeholder: "例) 08084251740", autofocus: true, class: "form-control"%></span>
-
-<%= f.label :home_page, "ホームページ" %>
-<span class="label.label-danger">
-  <%= f.text_field :home_page, placeholder: "例)https://saunatotonou-ikitai.com/ ", autofocus: true, class: "form-control"%></span>
-
-<%= f.submit "投稿", class: "btn btn-success btn-lg btn-block" %>
-
-<% end %>
+      <div class="newform">
+        <%= f.submit "投稿", class: "btn btn-success btn-lg btn-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>
