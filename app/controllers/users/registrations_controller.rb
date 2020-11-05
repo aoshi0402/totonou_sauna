@@ -61,6 +61,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # end
 # 追記
 prepend_before_action :check_captcha, only: [:create]
+before_action :check_guest, only: %i[update destroy]
+def check_guest
+  if resource.email == 'guest@example.com'
+    redirect_to root_path, alert: 'ゲストユーザーの変更・削除はできません。'
+  end
+end
 
   private
 
@@ -72,4 +78,5 @@ prepend_before_action :check_captcha, only: [:create]
       respond_with_navigational(resource) { render :new }
     end
   end
+
 end

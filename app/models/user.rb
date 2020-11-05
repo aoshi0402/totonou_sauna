@@ -45,12 +45,12 @@ class User < ApplicationRecord
 
   # 都道府県名
   def prefecture_name
-   JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
   end
 
   # 都道府県名
   def prefecture_name=(prefecture_name)
-   self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
   # CSVインポート
@@ -81,4 +81,12 @@ class User < ApplicationRecord
     image: auth.info.image
   )
   end
+
+  # 簡単ログイン
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
 end

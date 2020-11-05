@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'homes#top'
   get '/about' => "homes#about"
-   get 'login/select' => 'homes#login_select', as: 'login_select'
+  get 'login/select' => 'homes#login_select', as: 'login_select'
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
