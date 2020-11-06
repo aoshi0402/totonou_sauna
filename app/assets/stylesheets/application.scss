@@ -275,3 +275,41 @@ section {
   font-weight: bold;
   border-bottom:solid 5px #65A2FF;
 }
+
+// 点数
+.score {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #fff;
+  background-image: linear-gradient(45deg, #ffc107 0%, #ff8b5f 100%);
+  transition: 0.4s;
+}
+
+// サウナ新規登録
+
+.card-container2.card {
+    max-width: 850px;
+    padding: 40px 40px;
+}
+
+.table-sauna {
+  margin-top: 30px;
+}
+
+// レビュー覧
+
+.score_index {
+  display: inline-block;
+  padding: 5px 5px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #65A2FF;
+  transition: 0.4s;
+}
+
+.thumbnail_fix{
+font-size: medium;
+}

@@ -66,4 +66,16 @@ class Sauna < ApplicationRecord
     Sauna.joins(:sauna_genres).where("sauna_genres.genre_id = #{genre_search_id}")
   end
 
+  # レビューの平均点
+  def average_score
+    @sum = 0
+    reviews.each do |review|
+      @sum += review.score
+    end
+    if @sum > 0
+      @sum /= reviews.length
+    end
+    return @sum
+  end
+
 end
