@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="card card-container2">
+    <h4 class="text-center"><%=@sauna.name %></h4>
+    <div class="score">レビュー評価平均
+      <%= @sauna.average_score %>点
+    </div>
+    <div class="pull-right" id="ikitaibutton_<%= @sauna.id %>"><%= render "user/saunas/ikitaibutton", sauna: @sauna %>
+    </div>
+    <div class="row">
+      <%= attachment_image_tag @sauna, :image, size: "250x300",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+        'center-block img-thumbnail img-responsive img_prev'%>
+      <ul class="nav nav-tabs nav-justified">
+        <li role='presentation'>
+          <%= link_to "サウナ詳細", user_sauna_path(@sauna) %>
+        </li>
+        <li role='presentation'>
+          <%= link_to "#{ @sauna.reviews.count }レビュー", user_sauna_reviews_path(@sauna) %>
+        </li>
+        <li role='presentation'>
+          <%= link_to  'レビュー投稿', new_user_sauna_review_path(@sauna) %>
+        </li>
+        <li role='presentation'>
+          <%= link_to  'サウナ飯登録', new_user_sauna_food_path(@sauna) %>
+        </li>
+        <li role='presentation'>
+          <%= link_to "#{ @sauna.foods.count }サウナ飯", user_sauna_foods_path(@sauna) %>
+        </li>
+      </ul>
+    </div>
+    <div class="row text-center">
+      <h3>
+        <i class="fas fa-map-marker-alt" aria-hidden="true">サウナ位置</i>
+      </h3>
+    <div id="map" style="width:100%; height:600px"></div>
+
+    <script>
+      let map
+      let latitude = gon.latitude;
+      let longitude = gon.longitude;
+
+      function initMap() {
+        geocoder = new google.maps.Geocoder()
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {
+            lat: latitude,
+            lng: longitude
+          },
+          zoom: 12,
+        });
+
+        marker = new google.maps.Marker({
+          position: {
+            lat: latitude,
+            lng: longitude
+          },
+          map: map
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"] %>&callback=initMap" async
+      defer>
+    </script>
+  </div>
+</div>

@@ -1,19 +1,63 @@
-<h2>レビュー 一覧<h2>
-  <% if @reviews.present?%>
-    <% @reviews.each do |review|%>
-      <div class="caption">
-        <p class="score"><%= review.score %>点</p>
-        <%= attachment_image_tag review.user, :image, fallback: "images/no-image.png", size: "50x50"%>
-        <%= link_to review.user.name, user_user_path(review.user)%>
-        <%= review.user.sex %>
-        <p><%= link_to review.title, user_sauna_review_path(review.sauna, review) %></p>
-        <%= review.body %>
-      </div>
-    <%= link_to user_sauna_review_path(review.sauna, review) do %>
-      <p>コメント<p>
-      <%=review.comments.count %>
+<div class="container">
+  <div class="card card-container2">
+    <h4 class="text-center"><%=@sauna.name %></h4>
+    <div class="score">レビュー評価平均：
+      <%= @sauna.average_score %>点
+    </div>
+    <div class="pull-right" id="ikitaibutton_<%= @sauna.id %>"><%= render "user/saunas/ikitaibutton", sauna: @sauna %>
+    </div>
+    <div class="row">
+      <%= attachment_image_tag @sauna, :image, size: "250x300",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+        'center-block img-thumbnail img-responsive img_prev'%>
+      <ul class="nav nav-tabs nav-justified">
+        <li role='presentation'>
+          <%= link_to "サウナ詳細", user_sauna_path(@sauna) %>
+        </li>
+        <li role='presentation'>
+          <%= link_to  '地図', user_sauna_map_path(@sauna) %>
+        </li>
+        <li role='presentation'>
+          <%= link_to  'レビュー投稿', new_user_sauna_review_path(@sauna) %>
+        </li>
+        <li role='presentation'>
+          <%= link_to  'サウナ飯登録', new_user_sauna_food_path(@sauna) %>
+        </li>
+        <li role='presentation'>
+          <%= link_to "#{ @sauna.foods.count }サウナ飯", user_sauna_foods_path(@sauna) %>
+        </li>
+      </ul>
+    </div>
+    <h3 class="text-center">レビュー 一覧<h3>
+    <% if @reviews.present?%>
+      <% @reviews.each do |review|%>
+        <div class="thumbnail thumbnail_fix">
+          <div class="caption">
+            <p class="score_index"><%= review.score %>点</p>
+            <span>投稿者:
+              <%= link_to review.user.name, user_user_path(review.user)%>
+              <%= review.user.sex %>
+            </span>
+            <p>タイトル：
+              <%= link_to review.title, user_sauna_review_path(review.sauna, review) %>
+            </p>
+            <p>本文：
+              <%= review.body %>
+            </p>
+            <% if user_signed_in? %>
+              <span id="likebutton_<%= review.id %>">
+                <%= render "user/reviews/likebutton", review: review %>
+              </span>
+              <%= link_to user_sauna_review_path(review.sauna, review), class: '' do %>
+                <i class="fas fa-comment-dots">コメント
+                  <%= review.comments.count %>
+                </i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="centered">レビューは存在しません</p>    
     <% end %>
-    <% end %>
-  <% else %>
-        <p class="centered">レビューは存在しません</p>    
-  <% end %>
+  </div
+</div>

@@ -31,7 +31,8 @@ Rails.application.routes.draw do
 			resources :reviews do
 				resource :likes, only: [:index, :create, :destroy]
 				resources :comments, only: [:create, :edit, :update, :destroy]
-			end
+      end
+      get 'map', to: 'saunas#map'
 		end
 
     resources :users, only: [:show, :edit, :update, :destroy]

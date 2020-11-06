@@ -1,88 +1,117 @@
-<h2>レビュー詳細</h2>
-
-<h3><%= @review.title %></h3>
-
-<% if user_signed_in? %>
-   <%= @review.score %>点 </div> 
-
-<span id="likebutton_<%= @review.id %>"><%= render "user/reviews/likebutton", review: @review %></span>
-    <table class="table">
-    <tbody>
-      <tr>
-        <td>
-        <%= link_to user_user_path(@review.user) do %>
-          <%= attachment_image_tag @review.user, :image, fallback: "images/no-image.png",size: "100x100", class: "img-thumbnail img-responsive img-hover"%>
-          <% end %>
-          <%= @review.user.name %>
-          <%= @review.user.sex %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= @review.body %>
-        </td>
-      </tr>
-    </tbody>
-    </table>
-  <% end %>
-
-<% if @review.user == current_user %>
-  <%= link_to "編集", edit_user_sauna_review_path(@review), class: "btn btn-primary" %>
-  <%= link_to "削除", user_sauna_review_path(@review), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger margin-left--10px" %>
-<% end %>
-
-<% if user_signed_in? %>
-  <%= form_with model: @comment, url: user_sauna_review_comments_path(@review.sauna, @review), local: true do |f| %>
-  <%= f.label :title, "タイトル" %>
-  <br>
-  <%= f.text_field :title, class: "form-control" %>
-  <br>
-  <%= f.label :body, "本文" %>
-  <br>
-  <%= f.text_area :body, class: "form-control", style: "height: 100px;" %>
-  <br>
-  <%= f.submit "投稿", class: "btn btn-success btn-block" %>
-  <% end %>
-<% end %>
-
-<% if @comments.present? %>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="text-center">投稿者</th>
-        <th class="text-center">タイトル</th>
-        <th class="text-center">本文</th>
-        <th class="text-center">投稿日時</th>
-        <th class="text-center"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @comments.each do |comment| %>
-        <tr>
-          <td>
-            <%= link_to user_user_path(comment.user) do %>
-            <%= attachment_image_tag comment.user, :image, fallback: "images/no-image.png", size: "50x50", class:
-          "img-thumbnail img-responsive img-hover"%> </td>
-          <% end %>
-          <td><%= comment.user.name %></td>
-          <td><%= comment.title %></td>
-          <td> <%= comment.body %> </td>
-          <td> <%= comment.created_at.to_s(:datetime_jp) %></td>
-          <td>
-          <% if comment.user === current_user %>
-          <%= link_to "編集", edit_user_sauna_review_comment_path(@review.sauna, @review, comment), class: "btn
-          btn-primary" %>
-          <%= link_to "削除", user_sauna_review_comment_path(@review.sauna, @review, comment), method: :delete, data: {
-          confirm: "本当に削除しますか？" }, class: "btn btn-danger margin-left--10px"%><% end %>
-          </td>
-        </tr>
+<div class="container">
+  <div class="card card-container2">
+    <div class="row">
+      <h3 class="text-center"><%= @review.sauna.name %>のレビュー詳細</h3>
+      <div class="score">サウナ評価点数：
+        <%= @review.score %>点
+      </div>
+      <h3>
+        <%= @review.title %>
+      </h3>
+      <% if user_signed_in? %>
+        <span id="likebutton_<%= @review.id %>">
+          <%= render "user/reviews/likebutton", review: @review %>
+        </span>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+    <div class="row">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+            <%= link_to user_user_path(@review.user) do %>
+              <%= attachment_image_tag @review.user, :image, fallback: "no-image.png",size: "70x70", class: "img-thumbnail img-responsive img-hover"%>
+            <% end %>
+              <%= @review.user.name %>
+              <%= @review.user.sex %>
+              <% @user = @review.user %>
+              <% if user_signed_in? %>
+                <% if current_user != @user %>
+                  <span>
+                    <% if current_user.following?(@user) %>
+                      <%= link_to "フォロー外す", user_relationships_path(user_id: @user.id), method: :delete, class: "btn btn-primary" %>
+                    <% else %>
+                      <%= link_to "フォローする", user_relationships_path(user_id: @user.id), method: :post , class: "btn btn-primary"%>
+                    <% end %>
+                  </span>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= @review.body %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @review.user == current_user %>
+        <div class="pull-right">
+          <%= link_to "編集", edit_user_sauna_review_path(@review), class: "btn btn-primary" %>
+          <%= link_to "削除", user_sauna_review_path(@review), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+    <h3 class="text-center">コメント</h3>
+      <% if user_signed_in? %>
+        <%= form_with model: @comment, url: user_sauna_review_comments_path(@review.sauna, @review), local: true do |f| %>
+          <%= f.label :title, "タイトル" %>
+          <br>
+          <%= f.text_field :title, class: "form-control" %>
+          <br>
+          <%= f.label :body, "本文" %>
+          <br>
+          <%= f.text_area :body, class: "form-control", style: "height: 100px;" %>
+          <br>
+          <%= f.hidden_field :review_id, value: @review.id %>
+          <%= f.submit "投稿", class: "btn btn-success btn-block" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="row">
+      <% if @comments.present? %>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-center">投稿者</th>
+              <th class="text-center">タイトル</th>
+              <th class="text-center">本文</th>
+              <th class="text-center">投稿日時</th>
+              <th class="text-center"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @comments.each do |comment| %>
+              <tr>
+                <td>
+                  <%= link_to user_user_path(comment.user) do %>
+                    <%= attachment_image_tag comment.user, :image, fallback: "no-image.png", size: "50x50", class:
+                    "img-thumbnail img-responsive img-hover"%>
+                    <span><%= comment.user.name %></span>
+                  <% end %>
+                </td>
+              
+                <td><%= comment.title %></td>
+                <td> <%= comment.body %> </td>
+                <td> <%= comment.created_at.to_s(:datetime_jp) %></td>
+                <td>
+                  <% if comment.user === current_user %>
+                    <%= link_to "編集", edit_user_sauna_review_comment_path(@review.sauna, @review, comment), class: "btn
+                    btn-primary" %>
+                    <%= link_to "削除", user_sauna_review_comment_path(@review.sauna, @review, comment), method: :delete, data: {
+                    confirm: "本当に削除しますか？" }, class: "btn btn-danger"%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% else %>
+        <p class="centered">コメントは存在しません</p>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<% else %>
-  <p class="centered">コメントは存在しません</p>
-
-<% end %>
