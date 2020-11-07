@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>メッセージ相手</th>
+      <th>メッセージ内容</th>
+    <tr>
+  </thead>
+
+  <tbody>
+    <% @another_entries.each do |entry| %>
+    <tr>
+    <td><%= link_to entry.user.name, user_room_path(entry.room) %></td>
+    <td><%= Message.find_by(id: entry.room.message_ids.last)&.body %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

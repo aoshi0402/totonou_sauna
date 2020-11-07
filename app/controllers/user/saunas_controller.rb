@@ -16,13 +16,14 @@ class User::SaunasController < ApplicationController
 
   def show
     @sauna = Sauna.find(params[:id])
+    impressionist(@sauna, nil, unique: [:impressionable_id, :ip_address])
   end
 
   def edit
     @sauna = Sauna.find(params[:id])
     if current_user.id == @sauna.user_id
     else
-      redirect_to user_path
+      redirect_to user_sauna_path
     end
   end
 
@@ -41,11 +42,34 @@ class User::SaunasController < ApplicationController
     redirect_to root_path
   end
 
+  def map
+    @sauna = Sauna.find(params[:sauna_id])
+    gon.latitude = @sauna.latitude
+    gon.longitude = @sauna.longitude 
+  end
+
+  def keyword_search
+    @saunas = Sauna.keyword_search(params[:keyword_search])
+    @keyword_search = params[:keyword_search]
+  end
+
+  def prefecture_search
+    @saunas = Sauna.prefecture_search(params[:prefecture_search])
+    @prefecture_search = params[:prefecture_search]
+    @prefecture = JpPrefecture::Prefecture.find(code: @prefecture_search)
+  end
+
+  def genre_search
+    @saunas = Sauna.genre_search(params[:genre_search])
+    @genre_search = params[:genre_search]
+    @genre = Genre.find_by(id: @genre_search)
+  end
+
   def sauna_params
     params.require(:sauna).permit(
       :name,
       :postcode,
-      :prefecture,
+      :prefecture_code,
       :address_city,
       :address_street,
       :address_building,
@@ -57,6 +81,7 @@ class User::SaunasController < ApplicationController
       :water_temperature,
       :sauna_temperature,
       :image,
+      genre_ids: []
     )
   end
 end

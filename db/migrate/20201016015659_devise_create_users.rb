@@ -35,8 +35,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # デフォルト以外に新規登録の際に必要な情報を追加
       t.string :name
       t.integer :sex
-      t.string :postcode
-      t.string :prefecture
+      t.integer :postcode
+      t.integer :prefecture_code
       t.string :address_city
       t.string :address_street
       t.string :address_building

@@ -1,8 +1,6 @@
-<dive class="row">
-  <div class="col-xs-3">
-  </div>
-
-  <div class="col-xs-6">
+<div class="container">
+  <div class="card card-container">
+  <h3 class="text-center">コメント編集</h3>
     <%= form_with model: @comment, url: user_sauna_review_comment_path(@comment.review.sauna,@comment.review,@comment), local: true do |f| %>
 
     <%= f.label :title, 'タイトル'%>
@@ -11,12 +9,9 @@
     <%= f.label :body, "本文" %>
 
     <%= f.text_area :body, class: "form-control", style: "height: 100px;"%>
-
-    <%= f.submit "保存", class: "btn btn-primary btn-block" %>
+    <br>
+    <%= f.submit "保存", class: "btn btn-primary btn-block "%>
 
     <% end %>
   </div>
-
-  <div class="col-xs-3">
-  </div>
-</dive>
+</div>

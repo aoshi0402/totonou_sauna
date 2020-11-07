@@ -1,18 +1,18 @@
 class Admin::GenresController < ApplicationController
-	def index
-		@genre = Genre.new
-		@genres = Genre.all.page(params[:page]).per(1)
-	end
+  def index
+    @genre = Genre.new
+    @genres = Genre.all
+  end
 
-	def create
-		@genre = Genre.new(genre_params)
-		if @genre.save
-			redirect_to admin_genres_path(@genre)
-		else
-			@genres = Genre.all.page(params[:page]).per(20)
-			render 'index'
-		end
-	end
+  def create
+    @genre = Genre.new(genre_params)
+    if @genre.save
+      redirect_to admin_genres_path(@genre)
+    else
+      @genres = Genre.all
+      render 'index'
+    end
+  end
 
   def edit
     @genre = Genre.find(params[:id])
@@ -20,13 +20,16 @@ class Admin::GenresController < ApplicationController
 
   def update
     @genre = Genre.find(params[:id])
-		@genre.update(genre_params) ? (redirect_to admin_genres_path) : (render 'edit')
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path
+    else
+    render 'edit'
+    end
   end
 
-	private
+  private
 
-		def genre_params
-			params.require(:genre).permit(:name)
-		end
+    def genre_params
+      params.require(:genre).permit(:name, :image)
+    end
 end
-

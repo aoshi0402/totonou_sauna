@@ -1,39 +1,185 @@
-<h1>top</top>
+<section class="text-black text-center">
+  <div class="container">
+    <div>
+      <h3 class="text-secondary">Services</h3>
+      <h2>サウナで"ととのう"ではこんなことが可能です</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <span class="service-icon img-circle center-block">
+          <i class="fas fa-search-location icon-1" aria-hidden="true"></i>
+        </span>
+        <h4>
+          <strong>サウナを検索</strong>
+        </h4>
+        <p class="text-left">キーワードの検索はもちろん、ジャンルや都道府県、現在地から検索することができます。サウナ飯検索も魅力の一つです</p>
+      </div>
 
-  <% @saunas.each do |sauna| %>
-  <div class="pick-up-sauna col-xs-3">
-    <%= link_to user_sauna_path(sauna) do %>
-    <%= sauna.name %>
-  <% end %>
-  <% end %>
+      <div class="col-md-4">
+        <span class="service-icon img-circle center-block">
+          <i class="far fa-comments icon-1" aria-hidden="true"></i>
+        </span>
+        <h4>
+          <strong>口コミを見る</strong>
+        </h4>
+        <p class="text-left">サウナに対してのレビューやコメントいいね、ランキング機能が充実しているので生の声をすぐ表示することができます。</p>
+      </div>
+      <div class="col-md-4">
+        <span class="service-icon img-circle center-block">
+          <i class="far fa-handshake icon-1" aria-hidden="true"></i>
+        </span>
+        <h4>
+          <strong>サウナ好きと繋がる</strong>
+        </h4>
+        <p class="text-left">投稿されたレビューにはいいね！やコメントをすることができます。さらにフォロー機能、DM機能もあるのでサウナーと繋がることもできます</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<div class="box">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="box-part text-center">
+        <div class="title">PV数ランキング</div>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="text-center">順位</th>
+              <th class="text-center">サウナ</th>
+              <th class="text-center">PV数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @saunas_pv.each.with_index(1) do |sauna, index| %>
+            <tr>
+              <td class="text-center"><%= index %></td>
+              <td class="text-center"><%= sauna.name %></td>
+              <td class="text-center"><%= sauna.impressions_count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="box-part text-center">
+        <div class="title">イキタイランキング</div>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="text-center">順位</th>
+              <th class="text-center">サウナ</th>
+              <th class="text-center">PV数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @saunas_pv.each.with_index(1) do |sauna, index| %>
+            <tr>
+              <td class="text-center"><%= index %></td>
+              <td class="text-center"><%= sauna.name %></td>
+              <td class="text-center"><%= sauna.impressions_count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="box-part text-center">
+        <div class="title">サウナ飯ランキング </div>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="text-center">順位</th>
+              <th class="text-center">サウナ</th>
+              <th class="text-center">PV数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @saunas_pv.each.with_index(1) do |sauna, index| %>
+            <tr>
+              <td class="text-center"><%= index %></td>
+              <td class="text-center"><%= sauna.name %></td>
+              <td class="text-center"><%= sauna.impressions_count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h2>gmap</h2>
-<div id='map' style="width:500px; height:500px"></div>
+<div class="row">
+    <h3>
+        <i class="fas fa-map-marker-alt" aria-hidden="true">現在地から探す</i>
+    </h3>
+    <div id="map" style="width:100%; height:600px;"></div>
 
-<script>
-  let map
+    <script>
+      let map
+      let marker = [];
+      let infoWindow = [];
+      let markerData = gon.saunas;
 
-  function initMap() {
-    geocoder = new google.maps.Geocoder()
+      function initMap() {
+        
+          if (!navigator.geolocation) {
+            alert("Geolocation not supported");
+            return;
+          }
 
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {
-        lat: 40.7828,
-        lng: -73.9653
-      },
-      zoom: 12,
-    });
+        // 位置情報を取得
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            console.log(position.coords.latitude)
+            console.log(position.coords.longitude)
+            LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            // 取得した位置情報を中心に表示
+            map = new google.maps.Map(document.getElementById("map"), {
+              center: LatLng,
+              zoom: 13
+            });
+            for (var i = 0; i < markerData.length; i++) {
+              let id = markerData[i]["id"]
 
-    marker = new google.maps.Marker({
-      position: {
-        lat: 40.7828,
-        lng: -73.9653
-      },
-      map: map
-    });
-  }
+              // 各地点にマーカーを立てる
+              markerLatLng = new google.maps.LatLng({
+                lat: markerData[i]["latitude"],
+                lng: markerData[i]["longitude"]
+              });
+              marker[i] = new google.maps.Marker({
+                position: markerLatLng,
+                map: map
+              });
 
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async
-  defer></script>
+              // 各地点の吹き出しを作成
+              infoWindow[i] = new google.maps.InfoWindow({
+                // 吹き出しに表示する内容
+                content: `<a href="/user/saunas/${id}">サウナ詳細を見る</a>` + markerData[i]["name"]
+              });
+
+              // マーカーにクリックイベントを追加
+              markerEvent(i);
+            }
+          },
+          function() {
+            alert("Geolocation failed!");
+            return;
+          }
+        );
+      }
+      // マーカーをクリックすると吹き出しが表示される
+      function markerEvent(i) {
+        marker[i].addListener("click", function () {
+          infoWindow[i].open(map, marker[i]);
+        });
+      }
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"] %>&callback=initMap"
+      async defer>
+    </script>
+</div>
+

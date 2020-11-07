@@ -7,4 +7,8 @@ module ApplicationHelper
           "#{page_title} - #{base_title}" # トップ以外のページはタイトル「利用規約
         end
     end
+
+    def unchecked_notifications(user)
+      user.passive_notifications.where(checked: false)
+    end
 end

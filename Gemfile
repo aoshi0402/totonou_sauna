@@ -64,7 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-i18n'
 gem 'kaminari'
-gem 'bootstrap', '~> 4.5.0'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'pry-byebug'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
@@ -74,6 +74,11 @@ gem 'dotenv-rails'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'jp_prefecture'
+gem 'impressionist', '~>1.6.1'
+gem 'gon'
+gem 'geocoder'
+gem 'roo'
 
 group :production do
   gem 'mysql2'

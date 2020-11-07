@@ -1,0 +1,41 @@
+<h3>ジャンル一覧・追加</h1>
+<%= form_with model: @genre, url: admin_genres_path, local: true, method: :post do |f| %>
+  <div>
+    <%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
+    <%= attachment_image_tag @genre, :image, size: "50x50",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+        'center-block img-thumbnail img-responsive img_prev'%>
+    <h5 class="text-center">ジャンル画像</h5>
+  </div>
+
+  <div class="col-xs-offset-4 col-xs-4">
+    <%= f.label :genre, "ジャンル"%>
+    <%= f.text_field :name, class:" form-control"%>
+    <span class="col-xs-offset-5 col-xs-4">
+      <%= f.submit "追加" ,class: "btn btn-info" %>
+    </span>
+  </div>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr class="active">
+      <th>ジャンル写真</th>
+      <th>ジャンル名</th>
+      <th><th>
+    </tr>
+  </thead>
+  <tbody class="newform">
+    <% @genres.each do |genre| %>
+    <tr>
+      <td>
+          <%= attachment_image_tag genre, :image, size: "50x50",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+        'img-thumbnail img-responsive img_prev'%>
+      </td>
+      <td><%= genre.name %></td>
+      <td>
+        <%= link_to "編集する",edit_admin_genre_path(genre),class: "btn btn-primary btn-sm" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>                 

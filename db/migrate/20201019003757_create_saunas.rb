@@ -3,9 +3,9 @@ class CreateSaunas < ActiveRecord::Migration[5.2]
     create_table :saunas do |t|
       t.integer "user_id", null: false
       t.string "name", null: false
-      t.string "image_id", null: false
-      t.string "postcode", null: false
-      t.string "prefecture", null: false
+      t.string "image_id"
+      t.integer "postcode", null: false
+      t.integer "prefecture_code", null: false
       t.string "address_city", null: false
       t.string "address_street", null: false
       t.string "address_building"
@@ -16,6 +16,9 @@ class CreateSaunas < ActiveRecord::Migration[5.2]
       t.string "business_hour", null: false
       t.string "water_temperature", null: false
       t.string "sauna_temperature", null: false
+      t.integer "impressions_count", default: 0
+      t.float "latitude"
+      t.float "longitude"
       t.timestamps
     end
   end

@@ -13,16 +13,17 @@ ja:
       sauna:
         name: サウナ名
         postcode: 郵便番号
-        prefecture: 都道府県
+        prefecture_code: 都道府県
         address_city: 市区町村
         address_street: 番地
         address_building: 建物名
         introduction: 紹介文
         access: アクセス方法
         tel: 電話番号
-        homepage: ホームページ
+        home_page: ホームページ
         latitude: 緯度
         longitude: 経度
+
       user:
         email: メールアドレス
         encrypted_password: パスワード
