@@ -66,7 +66,7 @@
               <% if user_signed_in? %>
                 <li class="dropdown" role="presentation">
                   <% if unchecked_notifications(current_user).present? %>
-                    <i class="fa fa-circle notifications-icon-1" style="color: gold;"></i>
+                    <i class="fa fa-circle notifications-icon-1" style="color: green;"></i>
                   <% end %>
                   <a class="dropdown-toggle header_acount" data-toggle="dropdown" href="#" role="button"
                     aria-expanded="false">
@@ -82,7 +82,7 @@
                     </li>
                     <li>
                       <% if unchecked_notifications(current_user).present? %>
-                        <i class="fa fa-circle notifications-icon-2" style="color: gold;" ></i>
+                        <i class="fa fa-circle notifications-icon-2" style="color: green;" ></i>
                       <% end %>
                       <%= link_to user_notifications_path, class: "notifications-link" do %>
                         <i class="fas fa-bell" aria-hidden="true">通知</i>

@@ -18,21 +18,21 @@
       <div class="newform">
         <%=f.label :introduction, "紹介文、感想" %>
         <span>
-          <%=f.text_field :introduction, placeholder: "例 222-1222", class: "form-control" %>
+          <%=f.text_area :introduction, placeholder: "例 222-1222", class: "form-control" %>
         </span>
       </div>
 
       <div class="newform">
         <%=f.label :tel, "電話番号" %>
-        <span class="label.label-default">
-          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: "選択してください" }, class: "form-control" %>
+        <span>
+          <%= f.text_field :tel, placeholder: "例 08087667655",class: "form-control" %>
         </span>
       </div>
     
       <div class="newform">
         <%=f.label :home_page, "ホームページ" %>
         <span>
-          <%=f.text_area :home_page, placeholder: "例 https://www.totonou.sauna.co.jp/", class: "form-control" %>
+          <%=f.text_field :home_page, placeholder: "例 https://www.totonou.sauna.co.jp/", class: "form-control" %>
         </span>
       </div>
 

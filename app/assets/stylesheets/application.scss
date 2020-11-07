@@ -162,6 +162,7 @@ footer {
 .card-container.card {
     max-width: 500px;
     padding: 40px 40px;
+    word-wrap: break-word;
 }
 
 .card {
@@ -226,7 +227,7 @@ footer {
 .btn.btn-signin2:hover,
 .btn.btn-signin2:active,
 .btn.btn-signin2:focus {
-    background-color: rgb(142, 146, 218);
+    background-color: rgb(185, 187, 214);
 }
 
 .newform {
@@ -292,6 +293,7 @@ section {
 .card-container2.card {
     max-width: 850px;
     padding: 40px 40px;
+    word-wrap: break-word;
 }
 
 .table-sauna {
@@ -312,4 +314,24 @@ section {
 
 .thumbnail_fix{
 font-size: medium;
+}
+
+.card_food {
+    background-color: #fff0f5;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-container_food {
+    max-width: 400px;
+    padding: 20px 20px;
+    word-wrap: break-word;
 }

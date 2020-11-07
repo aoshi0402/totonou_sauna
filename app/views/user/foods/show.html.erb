@@ -1,42 +1,40 @@
-<h2>レビュー詳細</h2>
+<div class="container">
+  <div class="card card-container">
+    <h3 class="text-center"><%= @food.name %>詳細</h3>
+    <% if user_signed_in? %>
+    <%= attachment_image_tag @food, :image, size: "200x200",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+      'center-block img-thumbnail img-responsive img_prev'%>
+      <div class="table-responsive table-sauna">
+        <table class="table table-bordered">
+          <tbody>
 
-<h3><%= @food.name %></h3>
+            <tr>
+              <th class="active">サウナ飯名</th>
+              <td><%= @food.name %></td>
+            </tr>
 
-<% if user_signed_in? %>
+            <tr>
+              <th class="active">紹介文・感想</th>
+              <td><%= @food.introduction %></td>
+            </tr>
 
-  <table class="table table-bordered">
-    <tbody>
-      <tr>
-        <td>イメージ写真</td>
-        <td></td>
-        <%= link_to user_user_path(@food.user) do %>
-        <%= @food.user.name %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <td>サウナ飯名</td>
-        <td><%= @food.name %></td>
-      </tr>
-      <tr>
-        <td>紹介文・感想</td>
-        <td><%= @food.introduction %></td>
-      </tr>
-      <tr>
-        <td>電話番号</td>
-        <td><%= @food.tel %></td>
-      </tr>
-      <tr>
-        <td>ホームページ</td>
-        <td><%= @food.home_page %></td>
-      </tr>
-    </tbody>
-  </table>
+            <tr>
+              <th class="active">電話番号</th>
+              <td><%= @food.tel %></td>
+            </tr>
 
-
-  <% if @food.user == current_user %> 
-  <%= link_to "編集", edit_user_sauna_food_path(@food), class: "btn btn-primary" %>
-  <%= link_to "削除", user_sauna_food_path(@food), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
-  <% end %>
-
-
-<% end %>
+            <tr>
+              <th class="active">ホームページ</th>
+              <td><%= @food.home_page %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <%= link_to "フード飯一覧へ", user_sauna_foods_path(@food.sauna), class: "btn btn-info" %>
+      <% if @food.user == current_user %>
+        <%= link_to "編集", edit_user_sauna_food_path(@food), class: "btn btn-primary" %>
+        <%= link_to "削除", user_sauna_food_path(@food), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
