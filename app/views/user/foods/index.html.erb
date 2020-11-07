@@ -1,13 +1,55 @@
-<h2>フード飯 一覧<h2>
-    <% if @foods.present?%>
-    <% @foods.each do |food|%>
-    <div class="-">
-      <%= attachment_image_tag food.user, :image, fallback: "images/no-image.png", size: "50x50"%>
-      <%= link_to food.user.name, user_user_path(food.user)%>
-      <p><%= link_to food.name, user_sauna_food_path(food.sauna, food) %></p>
-      <%= food.body %>
+<div class="container">
+  <div class="card card-container2">
+    <h4 class="text-center"><%=@sauna.name %></h4>
+    <div class="score">レビュー評価平均
+      <%= @sauna.average_score %>点
     </div>
-        <% end %>
-        <% else %>
-        <p class="”>フード飯は存在しません</p>
-        <% end %>
+    <div class="pull-right btn btn-default" id="ikitaibutton_<%= @sauna.id %>">
+      <%= render "user/saunas/ikitaibutton", sauna: @sauna %>
+    </div>
+    <%= link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @sauna.name }を、Twitterでみんなに広めよう！", class:
+      "btn btn-default", data: { show_count: false }, title: "Twitter", target: "_blank" do %>
+    <i class="fab fa-twitter" aria-hidden="true" style="color: #3399FF;">Twitterでシェア</i>
+    <% end %>
+    <div class="row">
+      <%= attachment_image_tag @sauna, :image, size: "250x300",fallback: "no-image.png", onClick: "$('.img_field').click()", class:
+				'center-block img-thumbnail img-responsive img_prev'%>
+      <ul class="nav nav-tabs nav-justified">
+        <li role="presentation">
+          <%= link_to "サウナ詳細", user_sauna_path(@sauna) %>
+        </li>
+        <li role="presentation">
+          <%= link_to "#{ @sauna.reviews.count }レビュー", user_sauna_reviews_path(@sauna) %>
+        </li>
+        <li role="presentation">
+          <%= link_to"レビュー投稿", new_user_sauna_review_path(@sauna) %>
+        </li>
+        <li role="presentation">
+          <%= link_to"地図", user_sauna_map_path(@sauna) %>
+        </li>
+        <li role="presentation">
+          <%= link_to"サウナ飯登録", new_user_sauna_food_path(@sauna) %>
+        </li>
+      </ul>
+    </div>
+    <h4 class="text-center">フード飯 一覧<h>
+    <% if @foods.present? %>
+      <% @foods.each do |food| %>
+        <div class="card_food card-container_food">
+          <%= link_to user_sauna_food_path(food.sauna,food) do %>
+            <%= attachment_image_tag food, :image, size: "250x300",fallback: "no-image.png", onClick: "$('.img_field').click()", class:
+              'center-block img-thumbnail img-responsive img_prev'%>
+            <% end %>
+          <div class="newform">
+            <%= link_to user_sauna_food_path(food.sauna,food) do %>
+              <%= food.name %>
+            <% end %>
+          </div>
+          <div class="newform">
+            <%= food.introduction %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

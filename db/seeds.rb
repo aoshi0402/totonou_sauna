@@ -73,6 +73,39 @@ Admin.create!(
     impressions_count:"3",
   )
 
+  Sauna.create!(
+    name:"おふろcafe utatane",
+    user_id:"5",
+    image: File.open("./app/assets/images/saunas/ofuro-cafe.jpg"),
+    postcode:"331-0815",
+    prefecture_code:"11",
+    address_city:"さいたま市",
+    address_street:"北区大成町４丁目１７９−３",
+    introduction:"コミック書籍 10,000冊以上 ・女性浴室で泥パック使い放題 ・2020年1月より試験的にタトゥー入館可(顔写真付き身分証の提示と会員登録220円が必須・サウナハットかけるフックなし。棚もなくサウナハット置き場なし。",
+    business_hour:"10時00分～21時00分",
+    tel:"05-3336-5225",
+    home_page:"	http://ofurocafe-utatane.com/",
+    water_temperature:"18",
+    sauna_temperature:"88",
+    impressions_count:"14",
+  )
+
+  Sauna.create!(
+    name:"カプセルホテルレインボー本八幡",
+    user_id:"7",
+    image: File.open("./app/assets/images/saunas/ofuro-cafe.jpg"),
+    postcode:"272-0023",
+    prefecture_code:"12",
+    address_city:"市川市",
+    address_street:"南八幡４丁目４-１-１２",
+    introduction:"コミック書籍 10,000冊以上 顔写真付き身分証の提示と会員登録220円が必須） ・サウナハットかけるフックなし。棚もなくサウナハット置き場なし。",
+    business_hour:"10時00分～21時00分",
+    tel:"05-3336-5225",
+    home_page:"http://rainbow-motoyawata.wix.com/rainbow",
+    water_temperature:"16",
+    sauna_temperature:"126",
+    impressions_count:"19",
+  )
   
 # ジャンル
 Genre.create(name: "ドライ", image: File.open("./app/assets/images/genres/dry.jpg"))

@@ -4,8 +4,13 @@
     <div class="score">レビュー評価平均：
       <%= @sauna.average_score %>点
     </div>
-    <div class="pull-right" id="ikitaibutton_<%= @sauna.id %>"><%= render "user/saunas/ikitaibutton", sauna: @sauna %>
+    <div class="pull-right btn btn-default" id="ikitaibutton_<%= @sauna.id %>">
+      <%= render "user/saunas/ikitaibutton", sauna: @sauna %>
     </div>
+    <%= link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @sauna.name }を、Twitterでみんなに広めよう！", class:
+      'btn btn-default', data: { show_count: false }, title: 'Twitter', target: '_blank' do %>
+      <i class="fab fa-twitter" aria-hidden='true' style='color: #3399FF;'>Twitterでシェア</i>
+    <% end %>
     <div class="row">
       <%= attachment_image_tag @sauna, :image, size: "250x300",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
         'center-block img-thumbnail img-responsive img_prev'%>
@@ -59,5 +64,5 @@
     <% else %>
       <p class="centered">レビューは存在しません</p>    
     <% end %>
-  </div
+  </div>
 </div>

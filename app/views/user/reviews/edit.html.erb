@@ -1,21 +1,22 @@
-<%= form_with model: @review, url:  user_sauna_review_path(@review), local: true do |f| %>
+<div class="container">
+  <div class="card card-container">
+  <h4 class="text-center">レビュー編集</h4>
+    <%= form_with model: @review, url:  user_sauna_review_path(@review), local: true do |f| %>
+      
+      <%= f.label :title, "タイトル" %>
+      <span class ="label.label-danger">
+      <%= f.text_field :title, placeholder: "例) 水風呂とサウナのコラボレーションが最高でした", autofocus: true, class: "form-control"%></span>
 
-  <%= f.label :images, "写真(複数選択可)"%>
-  <span class="label.label-danger">
-  <%= f.file_field :images, multiple: true, class: "img_field", style: "display:none" %></span>
-  
-  <%= f.label :title, "タイトル" %>
-  <span class ="label.label-danger">
-  <%= f.text_field :title, placeholder: "例) 水風呂とサウナのコラボレーションが最高でした", autofocus: true, class: "form-control"%></span>
+      <%= f.label :body, "本文"%>
+      <span class ="label.label-danger">
+      <%= f.text_area :body, placeholder: "例) サウナ仲間で行ってきました。休日でしたが人も少なく快適でした", class: "form-control", style: "height: 200px;"%></span>
 
-  <%= f.label :body, "本文"%>
-  <span class ="label.label-danger">
-  <%= f.text_area :body, placeholder: "例) サウナ仲間で行ってきました。休日でしたが人も少なく快適でした", class: "form-control", style: "height: 200px;"%></span>
+      <%= f.label :score, "点数" %>
+      <span class="label.label-danger">
+      <%= f.select :score, options_for_select(1..100), { prompt: "選択してください" }, class: "form-control"%>
 
-  <%= f.label :score, "点数" %>
-  <span class="label.label-danger">
-  <%= f.select :score, options_for_select(1..100), { prompt: "選択してください" }, class: "form-control"%>
+      <%= f.submit "保存", class: "btn btn-success btn-lg btn-block" %>
 
-  <%= f.submit "保存", class: "btn btn-success btn-lg btn-block" %>
-
-<% end %>
+    <% end %>
+  </div>
+</div>
