@@ -107,4 +107,5 @@ Rails.application.configure do
     :password => ENV['GMAIL_PASSWORD'],
     #パスワードをBase64でエンコード
     authentication: :login
+  }
 end
