@@ -7,6 +7,20 @@ class Sauna < ApplicationRecord
   has_many :genres, through: :sauna_genres
   attachment :image
 
+  validates :image, presence: true
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :postcode, presence: true, format: { with: /\A\d{7}\z/ }
+  validates :prefecture_code, presence: true
+  validates :address_city, presence: true, length: { maximum: 50 }
+  validates :address_street, presence: true, length: { maximum: 50 }
+  validates :address_building, length: { maximum: 50 }
+  validates :introduction, presence: true, length: { maximum: 400 }
+  validates :business_hour, presence: true, length: { maximum: 100 }
+  validates :water_temperature, presence: true
+  validates :sauna_temperature, presence: true
+  validates :tel, presence: true, uniqueness: true
+  validates :home_page, presence: true, length: { maximum: 100 }
+
   # PV数取得
   is_impressionable counter_cache: true
 

@@ -1,5 +1,7 @@
 class User::FoodsController < ApplicationController
-def new
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  
+  def new
     @food = Food.new
   end
 
@@ -48,7 +50,7 @@ def new
 
   private
 
-    def food_params
-      params.require(:food).permit(:sauna, :name, :introduction, :image, :tel, :home_page)
-    end
+  def food_params
+    params.require(:food).permit(:sauna, :name, :introduction, :image, :tel, :home_page)
+  end
 end
