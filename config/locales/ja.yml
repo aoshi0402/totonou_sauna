@@ -36,3 +36,10 @@ ja:
         address_building: 建物名
         introduction: 自己紹介文
         image_id: プロフィール写真
+        
+    errors:
+    messages:
+      record_invalid: 'バリデーションに失敗しました: %{errors}'
+      restrict_dependent_destroy:
+        has_one: "%{record}が存在しているので削除できません"
+        has_many: "%{record}が存在しているので削除できません"
