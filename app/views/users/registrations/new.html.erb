@@ -11,6 +11,12 @@
           </span>
         </div>
         <div class="newform">
+          <%= f.label :sex, "性別"%>
+          <span>
+            <%= f.select :sex, User.sexes.keys, { prompt: '選択してください' }, class: "form-control"%>
+          </span>
+        </div>
+        <div class="newform">
           <%= f.label :introduction, "自己紹介文"%>
           <span>
             <%= f.text_area :introduction, placeholder: "例) 好きなサウナはかるまるです。", autocomplete: "introduction", class: "form-control"%>
