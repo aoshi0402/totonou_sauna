@@ -1,4 +1,6 @@
 class User::SaunasController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   def new
     @sauna = Sauna.new
   end
