@@ -11,7 +11,7 @@ Admin.create!(
     postcode: "1500041",
     prefecture_code: "東京都",
     address_city: "北区",
-    sex: "男",
+    sex: "男性",
     address_street: "神南123",
     address_building: "ライオンズマンション123号室",
     introduction: "サウナ好きの人です。よろしくお願いします",
