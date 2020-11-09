@@ -79,6 +79,7 @@ gem 'impressionist', '~>1.6.1'
 gem 'gon'
 gem 'geocoder'
 gem 'roo'
+gem 'lazy_high_charts'
 
 group :production do
   gem 'mysql2'
