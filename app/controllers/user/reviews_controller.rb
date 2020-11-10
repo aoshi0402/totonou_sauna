@@ -11,8 +11,10 @@ class User::ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.sauna_id = sauna.id
     if @review.save
+      flash[:notice] = "レビューが投稿されました"
       redirect_to user_sauna_review_path(@review.sauna, @review)
     else
+      flash.now[:alart_flash] = "レビューの投稿に失敗しました"
       render "new"
     end
   end
@@ -39,8 +41,10 @@ class User::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     if @review.update(review_params)
+    flash[:notice] = "レビューが更新されました"
     redirect_to user_sauna_review_path(@review.sauna, @review)
     else
+      flash.now[:alart_flash] = "レビューの更新に失敗しました"
       render "edit"
     end
   end
@@ -48,6 +52,7 @@ class User::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
+    flash[:notice] = "レビューの削除に成功しました"
     redirect_to user_sauna_reviews_path(@review.sauna, @review)
   end
 

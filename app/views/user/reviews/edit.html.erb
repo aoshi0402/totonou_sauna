@@ -2,6 +2,7 @@
   <div class="card card-container">
   <h4 class="text-center">レビュー編集</h4>
     <%= form_with model: @review, url:  user_sauna_review_path(@review), local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       
       <%= f.label :title, "タイトル" %>
       <span class ="label.label-danger">

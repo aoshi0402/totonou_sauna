@@ -34,6 +34,10 @@
                 <%= message.body %>
               </td>
               <td>
+                <%= message.created_at.to_s(:datetime_jp) %>
+              </td>
+
+              <td>
                 <%= link_to "削除", user_message_path(message), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
               </td>
             </tr>
