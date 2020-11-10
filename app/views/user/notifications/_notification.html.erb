@@ -13,6 +13,7 @@
             </span>
             <%= "あなたにメッセージを送信しました" %>
           <% end %>
+          <%= notification.created_at.to_s(:datetime_jp) %>
         </td>
       </tr>
     </tbody>

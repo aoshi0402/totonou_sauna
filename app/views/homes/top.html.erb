@@ -54,7 +54,11 @@
             <% @saunas_pv.each.with_index(1) do |sauna, index| %>
             <tr>
               <td class="text-center"><%= index %></td>
-              <td class="text-center"><%= sauna.name %></td>
+              <td class="text-center">
+              <%= link_to user_sauna_path(sauna) do %>
+                <%= sauna.name %>
+              <% end %>
+              </td>
               <td class="text-center"><%= sauna.impressions_count %></td>
             </tr>
             <% end %>
@@ -70,16 +74,20 @@
             <tr>
               <th class="text-center">順位</th>
               <th class="text-center">サウナ</th>
-              <th class="text-center">PV数</th>
+              <th class="text-center">イキタイ数</th>
             </tr>
           </thead>
           <tbody>
-            <% @saunas_pv.each.with_index(1) do |sauna, index| %>
-            <tr>
-              <td class="text-center"><%= index %></td>
-              <td class="text-center"><%= sauna.name %></td>
-              <td class="text-center"><%= sauna.impressions_count %></td>
-            </tr>
+            <% @saunas_ikitai.each.with_index(1) do |sauna, index| %>
+              <tr>
+                <td class="text-center"><%= index %></td>
+                <td class="text-center">
+                  <%= link_to user_sauna_path(sauna) do %>
+                    <%= sauna.name %>
+                  <% end %>
+                </td>
+                <td class="text-center"><%= sauna.ikitais.count %></td>
+              </tr>
             <% end %>
           </tbody>
         </table>
@@ -93,15 +101,19 @@
             <tr>
               <th class="text-center">順位</th>
               <th class="text-center">サウナ</th>
-              <th class="text-center">PV数</th>
+              <th class="text-center">サウナ飯数</th>
             </tr>
           </thead>
           <tbody>
-            <% @saunas_pv.each.with_index(1) do |sauna, index| %>
+            <% @saunas_food.each.with_index(1) do |sauna, index| %>
             <tr>
               <td class="text-center"><%= index %></td>
-              <td class="text-center"><%= sauna.name %></td>
-              <td class="text-center"><%= sauna.impressions_count %></td>
+              <td class="text-center">
+                <%= link_to user_sauna_path(sauna) do %>
+                  <%= sauna.name %>
+                <% end %>
+              </td>
+              <td class="text-center"><%= sauna.foods.count %></td>
             </tr>
             <% end %>
           </tbody>

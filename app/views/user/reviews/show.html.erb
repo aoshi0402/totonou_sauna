@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card card-container2">
     <div class="row">
-      <h3 class="text-center"><%= @review.sauna.name %>のレビュー詳細</h3>
+      <h3 class="text-center">レビュー詳細</h3>
       <div class="score">サウナ評価点数：
         <%= @review.score %>点
       </div>
@@ -48,8 +48,8 @@
       <%= link_to "レビュー一覧", user_sauna_reviews_path(@review.sauna), class: "btn btn-primary" %>
       <% if @review.user == current_user %>
         <div class="pull-right">
-          <%= link_to "編集", edit_user_sauna_review_path(@review), class: "btn btn-primary" %>
-          <%= link_to "削除", user_sauna_review_path(@review), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+          <%= link_to "編集", edit_user_sauna_review_path(@review.sauna, @review), class: "btn btn-primary" %>
+          <%= link_to "削除", user_sauna_review_path(@review.sauna, @review), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
         </div>
       <% end %>
     </div>
@@ -57,6 +57,7 @@
     <h3 class="text-center">コメント</h3>
       <% if user_signed_in? %>
         <%= form_with model: @comment, url: user_sauna_review_comments_path(@review.sauna, @review), local: true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
           <%= f.label :title, "タイトル" %>
           <br>
           <%= f.text_field :title, class: "form-control" %>

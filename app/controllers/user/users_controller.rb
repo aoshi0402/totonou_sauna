@@ -32,8 +32,10 @@ class User::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_user_path(@user), notice: "会員情報の更新完了しました"
+      flash[:notice] = "会員情報の更新完了しました"
+      redirect_to user_user_path(@user)
     else
+      flash.now[:alart_flash] = "会員情報の更新に失敗しました"
       render "edit"
     end
   end
@@ -43,6 +45,7 @@ class User::UsersController < ApplicationController
     @user.is_deleted = true
     @user.save
     reset_session
+    flash[:notice] = "退会が完了しました"
     redirect_to root_path
   end
 

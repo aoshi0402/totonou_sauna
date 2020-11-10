@@ -48,6 +48,11 @@ class Sauna < ApplicationRecord
     self.order(impressions_count: "DESC").limit(10)
   end
 
+  # 「サウナ飯数」ランキング
+  def self.food_ranking
+    self.find(Food.group(:sauna_id).order("count(sauna_id) DESC").limit(10).pluck(:sauna_id))
+  end
+
   # 緯度経度を取得
   geocoded_by :geocode_full_address
   after_validation :geocode
