@@ -33,9 +33,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       # デフォルト以外に新規登録の際に必要な情報を追加
-      t.string :name
+      t.string :name, null: false
       t.integer :sex
-      t.integer :postcode
+      t.string :postcode
       t.integer :prefecture_code
       t.string :address_city
       t.string :address_street
