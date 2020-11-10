@@ -1,17 +1,49 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>メッセージ相手</th>
-      <th>メッセージ内容</th>
-    <tr>
-  </thead>
-
-  <tbody>
-    <% @another_entries.each do |entry| %>
-    <tr>
-    <td><%= link_to entry.user.name, user_room_path(entry.room) %></td>
-    <td><%= Message.find_by(id: entry.room.message_ids.last)&.body %></td>
-    </tr>
+<div class="row">
+  <div class="col-xs-3">
+  </div>
+  <div class="col-xs-6">
+    <% if @another_entries.present? %>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <tbody>
+            <% @another_entries.each do |entry| %>
+              <% last_message = Message.find_by(id: entry.room.message_ids.last) %>
+              <tr>
+                <td>
+                  <div class="col-xs-2">
+                    <%= link_to user_user_path(entry.user) do %>
+                      <%= attachment_image_tag entry.user, :image, size: '50x50', fallback: 'no-image.png', class: 'img-thumbnail img-responsive img-hover' %>
+                    <% end %>
+                  </div>
+                  <div class="col-xs-6">
+                    <strong>
+                      <%= link_to user_user_path(entry.user) do %>
+                        <%= entry.user.name %>
+                      <% end %>
+                    </strong>
+                    <%= link_to user_room_path(entry.room.id) do %>
+                      <p>
+                        <%= last_message&.body %>
+                      </p>
+                    <% end %>
+                  </div>
+                  <div class="col-xs-4">
+                    <% if last_message.present? %>
+                      <%= last_message&.created_at.to_s(:datetime_jp) %>
+                    <% else %>
+                      <%= link_to 'メッセージを送る', user_room_path(entry.room) %>
+                    <% end %>
+                  </div>
+                <td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <p>メッセージが存在しません</p>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>

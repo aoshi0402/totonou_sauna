@@ -4,12 +4,14 @@ class User::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.review_id = params[:review_id]
+    @review = @comment.review
     if @comment.save
-      flash[:success] = "コメントが送信されました"
-      redirect_to user_sauna_review_path(params[:sauna_id], params[:review_id])
+      flash[:notice] = "コメントが送信されました"
+      redirect_to user_sauna_review_path(@review.sauna, @review)
     else
-      render "/user/reviews/show"
+      flash.now[:alart_flash] = "コメントの投稿に失敗しました"
+      @comments = @review.comments
+      render '/user/reviews/show'
     end
   end
 
@@ -23,8 +25,10 @@ class User::CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
+    flash[:notice] = "コメントが更新されました"
     redirect_to user_sauna_review_path(@comment.review.sauna, @comment.review)
     else
+    flash.now[:alart_flash] = "コメントの更新に失敗しました"
     render "edit"
     end
   end
@@ -33,6 +37,7 @@ class User::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @review = @comment.review
     @comment.destroy
+    flash[:notice] = "コメントの削除に成功しました"
     redirect_to user_sauna_review_path(@comment.review.sauna, @comment.review)
   end
 

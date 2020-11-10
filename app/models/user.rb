@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :sex, presence: true
   validates :postcode, allow_blank: true, format: { with: /\A\d{7}\z/ }
@@ -23,7 +24,7 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 150 }
 
   enum sex: { '男性': 0, '女性': 1 }
-  enum is_deleted: { '有効': true, '退会済': false }
+  enum is_deleted: { '有効': false, '退会済': true }
 
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy

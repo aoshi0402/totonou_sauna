@@ -6,7 +6,6 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.string "title", null: false
       t.integer "score", null: false
       t.text "body", null: false
-      t.boolean "is_deleted", default: false, null: false
       t.timestamps
     end
   end

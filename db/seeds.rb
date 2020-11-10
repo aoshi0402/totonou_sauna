@@ -17,7 +17,7 @@ Admin.create!(
     introduction: "サウナ好きの人です。よろしくお願いします",
     password: "111111",
     )
-  end
+end
   
   #サウナ
 
@@ -31,7 +31,7 @@ Admin.create!(
     address_street:"池袋2丁目",
     introduction:"日本最大級のサウナ施設です",
     business_hour:"11:30〜翌10:00",
-    tel:"05-3986-3726",
+    tel:"06-3986-3726",
     home_page:"https://karumaru.jp/ikebukuro/",
     water_temperature:"8.3",
     sauna_temperature:"90",
@@ -66,7 +66,7 @@ Admin.create!(
     address_street:"保土ケ谷区上星川３丁目１-１",
     introduction:"自家製生薬風呂は香り良く効用も魅力。こちらの水風呂はミント水風呂15.5水深90cmとレベル高い。水風呂に12分計設置のきめこまやかさ！",
     business_hour:"6時00分～1時00分",
-    tel:"05-3376-5225",
+    tel:"05-3116-5225",
     home_page:"http://thermae-yu.jp/",
     water_temperature:"16.4",
     sauna_temperature:"80",
@@ -100,7 +100,7 @@ Admin.create!(
     address_street:"南八幡４丁目４-１-１２",
     introduction:"コミック書籍 10,000冊以上 顔写真付き身分証の提示と会員登録220円が必須） ・サウナハットかけるフックなし。棚もなくサウナハット置き場なし。",
     business_hour:"10時00分～21時00分",
-    tel:"05-3336-5225",
+    tel:"05-3111-5225",
     home_page:"http://rainbow-motoyawata.wix.com/rainbow",
     water_temperature:"16",
     sauna_temperature:"126",

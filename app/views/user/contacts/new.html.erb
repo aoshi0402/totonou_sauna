@@ -2,10 +2,11 @@
   <div class="card card-container">
       <h4 class="text-center">お問い合わせ情報入力</h4>
       <%= form_with model: @contact, url: user_contacts_path, local: true do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
         <div class="newform">
           <%= f.label :name, "氏名"%>
           <span>
-            <%= f.text_field :name, autofocus: true, placeholder: "例) 阿部 優", autocomplete: "name", class: "form-control"%>
+            <%= f.text_field :name, autofocus: true, placeholder: "例) 阿部 太郎", autocomplete: "name", class: "form-control"%>
           </span>
         </div>
         <div class="newform">
@@ -15,9 +16,9 @@
           </span>
         </div>
         <div class="newform">
-          <%= f.label :title, "タイトル"%>
+          <%= f.label :title, "件名"%>
           <span>
-            <%= f.text_field :title, placeholder: "例) 222-810", autofocus: true, autocomplete: "postcode", class: "form-control"%>
+            <%= f.text_field :title, placeholder: "例) サウナの新規登録に関して", autofocus: true, autocomplete: "postcode", class: "form-control"%>
           </span>
         </div>
         <div class="newform">

@@ -9,7 +9,7 @@ class Sauna < ApplicationRecord
 
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 50 }
-  validates :postcode, presence: true, format: { with: /\A\d{7}\z/ }
+  validates :postcode, presence: true, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
   validates :prefecture_code, presence: true
   validates :address_city, presence: true, length: { maximum: 50 }
   validates :address_street, presence: true, length: { maximum: 50 }
@@ -38,6 +38,11 @@ class Sauna < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  # 住所
+  def full_address
+    '〒' + self.postcode.to_s + ' ' + prefecture_name + ' ' + self.address_city + ' ' + self.address_street
+  end
+
   # 「イキタイ」ランキング
   def self.ikitai_ranking
     self.find(Ikitai.group(:sauna_id).order("count(sauna_id) DESC").limit(10).pluck(:sauna_id))
@@ -46,6 +51,11 @@ class Sauna < ApplicationRecord
   # 「PV数」ランキング
   def self.pv_ranking
     self.order(impressions_count: "DESC").limit(10)
+  end
+
+  # 「サウナ飯数」ランキング
+  def self.food_ranking
+    self.find(Food.group(:sauna_id).order("count(sauna_id) DESC").limit(10).pluck(:sauna_id))
   end
 
   # 緯度経度を取得

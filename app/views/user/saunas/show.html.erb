@@ -45,28 +45,8 @@
           </tr>
 
           <tr>
-            <th class="active">郵便番号</th>
-            <td><%= @sauna.postcode %></td>
-          </tr>
-
-          <tr>
-            <th class="active">都道府県</th>
-            <td><%= @sauna.prefecture_code %></td>
-          </tr>
-
-          <tr>
-            <th class="active">市区町村</th>
-            <td><%= @sauna.address_city%></td>
-          </tr>
-
-          <tr>
-            <th class="active">番地</th>
-            <td><%= @sauna.address_street %></td>
-          </tr>
-
-          <tr>
-            <th class="active">建物</th>
-            <td><%= @sauna.address_building %></td>
+            <th class="active">住所</th>
+            <td><%= @sauna.full_address %></td>
           </tr>
 
           <tr>
@@ -96,7 +76,7 @@
 
           <tr>
             <th class="active">ホームページ</th>
-            <td><%= @sauna.home_page %></td>
+            <td><%= link_to @sauna.home_page, "#{@sauna.home_page}" %></td>
           </tr>
         </tbody>
       </table>

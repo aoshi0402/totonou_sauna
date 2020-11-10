@@ -2,6 +2,7 @@
   <div class="card card-container">
   <h3 class="text-center">コメント編集</h3>
     <%= form_with model: @comment, url: user_sauna_review_comment_path(@comment.review.sauna,@comment.review,@comment), local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
 
     <%= f.label :title, 'タイトル'%>
     <%= f.text_field :title, class: "form-control"%>
