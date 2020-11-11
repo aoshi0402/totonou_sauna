@@ -40,8 +40,12 @@
           </tr>
 
           <tr>
-            <th class="active">ジャンル</th>
-            <td></td>
+            <th class="active">サウナ種類</th>
+            <td>
+            <% @sauna.genres.each do |genre| %>
+              <span><%= genre.name %>サウナ</span>
+            <% end %>
+            </td>
           </tr>
 
           <tr>

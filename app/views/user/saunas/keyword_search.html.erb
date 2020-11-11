@@ -1,17 +1,43 @@
-<h1>キーワード「<%= @keyword_search %>」を含む商品一覧</h1>
-
-<table class="table">
-  <thead>
-    <tr class="active">
-      <th>サウナID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @saunas.each do |sauna| %>
-    <tr>
-      <td><%= sauna.id %></td>
-      <td><%= sauna.name %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <h3 class="text-center">キーワード「<%= @keyword_search %>」を含む商品一覧</h3>
+  <% if @saunas.present? %>
+    <div class="row">
+      <% @saunas.each do |sauna| %>
+        <div class="product">
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading text-center">
+                <%= link_to user_sauna_path(sauna) do %>
+                    <%= attachment_image_tag sauna, :image, fallback: "no-image.png", onClick: "$('.img_field').click()", class:
+                    'img'%>
+                <% end %>
+              </div>
+              <div class="panel-body">
+                <p class="product-brand">
+                  <%= sauna.name %>
+                </p>
+                  <p class="product-title">
+                    <%= sauna.introduction %>
+                  </p>
+                <p class="score_search">
+                  レビュー平均点数<%= sauna.average_score %>点
+                </p>
+                <div class="text-center">
+                  <% if user_signed_in? %>
+                    <div class="btn btn-default" id="ikitaibutton_<%= sauna.id %>">
+                      <%= render "user/saunas/ikitaibutton", sauna: sauna %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+  <p class="text-center">
+    指定の条件ではサウナが登録されていません。
+  </p>
+  <% end %>
+</div>

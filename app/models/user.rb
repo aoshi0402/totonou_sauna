@@ -16,14 +16,13 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
-  validates :sex, presence: true
   validates :postcode, allow_blank: true, format: { with: /\A\d{7}\z/ }
   validates :address_city, length: { maximum: 50 }
   validates :address_street, length: { maximum: 50 }
   validates :address_building, length: { maximum: 50 }
   validates :introduction, length: { maximum: 150 }
 
-  enum sex: { '男性': 0, '女性': 1 }
+  enum sex: { '男性': 0, '女性': 1,}
   enum is_deleted: { '有効': false, '退会済': true }
 
   # 自分がフォローされる（被フォロー）側の関係性
@@ -82,7 +81,7 @@ class User < ApplicationRecord
   # facebookログイン
   def self.find_for_oauth(auth)
   user = User.where(uid: auth.uid, provider: auth.provider).first
-
+    binding.pry
   user ||= User.create(
     uid: auth.uid,
     provider: auth.provider,

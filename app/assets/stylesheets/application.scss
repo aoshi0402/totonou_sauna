@@ -348,3 +348,51 @@ background-color: #65A2FF;
 color: #FFFFFF;
 background-color: #FF0000;
 }
+
+.product {
+  .panel-body {
+    height: 200px;
+  }
+  .panel-heading {
+    height: 200px;
+  }  
+}
+
+.img {
+    height: 100%;
+    max-width: 100%;      
+  }
+
+.product-brand {
+  /* 文の行数を1行に保ち、最後に ... を追加するスタイル */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+}
+
+.product-title {
+  /* 文の行数を2行に保ち、最後に ... を追加するスタイル */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  height: 3.0em;
+  text-align: center;
+}
+.search {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.score_search {
+  text-align: center;
+  padding: 7px 10px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #000000;
+  background-image: linear-gradient(45deg, #FFEEFF 20%, #EEFFFF 100%);
+  transition: 0.4s;
+}
