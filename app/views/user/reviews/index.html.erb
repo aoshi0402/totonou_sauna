@@ -32,7 +32,7 @@
         </li>
       </ul>
     </div>
-    <h3 class="text-center">レビュー 一覧<h3>
+    <h4 class="text-center">レビュー 一覧<h4>
     <% if @reviews.present?%>
       <% @reviews.each do |review|%>
         <div class="thumbnail thumbnail_fix">
@@ -62,7 +62,7 @@
         </div>
       <% end %>
     <% else %>
-      <p class="centered">レビューは存在しません</p>    
+      <h4 class="text-center">レビューは存在しません</h4>    
     <% end %>
   </div>
 </div>
