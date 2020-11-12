@@ -1,8 +1,8 @@
 <div class="container">
-  <h3 class="text-center">検索結果一覧</h3>
-  <% if @saunas.present? %>
+  <h3 class="text-center">イキタイ一覧</h3>
+  <% if @user_ikitai_saunas.present? %>
     <div class="row">
-      <% @saunas.each do |sauna| %>
+      <% @user_ikitai_saunas.each do |sauna| %>
         <div class="product">
           <div class="col-md-3 col-sm-4 col-xs-12">
             <div class="panel panel-default">
@@ -37,7 +37,7 @@
     </div>
   <% else %>
   <p class="text-center">
-    指定の条件ではサウナが登録されていません。
+    イキタイが登録されていません。
   </p>
   <% end %>
 </div>

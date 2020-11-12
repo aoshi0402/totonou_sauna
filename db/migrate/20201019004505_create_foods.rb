@@ -6,8 +6,8 @@ class CreateFoods < ActiveRecord::Migration[5.2]
       t.string "name", null: false
       t.string "image_id", null: false
       t.text "introduction", null: false
-      t.string "tel", null: false
-      t.string "home_page", null: false
+      t.string "tel"
+      t.string "home_page"
       t.timestamps
     end
   end

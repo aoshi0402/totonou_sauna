@@ -10,5 +10,4 @@ before_action :authenticate_admin!
       f.series(name: '登録数', data: users)
     end
   end
-
 end

@@ -25,7 +25,7 @@
 
             <tr>
               <th class="active">ホームページ</th>
-              <td><%= @food.home_page %></td>
+              <td><%= link_to @food.home_page, "#{@food.home_page}" %></td>
             </tr>
           </tbody>
         </table>

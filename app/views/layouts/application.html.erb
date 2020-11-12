@@ -4,6 +4,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= include_gon %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application" %>
   </head> 
@@ -97,7 +98,7 @@
                       <%= link_to new_user_sauna_path do %>
                         <i class="fas fa-pen-square" aria-hidden="true">新規サウナ登録</i>
                       <% end %>
-                      <%= link_to root_path do %>
+                      <%= link_to user_sauna_ikitais_search_path do %>
                       <i class="fas fa-star" aria-hidden="true">イキタイ！</i>
                       <% end %>
                     </li>
@@ -161,7 +162,7 @@
               <%= form_with url: user_sauna_keyword_search_path, method: :get, local: true do %>
                 <div class="col-xs-3">
                 </div>
-                <div class="col-xs-5">
+                <div class="col-xs-6">
                   <%= text_field_tag :keyword_search, "", placeholder: "サウナキーワード検索", class: "form-control input-lg" %>
                 </div>
                 <div class="col-xs-2">
@@ -181,13 +182,12 @@
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-xs-4">
+          <div class="col-md-4 col-sm-5 ">
             <span class="footer_logo">
-              <i class="fab fa-apple" aria-hidden="true">サウナで"ととのう"</i>
-              <i class="fas fa-search" aria-hidden="true"></i>
+              サウナで"ととのう"
             </span>
           </div>
-          <div class="col-xs-4">
+          <div class="col-md-2 col-sm-3 col-md-push-1">
             <ul class="menu">
               <span>Menu</span>
               <li><%= link_to root_path do %>
@@ -200,8 +200,8 @@
               </li>
             </ul>
           </div>
-          <div class ="col-xs-4">
-            <ul class="share">
+          <div class="col-md-3 col-sm-4 col-md-push-2">
+            <ul class="address">
               <span>Contact</span>
               <li>
                 <%= link_to root_path do %>
