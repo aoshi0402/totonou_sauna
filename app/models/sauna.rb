@@ -18,7 +18,6 @@ class Sauna < ApplicationRecord
   validates :business_hour, presence: true, length: { maximum: 100 }
   validates :water_temperature, presence: true
   validates :sauna_temperature, presence: true
-  validates :tel, presence: true, uniqueness: true
   validates :home_page, presence: true, length: { maximum: 100 }
 
   # PV数取得
@@ -72,11 +71,11 @@ class Sauna < ApplicationRecord
     ikitais.where(user_id: user.id).exists?
   end
 
-  #キーワード検索
+  # キーワード検索
   def self.keyword_search(keyword_search)
     Sauna.where([
       "name LIKE ? OR introduction LIKE ? OR address_city LIKE ? OR address_street LIKE ?",
-      "%#{ keyword_search }%", "%#{ keyword_search }%", "%#{ keyword_search }%", "%#{ keyword_search }%"
+      "%#{keyword_search}%", "%#{keyword_search}%", "%#{keyword_search}%", "%#{keyword_search}%",
     ])
   end
 
@@ -101,5 +100,4 @@ class Sauna < ApplicationRecord
     end
     return @sum
   end
-
 end

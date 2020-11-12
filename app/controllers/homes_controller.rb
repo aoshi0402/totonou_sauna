@@ -12,5 +12,4 @@ class HomesController < ApplicationController
 
   def login_select
   end
-  
 end
