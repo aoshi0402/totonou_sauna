@@ -35,7 +35,6 @@ end
     home_page:"https://karumaru.jp/ikebukuro/",
     water_temperature:"8.3",
     sauna_temperature:"90",
-    impressions_count:"10"
   )
 
   Sauna.create!(
@@ -53,7 +52,6 @@ end
     home_page:"http://marushinspa.jp/",
     water_temperature:"18",
     sauna_temperature:"110",
-    impressions_count:"27",
   )
 
   Sauna.create!(
@@ -70,7 +68,6 @@ end
     home_page:"http://thermae-yu.jp/",
     water_temperature:"16.4",
     sauna_temperature:"80",
-    impressions_count:"3",
   )
 
   Sauna.create!(
@@ -87,7 +84,6 @@ end
     home_page:"	http://ofurocafe-utatane.com/",
     water_temperature:"18",
     sauna_temperature:"88",
-    impressions_count:"14",
   )
 
   Sauna.create!(
@@ -104,7 +100,6 @@ end
     home_page:"http://rainbow-motoyawata.wix.com/rainbow",
     water_temperature:"16",
     sauna_temperature:"126",
-    impressions_count:"19",
   )
 
   Sauna.create!(
@@ -121,7 +116,6 @@ end
     home_page:"http://thermae-yu.jp/",
     water_temperature:"15",
     sauna_temperature:"94",
-    impressions_count:"150",
   )
 
   Sauna.create!(
@@ -138,7 +132,6 @@ end
     home_page:"	http://www.nikoh.info/",
     water_temperature:"16",
     sauna_temperature:"86",
-    impressions_count:"76",
   )
 
   Sauna.create!(
@@ -155,7 +148,6 @@ end
     home_page:"http://kom-pal.com/",
     water_temperature:"16",
     sauna_temperature:"95",
-    impressions_count:"12",
   )
 
   Sauna.create!(
@@ -172,7 +164,6 @@ end
     home_page:"http://kurbio.com/",
     water_temperature:"14",
     sauna_temperature:"77",
-    impressions_count:"45",
   )
 
   Sauna.create!(
@@ -189,7 +180,6 @@ end
     home_page:"http://5650-sakai.jp/",
     water_temperature:"16.4",
     sauna_temperature:"88",
-    impressions_count:"87",
   )
 
   Food.create!(
