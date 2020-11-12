@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable, :omniauthable
   attachment :image
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-  
+
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :postcode, allow_blank: true, format: { with: /\A\d{7}\z/ }
   validates :address_city, length: { maximum: 50 }
@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :address_building, length: { maximum: 50 }
   validates :introduction, length: { maximum: 150 }
 
-  enum sex: { '男性': 0, '女性': 1,}
+  enum sex: { '男性': 0, '女性': 1, }
   enum is_deleted: { '有効': false, '退会済': true }
 
   # 自分がフォローされる（被フォロー）側の関係性
@@ -69,7 +69,6 @@ class User < ApplicationRecord
       user = find_by(id: row["id"]) || new # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
       user.attributes = row.to_hash.slice(*updatable_attributes) # CSVからデータを取得し、設定する
       user.save!(validate: false)
-
     end
   end
 
@@ -81,7 +80,6 @@ class User < ApplicationRecord
   # facebookログイン
   def self.find_for_oauth(auth)
   user = User.where(uid: auth.uid, provider: auth.provider).first
-    binding.pry
   user ||= User.create(
     uid: auth.uid,
     provider: auth.provider,
@@ -101,4 +99,8 @@ class User < ApplicationRecord
     end
   end
 
+  # 会員ステータスが退会済みならtrueを返すメゾット、退会済みユーザーのログインを弾く
+  def active_for_authentication?
+    super && (is_deleted === '有効')
+  end
 end

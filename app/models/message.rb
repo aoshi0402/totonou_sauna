@@ -5,5 +5,4 @@ class Message < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :body, presence: true
-
 end

@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.string "name", null: false
     t.string "image_id", null: false
     t.text "introduction", null: false
-    t.string "tel", null: false
-    t.string "home_page", null: false
+    t.string "tel"
+    t.string "home_page"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
