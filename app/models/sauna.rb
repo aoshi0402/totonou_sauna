@@ -18,7 +18,6 @@ class Sauna < ApplicationRecord
   validates :business_hour, presence: true, length: { maximum: 100 }
   validates :water_temperature, presence: true
   validates :sauna_temperature, presence: true
-  validates :home_page, presence: true, length: { maximum: 100 }
 
   # PV数取得
   is_impressionable counter_cache: true

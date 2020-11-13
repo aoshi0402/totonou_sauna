@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.text "introduction", null: false
     t.string "business_hour", null: false
     t.string "tel", null: false
-    t.string "home_page", null: false
+    t.string "home_page"
     t.string "water_temperature", null: false
     t.string "sauna_temperature", null: false
     t.integer "impressions_count", default: 0

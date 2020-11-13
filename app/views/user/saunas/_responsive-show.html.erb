@@ -1,0 +1,53 @@
+<div class="sp-table">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th class="active sp-table-th">地名・施設名</th>
+        <td><%= sauna.name %></td>
+      </tr>
+
+      <tr>
+        <th class="active">サウナ種類</th>
+        <td>
+        <% sauna.genres.each do |genre| %>
+          <span><%= genre.name %>サウナ</span>
+        <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th class="active">住所</th>
+        <td><%= sauna.full_address %></td>
+      </tr>
+
+      <tr>
+        <th class="active">紹介文</th>
+        <td><%= sauna.introduction %></td>
+      </tr>
+
+      <tr>
+        <th class="active">サウナ室温度</th>
+        <td><%= sauna.sauna_temperature %></td>
+      </tr>
+
+      <tr>
+        <td class="active">水風呂温度</td>
+        <td><%= sauna.water_temperature%></td>
+      </tr>
+      
+      <tr>
+        <th class="active">営業時間</th>
+        <td><%= sauna.business_hour %></td>
+      </tr>
+
+      <tr>
+        <th class="active">電話番号</th>
+        <td><%= sauna.tel %></td>
+      </tr>
+
+      <tr>
+        <th class="active">ホームページ</th>
+        <td><%= link_to sauna.home_page, "#{sauna.home_page}" %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

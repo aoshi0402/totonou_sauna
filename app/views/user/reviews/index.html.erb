@@ -52,7 +52,7 @@
               <span id="likebutton_<%= review.id %>">
                 <%= render "user/reviews/likebutton", review: review %>
               </span>
-              <%= link_to user_sauna_review_path(review.sauna, review), class: '' do %>
+              <%= link_to user_sauna_review_path(review.sauna, review) do %>
                 <i class="fas fa-comment-dots">コメント
                   <%= review.comments.count %>
                 </i>
