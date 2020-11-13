@@ -198,10 +198,89 @@ end
     name:"マルシン名物の自家製チャーシュー",
     image:File.open("./app/assets/images/food/cha-shu.jpg"),
     introduction:"天空のアジト特製のチャーシューはサウナをより好きにさせるはず！",
-    tel:"049-114-4748",
+    tel:"089-114-4748",
     home_page:"http://marushinspa.jp/",
   )
 
+  Food.create!(
+    user_id:"1",
+    sauna_id:"3",
+    name:"絶品ピザ",
+    image:File.open("./app/assets/images/food/pizza.jpeg"),
+    introduction:"ここのピザの味はまさにサウナ飯といっても良い！！",
+    tel:"049-144-4128",
+    home_page:"http://thermae-yu.jp/",
+  )
+
+  Food.create!(
+    user_id:"1",
+    sauna_id:"4",
+    name:"肉汁たっぷりステーキ",
+    image:File.open("./app/assets/images/food/meat.jpeg"),
+    introduction:"サウナ飯といえばこれ！！ステーキ！肉肉肉！",
+    tel:"029-222-4748",
+    home_page:"https://agingbeef.jp/location/ab_tokyo/",
+  )
+
+  Food.create!(
+    user_id:"1",
+    sauna_id:"5",
+    name:"THE サウナバーガー",
+    image:File.open("./app/assets/images/food/hambuger.jpeg"),
+    introduction:"ハンバーガーからでる肉汁は絶品！ぜひポテトも合わせてどうぞ",
+    tel:"049-114-4338",
+    home_page:"https://www.mcdonalds.co.jp/",
+  )
+
+  Food.create!(
+    user_id:"1",
+    sauna_id:"6",
+    name:"サウナ飯改めサウナサラダ！！",
+    image:File.open("./app/assets/images/food/salad.jpeg"),
+    introduction:"肉だけじゃない！！！サラダも参戦！！！",
+    tel:"049-164-4118",
+    home_page:"https://retty.me/",
+  )
+
+  Food.create!(
+    user_id:"1",
+    sauna_id:"7",
+    name:"アボカドさん",
+    image:File.open("./app/assets/images/food/abokado.jpeg"),
+    introduction:"サウナ後のアボカド是非一度食べてみてください！絶品です",
+    tel:"049-114-4118",
+    home_page:"https://retty.me/",
+  )
+
+  Food.create!(
+    user_id:"1",
+    sauna_id:"8",
+    name:"パンケーキ",
+    image:File.open("./app/assets/images/food/pancake.jpeg"),
+    introduction:"甘い！でも口当たりが最高！そんなパンケーキ",
+    tel:"049-114-1111",
+    home_page:"https://retty.me/",
+  )
+
+  Food.create!(
+    user_id:"1",
+    sauna_id:"9",
+    name:"ベビーリーフ",
+    image:File.open("./app/assets/images/food/reef.jpg"),
+    introduction:"この伝説のベビーリーフを食べれば元気100倍",
+    tel:"049-114-8888",
+    home_page:"https://retty.me/",
+  )
+
+  Food.create!(
+    user_id:"1",
+    sauna_id:"10",
+    name:"天からの贈り物伝説のブルーベリー",
+    image:File.open("./app/assets/images/food/berry.jpg"),
+    introduction:"ここでは何も言いません。食べて感じてください",
+    tel:"049-114-5338",
+    home_page:"http://marushinspa.jp/",
+  )
 
   # ジャンル
   Genre.create(name: "ドライ", image: File.open("./app/assets/images/genres/dry.jpg"))

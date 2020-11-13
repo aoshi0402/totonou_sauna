@@ -3,7 +3,6 @@
     <h4 class="text-center">レビュー登録</h4>
     <%= form_with model: @review, url: user_sauna_reviews_path, local: true do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
-
       <div class="newform">
         <%=f.label :title, "タイトル" %>
         <span>

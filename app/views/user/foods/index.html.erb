@@ -9,7 +9,7 @@
     </div>
     <%= link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @sauna.name }を、Twitterでみんなに広めよう！", class:
       "btn btn-default", data: { show_count: false }, title: "Twitter", target: "_blank" do %>
-    <i class="fab fa-twitter" aria-hidden="true" style="color: #3399FF;">Twitterでシェア</i>
+      <i class="fab fa-twitter" aria-hidden="true" style="color: #3399FF;">Twitterでシェア</i>
     <% end %>
     <div class="row">
       <%= attachment_image_tag @sauna, :image, size: "250x300",fallback: "no-image.png", onClick: "$('.img_field').click()", class:

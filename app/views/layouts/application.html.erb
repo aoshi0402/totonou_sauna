@@ -154,21 +154,25 @@
       <% if current_page?(root_path) %>
         <div class="main-visual">
           <div class="main-visual-content">
-            <div class="text-center">
-              <h4>サウナ専門口コミ検索サイト</h4>
-              <h1 class="top_title">サウナで"ととのう"</h1>
+            <div class="top-search-title-sub">
+              <p>サウナ専門口コミ検索サイト</p>
+            </div>
+            <div class="top-search-title-main">
+              <p>サウナで"ととのう"</p>
             </div>
             <div>
               <%= form_with url: user_sauna_keyword_search_path, method: :get, local: true do %>
-                <div class="col-xs-3">
-                </div>
-                <div class="col-xs-6">
-                  <%= text_field_tag :keyword_search, "", placeholder: "サウナキーワード検索", class: "form-control input-lg" %>
-                </div>
-                <div class="col-xs-2">
-                  <%= button_tag type: "submit", name: nil, class: "btn btn-primary btn-lg btn-block" do %>
-                    <i class="fas fa-search">検索</i>
-                  <% end %>
+                <div class="top-search-form-wrapper">
+                  <div class="top-search-form-container">
+                    <div class="top-search-form-input-container">
+                      <%= text_field_tag :keyword_search, "", placeholder: "サウナキーワード検索", class: "form-control input-lg" %>
+                    </div>
+                    <div class="top-search-form-btn-container">
+                      <%= button_tag type: "submit", name: nil, class: "btn btn-primary btn-lg btn-block reset-btn-width" do %>
+                      <i class="fas fa-search">検索</i>
+                      <% end %>
+                    </div>
+                  </div>
                 </div>
               <% end %>
             </div>
