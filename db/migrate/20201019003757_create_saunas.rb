@@ -12,7 +12,7 @@ class CreateSaunas < ActiveRecord::Migration[5.2]
       t.text "introduction", null: false
       t.string "business_hour", null: false
       t.string "tel", null: false
-      t.string "home_page", null: false
+      t.string "home_page"
       t.string "business_hour", null: false
       t.string "water_temperature", null: false
       t.string "sauna_temperature", null: false

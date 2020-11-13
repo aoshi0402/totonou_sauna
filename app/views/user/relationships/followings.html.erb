@@ -1,20 +1,17 @@
 <h3>フォロー一覧</h3>
 <% if @users.exists? %>
-
   <table class='table'>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td>フォロー数: <%= user.followings.count %></td>
-        <td>フォロワー数: <%= user.followers.count %></td>
-        <td><%= link_to 'Show', user_user_path(user), class: "user_#{user.id}" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td>フォロー数: <%= user.followings.count %></td>
+          <td>フォロワー数: <%= user.followers.count %></td>
+          <td><%= link_to 'Show', user_user_path(user), class: "user_#{user.id}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
-  <p>ユーザーはいません</p>
+  <p class="text-center">ユーザーはいません</p>
 <% end %>

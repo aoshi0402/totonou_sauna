@@ -74,7 +74,7 @@ class User < ApplicationRecord
 
   # CSVインポートで許可するカラムを定義
   def self.updatable_attributes
-    ['name', 'email']
+    ['name', 'email', 'password']
   end
 
   # facebookログイン

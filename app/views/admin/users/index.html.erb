@@ -38,13 +38,12 @@
   <%= link_to "CSVエクスポート", admin_users_path(format: :csv), class: "btn btn-success" %>
   <br>
   <br>
-  <%= form_tag import_admin_users_path, multipart: true do %>
-    <%= file_field_tag :file, class: 'img_field', style: 'display:none;' %>
-    <%= submit_tag "CSVインポート", class: "btn btn-info" %>
-    <div class="btn btn-warning onclick="$('.img_field').click()">
-      ファイルを選択
-    </div>
-  <% end %>
+
+      <%= form_tag import_admin_users_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "インポート", class: "btn btn-info" %>
+      <% end %>
+
 </div>
 
 

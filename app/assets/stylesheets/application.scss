@@ -179,11 +179,40 @@ footer {
   margin-top: 120px;
 }
 
-.top_title{
+.top-search-title-sub{
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.1;
+  display: flex;
+  justify-content: center;
+  }
+
+.top-search-title-main{
   font-size: 50px;
   font-weight: bold;
-  margin-bottom: 50px;
-  }
+  margin-bottom: 20px;
+  line-height: 1.1;
+  display: flex;
+  justify-content: center;
+}
+
+.reset-btn-width{
+  width: auto;
+}
+
+.top-search-form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.top-search-form-container {
+  display: flex;
+}
+
+.top-search-form-input-container {
+  margin-right: 30px;
+}
+
 
   // 新規登録、ログインCSS
 
@@ -429,4 +458,54 @@ background-color: #FF0000;
   color: #000000;
   background-image: linear-gradient(45deg, #FFEEFF 20%, #EEFFFF 100%);
   transition: 0.4s;
+}
+
+.sp-table{
+  display: none;
+}
+
+@media (max-width: 890px) {
+  .main-visual-content{
+    padding: 50px;
+  }
+
+  .top-search-form-container{
+    flex-direction: column; 
+  }
+  .top-search-form-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  .top-search-title-sub{
+    font-size: 20px;
+  } 
+  .top-search-title-main{
+    font-size: 30px;
+  }
+
+  .sp-table{
+    display: block;
+  }
+  .table-sauna{
+    display: none;
+  }
+  .sp-table-th{
+    width:150px;
+  }
+}
+
+@media (max-width: 490px) {
+
+  .top-search-title-sub{
+    font-size: 10px;
+  } 
+  .top-search-title-main{
+    font-size: 20px;
+  }
+
+}
+
+.th-width{
+  width: 150px;
 }
