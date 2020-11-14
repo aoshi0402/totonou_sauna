@@ -10,14 +10,13 @@ append :linked_dirs, "log", "public", "tmp"
 
 namespace :rake do
   desc 'Exeute  highcharts:update'
+  after "bundler:install", "rake:highcharts_update"
   task :highcharts_update do
     within release_path do
       run "bundle exec highcharts:update"
     end
   end
 end
-
-after "bundler:install", "rake:highcharts_update"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
