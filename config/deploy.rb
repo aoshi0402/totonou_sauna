@@ -15,7 +15,7 @@ namespace :rake do
   end
 end
 
-after "bundle:install", "rake:highcharts_update"
+after "bundler:install", "rake:highcharts_update"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
