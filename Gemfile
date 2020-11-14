@@ -80,6 +80,10 @@ gem 'gon'
 gem 'geocoder'
 gem 'roo'
 gem 'lazy_high_charts'
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano3-puma'
+gem 'capistrano-rbenv'
 
 group :production do
   gem 'mysql2'
