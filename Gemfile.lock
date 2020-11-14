@@ -141,6 +141,8 @@ GEM
       request_store (>= 1.0)
     hash-deep-merge (0.1.1)
     hashie (4.1.0)
+    highcharts-rails (6.0.3)
+      railties (>= 3.1)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -392,6 +394,7 @@ DEPENDENCIES
   font-awesome-sass (~> 5.4.1)
   geocoder
   gon
+  highcharts-rails
   impressionist (~> 1.6.1)
   jbuilder (~> 2.5)
   jp_prefecture
