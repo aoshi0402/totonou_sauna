@@ -8,6 +8,15 @@ set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "public", "tmp"
 
+namespace :rake do
+  desc 'Exeute  highcharts:update'
+  task :highcharts_update do
+    run "bundle exec highcharts:update"
+  end
+end
+
+after "bundle:install", "rake:highcharts_update"
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
