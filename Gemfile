@@ -49,6 +49,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop-airbnb'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
 end
 
 group :test do
@@ -80,10 +84,7 @@ gem 'gon'
 gem 'geocoder'
 gem 'roo'
 gem 'lazy_high_charts'
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano3-puma'
-gem 'capistrano-rbenv'
+
 
 group :production do
   gem 'mysql2'
