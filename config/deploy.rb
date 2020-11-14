@@ -11,7 +11,9 @@ append :linked_dirs, "log", "public", "tmp"
 namespace :rake do
   desc 'Exeute  highcharts:update'
   task :highcharts_update do
-    run "bundle exec highcharts:update"
+    within release_path do
+      run "bundle exec highcharts:update"
+    end
   end
 end
 
