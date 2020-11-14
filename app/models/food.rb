@@ -6,7 +6,5 @@ class Food < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :introduction, presence: true, length: { maximum: 100 }
-  validates :tel, presence: true
-  validates :home_page, presence: true
-
+  validates :image, presence: true
 end

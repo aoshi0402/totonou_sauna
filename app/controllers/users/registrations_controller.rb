@@ -78,5 +78,4 @@ end
       respond_with_navigational(resource) { render :new }
     end
   end
-
 end

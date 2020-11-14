@@ -85,12 +85,6 @@ footer {
   color: #fff;
 }
 // headerCSS
-.logo {
-  width: 130px;
-  height: 50px;
-  position: relative;
-  bottom: 13px;
-  }
 
 .header_acount {
   position: relative;
@@ -120,8 +114,8 @@ footer {
 
 .footer_logo {
   color: #fff;
-  font-weight: 700;
   font-size: 30px;
+  text-decoration-line: underline;
 }
 
 .menu span {
@@ -134,6 +128,40 @@ footer {
   font-size: 16px;
   letter-spacing: 3px;
 }
+
+.address span,
+.menu span {
+  color: #fff;
+  font-weight: bold;
+  border-bottom: 1px solid #c7c7c7;
+  padding: 5px 0px;
+  display: block;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 3px;
+}
+
+.address li a,
+.menu li a {
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+.address li,
+.menu li {
+  margin: 20px 0px;
+}
+
+.address li a:hover,
+.menu li a:hover {
+  color: #da3e44;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+  // メインCSS
 
 .main-visual {
   width: 100%;
@@ -151,11 +179,40 @@ footer {
   margin-top: 120px;
 }
 
-.top_title{
+.top-search-title-sub{
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.1;
+  display: flex;
+  justify-content: center;
+  }
+
+.top-search-title-main{
   font-size: 50px;
   font-weight: bold;
-  margin-bottom: 50px;
-  }
+  margin-bottom: 20px;
+  line-height: 1.1;
+  display: flex;
+  justify-content: center;
+}
+
+.reset-btn-width{
+  width: auto;
+}
+
+.top-search-form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.top-search-form-container {
+  display: flex;
+}
+
+.top-search-form-input-container {
+  margin-right: 30px;
+}
+
 
   // 新規登録、ログインCSS
 
@@ -334,4 +391,121 @@ font-size: medium;
     max-width: 400px;
     padding: 20px 20px;
     word-wrap: break-word;
+}
+
+.flash{
+	width: 100%;
+	height: 30px;
+	font-size: 18px;
+	text-align: center;
+	padding: 0;
+	position: fixed;
+  z-index: 1;
+}
+
+.notice{
+background-color: #65A2FF;
+}
+
+.alart_flash{
+color: #FFFFFF;
+background-color: #FF0000;
+}
+
+.product {
+  .panel-body {
+    height: 200px;
+  }
+  .panel-heading {
+    height: 200px;
+  }  
+}
+
+.img {
+    height: 100%;
+    max-width: 100%;      
+  }
+
+.product-brand {
+  /* 文の行数を1行に保ち、最後に ... を追加するスタイル */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+}
+
+.product-title {
+  /* 文の行数を2行に保ち、最後に ... を追加するスタイル */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  height: 3.0em;
+  text-align: center;
+}
+.search {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.score_search {
+  text-align: center;
+  padding: 7px 10px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #000000;
+  background-image: linear-gradient(45deg, #FFEEFF 20%, #EEFFFF 100%);
+  transition: 0.4s;
+}
+
+.sp-table{
+  display: none;
+}
+
+@media (max-width: 890px) {
+  .main-visual-content{
+    padding: 50px;
+  }
+
+  .top-search-form-container{
+    flex-direction: column; 
+  }
+  .top-search-form-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  .top-search-title-sub{
+    font-size: 20px;
+  } 
+  .top-search-title-main{
+    font-size: 30px;
+  }
+
+  .sp-table{
+    display: block;
+  }
+  .table-sauna{
+    display: none;
+  }
+  .sp-table-th{
+    width:150px;
+  }
+}
+
+@media (max-width: 490px) {
+
+  .top-search-title-sub{
+    font-size: 10px;
+  } 
+  .top-search-title-main{
+    font-size: 20px;
+  }
+
+}
+
+.th-width{
+  width: 150px;
 }

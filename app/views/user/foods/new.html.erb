@@ -2,6 +2,7 @@
   <div class="card card-container">
     <h4 class="text-center">サウナ飯登録</h4>
     <%= form_with model: @food, url: user_sauna_foods_path, local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       <div class="newform">
         <%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
         <%= attachment_image_tag @food, :image, size: "200x200",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
@@ -18,7 +19,7 @@
       <div class="newform">
         <%=f.label :introduction, "紹介文、感想" %>
         <span>
-          <%=f.text_area :introduction, placeholder: "例 222-1222", class: "form-control" %>
+          <%=f.text_area :introduction, placeholder: "例 美味しかったです。", class: "form-control" %>
         </span>
       </div>
 

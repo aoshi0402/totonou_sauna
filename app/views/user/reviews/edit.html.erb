@@ -2,6 +2,7 @@
   <div class="card card-container">
   <h4 class="text-center">レビュー編集</h4>
     <%= form_with model: @review, url:  user_sauna_review_path(@review), local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       
       <%= f.label :title, "タイトル" %>
       <span class ="label.label-danger">
@@ -16,7 +17,6 @@
       <%= f.select :score, options_for_select(1..100), { prompt: "選択してください" }, class: "form-control"%>
 
       <%= f.submit "保存", class: "btn btn-success btn-lg btn-block" %>
-
     <% end %>
   </div>
 </div>

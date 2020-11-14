@@ -1,6 +1,6 @@
 class User::FoodsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  
+
   def new
     @food = Food.new
   end
@@ -11,8 +11,10 @@ class User::FoodsController < ApplicationController
     @food.user_id = current_user.id
     @food.sauna_id = sauna.id
     if @food.save
+      flash[:notice] = "サウナ飯が投稿されました"
       redirect_to user_sauna_food_path(@food.sauna, @food)
     else
+      flash.now[:alart_flash] = "サウナ飯の投稿に失敗しました"
       render 'new'
     end
   end
@@ -36,8 +38,10 @@ class User::FoodsController < ApplicationController
   def update
     @food = Food.find(params[:id])
     if @food.update(food_params)
+    flash[:notice] = "サウナ飯が更新されました"
     redirect_to user_sauna_food_path(@food.sauna, @food)
     else
+      flash.now[:alart_flash] = "サウナ飯の更新に失敗しました"
       render "edit"
     end
   end
@@ -45,6 +49,7 @@ class User::FoodsController < ApplicationController
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
+    flash[:notice] = "サウナ飯の削除に成功しました"
     redirect_to user_sauna_foods_path(@food.sauna, @food)
   end
 

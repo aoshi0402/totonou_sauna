@@ -32,7 +32,7 @@
         </li>
       </ul>
     </div>
-    <h3 class="text-center">レビュー 一覧<h3>
+    <h4 class="text-center">レビュー 一覧<h4>
     <% if @reviews.present?%>
       <% @reviews.each do |review|%>
         <div class="thumbnail thumbnail_fix">
@@ -52,7 +52,7 @@
               <span id="likebutton_<%= review.id %>">
                 <%= render "user/reviews/likebutton", review: review %>
               </span>
-              <%= link_to user_sauna_review_path(review.sauna, review), class: '' do %>
+              <%= link_to user_sauna_review_path(review.sauna, review) do %>
                 <i class="fas fa-comment-dots">コメント
                   <%= review.comments.count %>
                 </i>
@@ -62,7 +62,7 @@
         </div>
       <% end %>
     <% else %>
-      <p class="centered">レビューは存在しません</p>    
+      <h4 class="text-center">レビューは存在しません</h4>    
     <% end %>
   </div>
 </div>

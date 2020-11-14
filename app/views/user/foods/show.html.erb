@@ -7,25 +7,21 @@
       <div class="table-responsive table-sauna">
         <table class="table table-bordered">
           <tbody>
-
             <tr>
               <th class="active">サウナ飯名</th>
               <td><%= @food.name %></td>
             </tr>
-
             <tr>
               <th class="active">紹介文・感想</th>
               <td><%= @food.introduction %></td>
             </tr>
-
             <tr>
               <th class="active">電話番号</th>
               <td><%= @food.tel %></td>
             </tr>
-
             <tr>
               <th class="active">ホームページ</th>
-              <td><%= @food.home_page %></td>
+              <td><%= link_to @food.home_page, "#{@food.home_page}" %></td>
             </tr>
           </tbody>
         </table>

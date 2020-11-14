@@ -17,4 +17,10 @@
 //= require activestorage
 //= require bootstrap-sprockets
 //= require_tree .
+//= require highcharts/highcharts 
+//= require highcharts/highcharts-more 
 
+
+$(function(){
+  $('.flash').fadeOut(4000);
+});

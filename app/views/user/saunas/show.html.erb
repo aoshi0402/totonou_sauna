@@ -1,15 +1,16 @@
 <div class="container">
   <div class="card card-container2">
-  <h4 class="text-center"><%=@sauna.name %></h4>
+    <h4 class="text-center"><%=@sauna.name %></h4>
     <div class="score">レビュー評価平均
       <%= @sauna.average_score %>点
     </div>
-  <div class="pull-right btn btn-default" id="ikitaibutton_<%= @sauna.id %>">
-    <%= render "user/saunas/ikitaibutton", sauna: @sauna %></div>
-  <%= link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @sauna.name }を、Twitterでみんなに広めよう！", class:
-    'btn btn-default', data: { show_count: false }, title: 'Twitter', target: '_blank' do %>
-    <i class="fab fa-twitter" aria-hidden='true' style='color: #3399FF;'>Twitterでシェア</i>
-  <% end %>
+    <div class="pull-right btn btn-default" id="ikitaibutton_<%= @sauna.id %>">
+      <%= render "user/saunas/ikitaibutton", sauna: @sauna %>
+    </div>
+    <%= link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @sauna.name }を、Twitterでみんなに広めよう！", class:
+      'btn btn-default', data: { show_count: false }, title: 'Twitter', target: '_blank' do %>
+      <i class="fab fa-twitter" aria-hidden='true' style='color: #3399FF;'>Twitterでシェア</i>
+    <% end %>
     <div class="row">
     <%= attachment_image_tag @sauna, :image, size: "250x300",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
 				'center-block img-thumbnail img-responsive img_prev'%>
@@ -35,38 +36,22 @@
       <table class="table table-bordered">
         <tbody>
           <tr>
-            <th class="active">地名・施設名</th>
+            <th class="th-width active">地名・施設名</th>
             <td><%= @sauna.name %></td>
           </tr>
 
           <tr>
-            <th class="active">ジャンル</th>
-            <td></td>
+            <th class="active">サウナ種類</th>
+            <td>
+            <% @sauna.genres.each do |genre| %>
+              <span><%= genre.name %>サウナ</span>
+            <% end %>
+            </td>
           </tr>
 
           <tr>
-            <th class="active">郵便番号</th>
-            <td><%= @sauna.postcode %></td>
-          </tr>
-
-          <tr>
-            <th class="active">都道府県</th>
-            <td><%= @sauna.prefecture_code %></td>
-          </tr>
-
-          <tr>
-            <th class="active">市区町村</th>
-            <td><%= @sauna.address_city%></td>
-          </tr>
-
-          <tr>
-            <th class="active">番地</th>
-            <td><%= @sauna.address_street %></td>
-          </tr>
-
-          <tr>
-            <th class="active">建物</th>
-            <td><%= @sauna.address_building %></td>
+            <th class="active">住所</th>
+            <td><%= @sauna.full_address %></td>
           </tr>
 
           <tr>
@@ -96,11 +81,12 @@
 
           <tr>
             <th class="active">ホームページ</th>
-            <td><%= @sauna.home_page %></td>
+            <td><%= link_to @sauna.home_page, "#{@sauna.home_page}" %></td>
           </tr>
         </tbody>
       </table>
     </div>
+    <%= render "user/saunas/responsive-show", sauna: @sauna %>
     <% if @sauna.user == current_user %>
       <%= link_to "編集", edit_user_sauna_path(@sauna), class: "btn btn-primary" %>
       <%= link_to "削除", user_sauna_path(@sauna), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger"%>

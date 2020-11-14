@@ -1,5 +1,5 @@
 class User::SaunasController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def new
     @sauna = Sauna.new
@@ -9,10 +9,11 @@ class User::SaunasController < ApplicationController
     @sauna = Sauna.new(sauna_params)
     @sauna.user_id = current_user.id
     if @sauna.save
-      redirect_to user_sauna_path(@sauna), notice: "サウナの新規登録がされました"
+      flash[:notice] = "サウナの新規登録がされました"
+      redirect_to user_sauna_path(@sauna)
     else
-      @saunas = Sauna.all
-      render 'index'
+      flash.now[:alart_flash] = "サウナの新規登録に失敗しました"
+      render 'new'
     end
   end
 
@@ -32,22 +33,25 @@ class User::SaunasController < ApplicationController
   def update
     @sauna = Sauna.find(params[:id])
     if @sauna.update(sauna_params)
-      redirect_to user_sauna_path(@sauna), notice: "編集内容を更新しました"
+      flash[:notice] = "編集内容を更新しました"
+      redirect_to user_sauna_path(@sauna)
     else
+      flash.now[:alart_flash] = "更新に失敗しました"
       render "edit"
     end
   end
 
   def destroy
     @sauna = Sauna.find(params[:id])
-    @sauna.destoy
+    @sauna.destroy
+    flash[:notice] = "サウナを削除しました"
     redirect_to root_path
   end
 
   def map
     @sauna = Sauna.find(params[:sauna_id])
     gon.latitude = @sauna.latitude
-    gon.longitude = @sauna.longitude 
+    gon.longitude = @sauna.longitude
   end
 
   def keyword_search
@@ -65,6 +69,12 @@ class User::SaunasController < ApplicationController
     @saunas = Sauna.genre_search(params[:genre_search])
     @genre_search = params[:genre_search]
     @genre = Genre.find_by(id: @genre_search)
+  end
+
+  # イキタイ一覧
+  def ikitais
+    user_ikitai = current_user.ikitais.pluck(:sauna_id)
+    @user_ikitai_saunas = Sauna.where(id: user_ikitai)
   end
 
   def sauna_params

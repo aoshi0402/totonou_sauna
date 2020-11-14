@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     get 'sauna/keyword/search', to: 'saunas#keyword_search'
     get 'sauna/prefecture/search', to: 'saunas#prefecture_search'
     get 'sauna/genre/search', to: 'saunas#genre_search'
+    get 'sauna/ikitais/search', to: 'saunas#ikitais'
 
   end
 end

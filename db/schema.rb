@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.string "name", null: false
     t.string "image_id", null: false
     t.text "introduction", null: false
-    t.string "tel", null: false
-    t.string "home_page", null: false
+    t.string "tel"
+    t.string "home_page"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -144,7 +144,6 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.string "title", null: false
     t.integer "score", null: false
     t.text "body", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -165,7 +164,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.integer "user_id", null: false
     t.string "name", null: false
     t.string "image_id"
-    t.integer "postcode", null: false
+    t.string "postcode", null: false
     t.integer "prefecture_code", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false
@@ -173,7 +172,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.text "introduction", null: false
     t.string "business_hour", null: false
     t.string "tel", null: false
-    t.string "home_page", null: false
+    t.string "home_page"
     t.string "water_temperature", null: false
     t.string "sauna_temperature", null: false
     t.integer "impressions_count", default: 0
@@ -189,9 +188,9 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", null: false
     t.integer "sex"
-    t.integer "postcode"
+    t.string "postcode"
     t.integer "prefecture_code"
     t.string "address_city"
     t.string "address_street"

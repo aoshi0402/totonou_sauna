@@ -1,7 +1,10 @@
 <%= form_for(@genre, url: admin_genre_path(@genre)) do |f| %>
-<div>
-  <%= f.label :genre, "ジャンル"%>
-  <%= f.text_field :name %>
-  <span><%= f.submit "追加" ,class: "btn btn-info" %></span>
-</div>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <div>
+    <%= f.label :genre, "ジャンル"%>
+    <%= f.text_field :name %>
+      <span>
+        <%= f.submit "追加" ,class: "btn btn-info" %>
+      </span>
+  </div>
 <% end %>

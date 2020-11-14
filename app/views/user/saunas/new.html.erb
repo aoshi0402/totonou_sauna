@@ -2,6 +2,7 @@
   <div class="card card-container">
     <h4 class="text-center">サウナ新規登録</h4>
     <%= form_with model: @sauna, url: user_saunas_path, local: true, method: :post do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       <div class="newform">
         <%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
         <%= attachment_image_tag @sauna, :image, size: "150x150",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
@@ -100,14 +101,13 @@
       <div class="newform">
         <%=f.label :home_page, "ホームページ" %>
         <span>
-          <%=f.text_area :home_page, placeholder: "例 https://www.totonou.sauna.co.jp/", class: "form-control" %>
+          <%=f.text_field :home_page, placeholder: "例 https://www.totonou.sauna.co.jp/", class: "form-control" %>
         </span>
       </div>
 
       <div class="newform">
         <%=f.submit "新規登録", class: "btn btn-success btn-lg btn-block" %>
       </div>
-
     <% end %>
   </div>
 </div>

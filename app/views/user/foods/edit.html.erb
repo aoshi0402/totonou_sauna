@@ -2,43 +2,44 @@
   <div class="card card-container">
     <h4 class="text-center">サウナ飯情報編集</h4>
     <%= form_with model: @food, url: user_sauna_food_path(@food), local: true do |f| %>
-    <div class="newform">
-      <%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
-      <%= attachment_image_tag @food, :image, size: "200x200",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
-        'center-block img-thumbnail img-responsive img_prev'%>
-    </div>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <div class="newform">
+        <%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
+        <%= attachment_image_tag @food, :image, size: "200x200",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+          'center-block img-thumbnail img-responsive img_prev'%>
+      </div>
 
-    <div class="newform">
-      <%=f.label :name, "サウナ飯名" %>
-      <span>
-        <%=f.text_field :name, placeholder: "例) チーズたっぷりボロネーゼ", autofocus: true, class: "form-control" %>
-      </span>
-    </div>
+      <div class="newform">
+        <%=f.label :name, "サウナ飯名" %>
+        <span>
+          <%=f.text_field :name, placeholder: "例) チーズたっぷりボロネーゼ", autofocus: true, class: "form-control" %>
+        </span>
+      </div>
 
-    <div class="newform">
-      <%=f.label :introduction, "紹介文、感想" %>
-      <span>
-        <%=f.text_field :introduction, placeholder: "例 222-1222", class: "form-control" %>
-      </span>
-    </div>
+      <div class="newform">
+        <%=f.label :introduction, "紹介文、感想" %>
+        <span>
+          <%=f.text_area :introduction, placeholder: "例 甘味が控えめで最高に美味しいです。", class: "form-control" %>
+        </span>
+      </div>
 
-    <div class="newform">
-      <%=f.label :tel, "電話番号" %>
-      <span class="label.label-default">
-        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: "選択してください" }, class: "form-control" %>
-      </span>
-    </div>
+      <div class="newform">
+        <%=f.label :tel, "電話番号" %>
+        <span class="label.label-default">
+          <%=f.text_field :tel, placeholder: "例 0429983344", class: "form-control" %>
+        </span>
+      </div>
 
-    <div class="newform">
-      <%=f.label :home_page, "ホームページ" %>
-      <span>
-        <%=f.text_area :home_page, placeholder: "例 https://www.totonou.sauna.co.jp/", class: "form-control" %>
-      </span>
-    </div>
+      <div class="newform">
+        <%=f.label :home_page, "ホームページ" %>
+        <span>
+          <%=f.text_area :home_page, placeholder: "例 https://www.totonou.sauna.co.jp/", class: "form-control" %>
+        </span>
+      </div>
 
-    <div class="newform">
-      <%= f.submit "保存", class: "btn btn-success btn-lg btn-block" %>
-    </div>
+      <div class="newform">
+        <%= f.submit "保存", class: "btn btn-success btn-lg btn-block" %>
+      </div>
     <% end %>
   </div>
 </div>
