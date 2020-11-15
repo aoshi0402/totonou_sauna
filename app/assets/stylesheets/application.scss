@@ -464,6 +464,31 @@ background-color: #FF0000;
   display: none;
 }
 
+.th-width{
+  width: 150px;
+}
+
+.twiiter-share{
+  margin-top: 10px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sauna-show-image{
+  width: 100%;
+  padding-top: 10px;
+}
+
+.ikitai-button{
+  margin-top: 10px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  }
+
 @media (max-width: 890px) {
   .main-visual-content{
     padding: 50px;
@@ -493,6 +518,20 @@ background-color: #FF0000;
   .sp-table-th{
     width:150px;
   }
+  .score {
+    width:100%;
+    text-align: center;
+  }
+  .ikitai-button{
+    width: 100%;
+    text-align: center;
+    position: initial;
+  }
+  .twiiter-share{
+    width: 100%;
+    text-align: center;
+    position: initial;
+  }
 }
 
 @media (max-width: 490px) {
@@ -504,8 +543,4 @@ background-color: #FF0000;
     font-size: 20px;
   }
 
-}
-
-.th-width{
-  width: 150px;
 }
