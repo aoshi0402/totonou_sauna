@@ -311,6 +311,12 @@ section {
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
+.icon-2 {
+  font-size: 150px;
+  color: 	darkorange;
+  margin: 40px 8px 0px 40px;
+}
+
 .icon-1 {
   font-size: 60px;
   color: 	#65A2FF;
@@ -488,6 +494,75 @@ background-color: #FF0000;
   top: 0;
   right: 0;
   }
+
+// サイト概要ページ
+.about-item{
+	padding: 20px;
+	margin: 30px 20px 70px 20px;
+  background-color: white;
+  border-radius: 50px;
+}
+
+.about-title{
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.about-body-text{
+  font-size: 20px;
+}
+
+.title-about {
+  font-size: 50px;
+  font-weight: bold;
+  color: #EEFFFF;
+  background-color: blue;
+  padding: 50px;
+  border-radius: 30px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  }
+
+  .about-icon{
+    font-size: 50px;
+  }
+
+// フェードイン
+.animation-bottom{
+	opacity : 0;
+	visibility: hidden;
+	transition: 3s;
+	transform: translateY(0);
+}
+.active-bottom{
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+.animation-right{
+	opacity : 0;
+	visibility: hidden;
+	transition: 2s;
+	transform: translateX(50px);
+}
+.active-right{
+	opacity: 1;
+	visibility: visible;
+	transform: translateX(0);
+}
+.animation-left{
+	opacity : 0;
+	visibility: hidden;
+	transition: 2s;
+	transform: translateX(-30px);
+}
+.active-left{
+	opacity: 1;
+	visibility: visible;
+	transform: translateX(0);
+}
+
+// レスポンシブ
 
 @media (max-width: 890px) {
   .main-visual-content{

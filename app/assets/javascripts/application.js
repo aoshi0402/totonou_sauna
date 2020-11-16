@@ -20,7 +20,48 @@
 //= require highcharts 
 //= require highcharts/highcharts-more 
 
-
+// フラッシュメッセージ
 $(function(){
   $('.flash').fadeOut(4000);
+});
+
+//aboutページフェードイン
+
+$(function(){
+  $(window).on('load scroll',function (){
+    $('.animation-bottom').each(function(){
+      var target = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var height = $(window).height();
+      if (scroll > target - height){
+        $(this).addClass('active-bottom');
+      }
+    });
+  });
+});
+
+$(function(){
+  $(window).on('load scroll',function (){
+    $('.animation-right').each(function(){
+      var target = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var height = $(window).height();
+      if (scroll > target - height){
+        $(this).addClass('active-right');
+      }
+    });
+  });
+});
+
+$(function(){
+  $(window).on('load scroll',function (){
+    $('.animation-left').each(function(){
+      var target = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var height = $(window).height();
+      if (scroll > target - height){
+        $(this).addClass('active-left');
+      }
+    });
+  });
 });
