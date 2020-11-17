@@ -85,5 +85,32 @@ RSpec.describe "User", type: :model do
         expect(user.errors[:introduction]).to include("は150文字以内で入力してください")
       end
     end
+
+    context 'passwordカラム' do
+      it '空欄でないこと' do
+        user.password = ''
+        is_expected.to eq false
+      end
+      it '空欄の場合はエラーが出る' do
+        user.password = ''
+        user.valid?
+        expect(user.errors[:password]).to include("が入力されていません。")
+      end
+      it '6文字以上であること' do
+        user.password = Faker::Lorem.characters(number: 1)
+        is_expected.to eq false
+      end
+      it '６文字未満の場合はエラーが出る' do
+        user.password = Faker::Lorem.characters(number: 1)
+        user.valid?
+        expect(user.errors[:password]).to include("は6文字以上に設定して下さい。")
+      end
+      it 'パスワードが不一致' do
+        user.password = "password1"
+        user.password_confirmation = "password2"
+        user.valid?
+        expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません")
+      end
+    end
   end
 end
