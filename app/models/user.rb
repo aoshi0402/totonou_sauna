@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+  validates :postcode, allow_blank: true, format: { with: /\A\d{7}\z/ }
   validates :address_city, length: { maximum: 50 }
   validates :address_street, length: { maximum: 50 }
   validates :address_building, length: { maximum: 50 }

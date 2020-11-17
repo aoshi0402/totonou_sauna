@@ -7,7 +7,7 @@ RSpec.describe "User", type: :model do
     it "登録できること" do
       is_expected.to eq true
     end
-
+    
     context "name" do
       it "空欄でないこと" do
         user.name = ""
@@ -38,74 +38,95 @@ RSpec.describe "User", type: :model do
       end
     end
 
-    context 'address_city' do
-      it '50文字以内であること' do
+    context "email" do
+      it "空欄でないこと" do
+        user.email = ""
+        is_expected.to eq false
+      end
+      it "空欄の場合はエラーが出る" do
+        user.email = ""
+        user.valid?
+        expect(user.errors[:email]).to include("が入力されていません。")
+      end
+      it "重複していないこと" do
+        another_user = build(:user, email: user.email)
+        expect(another_user).not_to be_valid
+      end
+      it "重複していたらエラーが出る" do
+        another_user = build(:user, email: user.email)
+        another_user.valid?
+        expect(another_user.errors[:email]).to include("は既に使用されています。")
+      end
+    end
+
+    context "address_city" do
+      it "50文字以内であること" do
         user.address_city = Faker::Lorem.characters(number:51)
         is_expected.to eq false
       end
-      it '50文字以内でないとエラーが出る' do
+      it "50文字以内でないとエラーが出る" do
         user.address_city = Faker::Lorem.characters(number:51)
         user.valid?
         expect(user.errors[:address_city]).to include("は50文字以内で入力してください")
       end
     end
 
-    context 'address_street' do
-      it '50文字以内であること' do
+    context "address_street" do
+      it "50文字以内であること" do
         user.address_street = Faker::Lorem.characters(number:51)
         is_expected.to eq false
       end
-      it '50文字以内でないとエラーが出る' do
+      it "50文字以内でないとエラーが出る" do
         user.address_street = Faker::Lorem.characters(number:51)
         user.valid?
         expect(user.errors[:address_street]).to include("は50文字以内で入力してください")
       end
     end
 
-    context 'address_building' do
-      it '50文字以内であること' do
+    context "address_building" do
+      it "50文字以内であること" do
         user.address_building = Faker::Lorem.characters(number:51)
         is_expected.to eq false
       end
-      it '50文字以内でないとエラーが出る' do
+      it "50文字以内でないとエラーが出る" do
         user.address_building = Faker::Lorem.characters(number:51)
         user.valid?
         expect(user.errors[:address_building]).to include("は50文字以内で入力してください")
       end
     end
 
-    context 'introduction' do
-      it '50文字以内であること' do
+    context "introduction" do
+      it "50文字以内であること" do
         user.introduction = Faker::Lorem.characters(number:201)
         is_expected.to eq false
       end
-      it '50文字以内でないとエラーが出る' do
+      it "50文字以内でないとエラーが出る" do
         user.introduction = Faker::Lorem.characters(number:151)
         user.valid?
         expect(user.errors[:introduction]).to include("は150文字以内で入力してください")
       end
     end
 
-    context 'passwordカラム' do
-      it '空欄でないこと' do
-        user.password = ''
+    context "passwordカラム" do
+      it "空欄でないこと" do
+        user.password = ""
         is_expected.to eq false
       end
-      it '空欄の場合はエラーが出る' do
-        user.password = ''
+      it "空欄の場合はエラーが出る" do
+        user.password = ""
         user.valid?
         expect(user.errors[:password]).to include("が入力されていません。")
       end
-      it '6文字以上であること' do
+      it "6文字以上であること" do
         user.password = Faker::Lorem.characters(number: 1)
         is_expected.to eq false
       end
-      it '６文字未満の場合はエラーが出る' do
+      it "６文字未満の場合はエラーが出る" do
         user.password = Faker::Lorem.characters(number: 1)
         user.valid?
         expect(user.errors[:password]).to include("は6文字以上に設定して下さい。")
       end
-      it 'パスワードが不一致' do
+      it "パスワードが不一致" do
         user.password = "password1"
         user.password_confirmation = "password2"
         user.valid?

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     name { Faker::Name.name }
-    postcode { Faker::Address.postcode }
+    postcode { Faker::Address.postcode.gsub('-','') }
     prefecture_code { rand(1..42) }
     address_city { Faker::Address.city }
     address_street { Faker::Address.street_name }
