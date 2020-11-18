@@ -1,10 +1,11 @@
 require "rails_helper"
 
-RSpec.describe "User", type: :model do
+RSpec.describe User, type: :model do
   describe "バリデーションテスト" do
     let(:user) { create(:user) }
     subject { user.valid? }
-    it "登録できること" do
+    # subjectという変数に当てはめる場合は、expect(処理内容).to　は is_expected.to に置き換え可能
+    it "ユーザー登録に成功する" do
       is_expected.to eq true
     end
     
@@ -59,6 +60,22 @@ RSpec.describe "User", type: :model do
       end
     end
 
+    context "postcode" do
+      it "空欄ならバリデーションをスルーする" do
+        user.postcode = ""
+        is_expected.to eq true
+      end
+      it "正規表現が正しいこと" do
+        user.postcode = Faker::Address.postcode.gsub("-","")
+        expect(user.postcode).to match(/\A\d{7}\z/)
+      end
+      it "半角英数字以外の場合はエラーが出る" do
+        user.postcode = "aaa2222"
+        user.valid?
+        expect(user.errors[:postcode]).to include("は不正な値です")
+      end
+    end
+
     context "address_city" do
       it "50文字以内であること" do
         user.address_city = Faker::Lorem.characters(number:51)
@@ -96,11 +113,11 @@ RSpec.describe "User", type: :model do
     end
 
     context "introduction" do
-      it "50文字以内であること" do
-        user.introduction = Faker::Lorem.characters(number:201)
+      it "150文字以内であること" do
+        user.introduction = Faker::Lorem.characters(number:151)
         is_expected.to eq false
       end
-      it "50文字以内でないとエラーが出る" do
+      it "150文字以内でないとエラーが出る" do
         user.introduction = Faker::Lorem.characters(number:151)
         user.valid?
         expect(user.errors[:introduction]).to include("は150文字以内で入力してください")
@@ -121,7 +138,7 @@ RSpec.describe "User", type: :model do
         user.password = Faker::Lorem.characters(number: 1)
         is_expected.to eq false
       end
-      it "６文字未満の場合はエラーが出る" do
+      it "6文字未満はエラーが出る" do
         user.password = Faker::Lorem.characters(number: 1)
         user.valid?
         expect(user.errors[:password]).to include("は6文字以上に設定して下さい。")
@@ -133,5 +150,97 @@ RSpec.describe "User", type: :model do
         expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません")
       end
     end
+  end
+
+
+  describe "アソシエーションのテスト" do  
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+
+    context "Saunaモデルとのアソシエーション" do
+      let(:target) { :saunas }
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がSaunaになっている" do
+        expect(association.class_name).to eq "Sauna" 
+      end
+    end
+
+    context "Foodモデルとのアソシエーション" do
+      let(:target) { :foods}
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がFoodになっている" do
+        expect(association.class_name).to eq "Food" 
+      end
+    end
+    
+    context "Foodモデルとのアソシエーション" do
+      let(:target) { :foods}
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がFoodになっている" do
+        expect(association.class_name).to eq "Food" 
+      end
+    end
+
+    context "Relationshipモデル(relationships)との関係" do
+      let(:target) { :relationships }
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it "結合するモデルのクラスはRelationship" do
+        expect(association.class_name).to eq "Relationship"
+      end
+    end
+
+    context "Relationshipモデル(reverse_of_relationships)との関係" do
+      let(:target) { :reverse_of_relationships }
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it "結合するモデルのクラスはRelationship" do
+        expect(association.class_name).to eq "Relationship"
+      end
+    end
+
+    context "自分がフォローしているユーザーとの関連（自己結合型多対多）" do
+      let(:target) { :followings }
+
+      it "1:Nとなっている（中間テーブルrelationshipsを介すので自己結合型多対多）" do
+        expect(association.macro).to eq :has_many
+      end
+      it "結合するモデルのクラスはUser(Follower)" do
+        expect(association.class_name).to eq "User"
+      end
+    end
+
+    context "自分がフォローされるユーザーとの関連（自己結合型多対多）" do
+      let(:target) { :followers }
+
+      it "1:Nとなっている(中間テーブルpassive_relationshipsを介すので自己結合型多対多）" do
+        expect(association.macro).to eq :has_many
+      end
+      it "結合するモデルのクラスはUser(Following)" do
+        expect(association.class_name).to eq "User"
+      end
+    end
+  end
+
+  describe "DBへの接続のテスト" do
+    subject { described_class.connection_config[:database] }
+      it "指定のDBに接続していること" do
+        is_expected.to match(/totonou_sauna/)
+        is_expected.not_to match(/totonou_sauna/)
+      end
   end
 end

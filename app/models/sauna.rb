@@ -9,7 +9,7 @@ class Sauna < ApplicationRecord
 
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 50 }
-  validates :postcode, presence: true, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
+  validates :postcode, presence: true, format: { with: /\A\d{7}\z/ }
   validates :prefecture_code, presence: true
   validates :address_city, presence: true, length: { maximum: 50 }
   validates :address_street, presence: true, length: { maximum: 50 }
