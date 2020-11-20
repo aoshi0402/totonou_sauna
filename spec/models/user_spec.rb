@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe User, type: :model do
   describe "バリデーションテスト" do
     let(:user) { create(:user) }
+    let(:sauna) { create(:sauna, user: user) }
     subject { user.valid? }
     # subjectという変数に当てはめる場合は、expect(処理内容).to　は is_expected.to に置き換え可能
     it "ユーザー登録に成功する" do
@@ -61,10 +62,6 @@ RSpec.describe User, type: :model do
     end
 
     context "postcode" do
-      it "空欄ならバリデーションをスルーする" do
-        user.postcode = ""
-        is_expected.to eq true
-      end
       it "正規表現が正しいこと" do
         user.postcode = Faker::Address.postcode.gsub("-","")
         expect(user.postcode).to match(/\A\d{7}\z/)
@@ -169,6 +166,28 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context "Ikitaiモデルとのアソシエーション" do
+      let(:target) { :ikitais }
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がIkitaiになっている" do
+        expect(association.class_name).to eq "Ikitai" 
+      end
+    end
+
+    context "Likeモデルとのアソシエーション" do
+      let(:target) { :likes }
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がLikeになっている" do
+        expect(association.class_name).to eq "Like" 
+      end
+    end
+
     context "Foodモデルとのアソシエーション" do
       let(:target) { :foods}
 
@@ -180,14 +199,69 @@ RSpec.describe User, type: :model do
       end
     end
     
-    context "Foodモデルとのアソシエーション" do
-      let(:target) { :foods}
+    context "Reviewモデルとのアソシエーション" do
+      let(:target) { :reviews}
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がFoodになっている" do
-        expect(association.class_name).to eq "Food" 
+      it  "モデル名がReviewになっている" do
+        expect(association.class_name).to eq "Review" 
+      end
+    end
+
+    context "Commentモデルとのアソシエーション" do
+      let(:target) { :comments}
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がCommentになっている" do
+        expect(association.class_name).to eq "Comment" 
+      end
+    end
+
+    context "Entryモデルとのアソシエーション" do
+      let(:target) { :entries}
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がEntryになっている" do
+        expect(association.class_name).to eq "Entry" 
+      end
+    end
+
+    context "Messageモデルとのアソシエーション" do
+      let(:target) { :messages}
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がMessageになっている" do
+        expect(association.class_name).to eq "Message" 
+      end
+    end
+
+    context "Notificationモデル(active_notifications)との関連" do
+      let(:target) { :active_notifications}
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がNotificationになっている" do
+        expect(association.class_name).to eq "Notification" 
+      end
+    end
+
+    context "Notificationモデル(passive_notifications)との関連" do
+      let(:target) { :passive_notifications}
+
+      it "1:Nとなっている" do
+        expect(association.macro).to eq :has_many
+      end
+      it  "モデル名がNotificationになっている" do
+        expect(association.class_name).to eq "Notification" 
       end
     end
 
@@ -236,11 +310,11 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "DBへの接続のテスト" do
-    subject { described_class.connection_config[:database] }
-      it "指定のDBに接続していること" do
-        is_expected.to match(/totonou_sauna/)
-        is_expected.not_to match(/totonou_sauna/)
-      end
-  end
+  # describe "DBへの接続のテスト" do
+  #   subject { described_class.connection_config[:database] }
+  #     it "指定のDBに接続していること" do
+  #       is_expected.to match(/totonou_sauna/)
+  #       is_expected.not_to match(/totonou_sauna/)
+  #     end
+  # end
 end
