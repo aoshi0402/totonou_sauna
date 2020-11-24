@@ -67,7 +67,7 @@ class User::SaunasController < ApplicationController
     @prefecture_search = params[:prefecture_search]
     @prefecture = JpPrefecture::Prefecture.find(code: @prefecture_search)
     if Rails.env.production?
-      @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/" + @saunas.image.image_id + "-thumbnail."
+      @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/?????-thumbnail."
     end
   end
 
