@@ -13,8 +13,8 @@ RSpec.describe "Userモデルのリクエストテスト", type: :request do
 
     context "ログインしている場合" do
       it "リクエストが成功すること" do
-        login(user)
-        get user_user_path
+        sign_in(user)
+        get user_user_path(user.id)
         expect(response).to have_http_status "200"
       end
     end

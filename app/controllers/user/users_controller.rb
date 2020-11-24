@@ -1,10 +1,11 @@
 class User::UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :show]
 
   def show
     @user = User.find(params[:id])
     # Entryモデルからログインユーザーのレコードを抽出
     @current_entry = Entry.where(user_id: current_user.id)
+
     # Entryモデルからメッセージ相手のレコードを抽出
     @another_entry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id

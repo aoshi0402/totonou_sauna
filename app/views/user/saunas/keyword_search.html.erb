@@ -7,9 +7,15 @@
           <div class="col-md-3 col-sm-4 col-xs-12">
             <div class="panel panel-default">
               <div class="panel-heading text-center">
-                <%= link_to user_sauna_path(sauna) do %>
+                <% if @user_image_url.present? %>
+                  <%= link_to user_sauna_path(sauna) do %>
+                    <%= image_tag(@saunas_image_url, fallback: "no_image.jpg", onClick: "$('.img_field').click()", class:'img') %>
+                  <% end %>
+                <% else %>
+                  <%= link_to user_sauna_path(sauna) do %>
                     <%= attachment_image_tag sauna, :image, fallback: "no-image.png", onClick: "$('.img_field').click()", class:
                     'img'%>
+                  <% end %>
                 <% end %>
               </div>
               <div class="panel-body">
