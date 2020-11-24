@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Contact, type: :model do
   describe "バリデーション" do
-    let(:contact) { create(:contact) }
+    let(:contact) { build(:contact) }
     subject { contact.valid? }
     it "お問い合わせが送信できること" do
       is_expected.to eq true
