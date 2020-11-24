@@ -2,9 +2,9 @@ require "rails_helper"
 
 RSpec.describe Food, type: :model do
   describe "バリデーション" do
-    let(:user) { create(:user) }
-    let(:sauna) { create(:sauna, user: user) }
-    let(:food) { create(:food, user: user, sauna: sauna) }
+    let(:user) { build(:user) }
+    let(:sauna) { build(:sauna, user: user) }
+    let(:food) { build(:food, user: user, sauna: sauna) }
     subject { food.valid? }
     it "サウナ飯が登録できること" do
       is_expected.to eq true

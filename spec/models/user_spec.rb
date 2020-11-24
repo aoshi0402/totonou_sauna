@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
   describe "バリデーションテスト" do
-    let(:user) { create(:user) }
-    let(:sauna) { create(:sauna, user: user) }
+    let(:user) { build(:user) }
+    let(:sauna) { build(:sauna, user: user) }
     subject { user.valid? }
     # subjectという変数に当てはめる場合は、expect(処理内容).to　は is_expected.to に置き換え可能
     it "ユーザー登録に成功する" do
@@ -21,13 +21,13 @@ RSpec.describe User, type: :model do
         expect(user.errors[:name]).to include("を入力してください")
       end
       it "重複していないこと" do
-        another_user = build(:user, name: user.name)
-        expect(another_user).not_to be_valid
+        another_user = create(:user, name: user.name)
+        expect(user).not_to be_valid
       end
       it "重複していたらエラーが出る" do
-        another_user = build(:user, name: user.name)
-        another_user.valid?
-        expect(another_user.errors[:name]).to include("はすでに存在します")
+        another_user = create(:user, name: user.name)
+        user.valid?
+        expect(user.errors[:name]).to include("はすでに存在します")
       end
       it "20文字以内であること" do
         user.name = Faker::Lorem.characters(number:21)
@@ -51,13 +51,13 @@ RSpec.describe User, type: :model do
         expect(user.errors[:email]).to include("が入力されていません。")
       end
       it "重複していないこと" do
-        another_user = build(:user, email: user.email)
-        expect(another_user).not_to be_valid
+        another_user = create(:user, email: user.email)
+        expect(user).not_to be_valid
       end
       it "重複していたらエラーが出る" do
-        another_user = build(:user, email: user.email)
-        another_user.valid?
-        expect(another_user.errors[:email]).to include("は既に使用されています。")
+        another_user = create(:user, email: user.email)
+        user.valid?
+        expect(user.errors[:email]).to include("は既に使用されています。")
       end
     end
 

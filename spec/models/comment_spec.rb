@@ -2,10 +2,10 @@ require "rails_helper"
 
 RSpec.describe Comment, type: :model do
   describe "コメントモデルのバリデーション" do
-    let(:user) { create(:user) }
-    let(:sauna) { create(:sauna, user: user) }
-    let(:review) { create(:review, user: user, sauna: sauna) }
-    let(:comment) { create(:comment, user: user, review: review) }
+    let(:user) { build(:user) }
+    let(:sauna) { build(:sauna, user: user) }
+    let(:review) { build(:review, user: user, sauna: sauna) }
+    let(:comment) { build(:comment, user: user, review: review) }
 
     subject { comment.valid? }
     it "作成できること" do
