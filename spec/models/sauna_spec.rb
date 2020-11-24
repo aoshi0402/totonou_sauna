@@ -2,16 +2,19 @@ require "rails_helper"
 
 RSpec.describe Sauna, type: :model do
   describe "バリデーションテスト" do
-    let(:user) { create(:user) }
-    let(:sauna) { create(:sauna, user: user) }
+
+    let(:user) { build(:user) }
+    let(:sauna) { build(:sauna, user: user) }
+
     subject { sauna.valid? }
+
     it "サウナの新規登録ができること" do
       is_expected.to eq true
     end
 
     context "image" do
       it "空欄でないこと" do
-        sauna.image_id = ""
+        sauna.image = ""
         is_expected.to eq false
       end
     end
@@ -27,13 +30,13 @@ RSpec.describe Sauna, type: :model do
         expect(sauna.errors[:name]).to include("を入力してください")
       end
       it "重複していないこと" do
-        another_sauna = build(:sauna, name: sauna.name)
-        expect(another_sauna).not_to be_valid
+        another_sauna = create(:sauna, name: sauna.name)
+        expect(sauna).not_to be_valid
       end
       it "重複していたらエラーが出る" do
-        another_sauna = build(:sauna, name: sauna.name)
-        another_sauna.valid?
-        expect(another_sauna.errors[:name]).to include("はすでに存在します")
+        another_sauna = create(:sauna, name: sauna.name)
+        sauna.valid?
+        expect(sauna.errors[:name]).to include("はすでに存在します")
       end
       it "50文字以内であること" do
         sauna.name = Faker::Lorem.characters(number:51)
