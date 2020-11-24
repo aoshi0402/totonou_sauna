@@ -64,7 +64,7 @@ https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=shari
 
 ## :wrench: インフラ構成図
 
-![innfra](https://user-images.githubusercontent.com/68432256/99899518-4d426400-2ced-11eb-9989-54a5c194373a.png)
+![infra](https://user-images.githubusercontent.com/68432256/100052499-6835e500-2e61-11eb-9bce-f0d28f29d2c4.png)
 
 
 ## :closed_book: 使用技術、開発環境

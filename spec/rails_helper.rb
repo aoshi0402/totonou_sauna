@@ -63,8 +63,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include FactoryBot::Syntax::Methods
-  config.include Rails.application.routes.url_helpers
   config.include LoginMacros
-  config.include OmniauthMacros
 end
