@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.describe Review, type: :model do
   describe "バリデーション" do
-    let(:user) { create(:user) }
-    let(:sauna) { create(:sauna, user: user) }
-    let(:review) { create(:review, user: user, sauna: sauna) }
+    let(:user) { build(:user) }
+    let(:sauna) { build(:sauna, user: user) }
+    let(:review) { build(:review, user: user, sauna: sauna) }
     subject { review.valid? }
-    it "作成できること" do
+    it "レビューが作成できること" do
       is_expected.to eq true
     end
 

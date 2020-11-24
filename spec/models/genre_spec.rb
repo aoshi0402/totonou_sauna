@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Genre, type: :model do
   describe "バリデーション" do
-    let(:genre) { create(:genre) }
+    let(:genre) { build(:genre) }
     subject { genre.valid? }
     it "ジャンルが作成できること" do
       is_expected.to eq true
