@@ -58,7 +58,7 @@ class User::SaunasController < ApplicationController
     @saunas = Sauna.keyword_search(params[:keyword_search])
     @keyword_search = params[:keyword_search]
     if Rails.env.production?
-      @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/" + @saunas.image.image_id + "-thumbnail."
+      @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/?????-thumbnail."
     end
   end
 
@@ -76,7 +76,7 @@ class User::SaunasController < ApplicationController
     @genre_search = params[:genre_search]
     @genre = Genre.find_by(id: @genre_search)
     if Rails.env.production?
-      @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/" + @saunas.image.image_id + "-thumbnail."
+      @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/?????-thumbnail."
     end
   end
 
@@ -85,7 +85,7 @@ class User::SaunasController < ApplicationController
     user_ikitai = current_user.ikitais.pluck(:sauna_id)
     @user_ikitai_saunas = Sauna.where(id: user_ikitai)
     if Rails.env.production?
-      @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/" + @user_ikitai_saunas.image.image_id + "-thumbnail."
+      @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/?????-thumbnail."
     end
   end
 
