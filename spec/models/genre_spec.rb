@@ -2,8 +2,10 @@ require "rails_helper"
 
 RSpec.describe Genre, type: :model do
   describe "バリデーション" do
-    let(:genre) { build(:genre) }
     subject { genre.valid? }
+
+    let(:genre) { build(:genre) }
+
     it "ジャンルが作成できること" do
       is_expected.to eq true
     end
@@ -23,14 +25,14 @@ RSpec.describe Genre, type: :model do
         is_expected.to eq false
       end
       it "20文字以内でないとエラーが出る" do
-        genre.name = Faker::Lorem.characters(number:21)
+        genre.name = Faker::Lorem.characters(number: 21)
         genre.valid?
         expect(genre.errors[:name]).to include("は20文字以内で入力してください")
       end
     end
   end
 
-  describe "アソシエーションのテスト" do  
+  describe "アソシエーションのテスト" do
     let(:association) do
       described_class.reflect_on_association(target)
     end
@@ -41,8 +43,8 @@ RSpec.describe Genre, type: :model do
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がSaunaGenreになっている" do
-        expect(association.class_name).to eq "SaunaGenre" 
+      it "モデル名がSaunaGenreになっている" do
+        expect(association.class_name).to eq "SaunaGenre"
       end
     end
   end

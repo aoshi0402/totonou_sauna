@@ -1,9 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "新規登録、ログインのテスト", type: :feature do
+  subject { page }
+
   let(:admin) { create(:admin) }
   let(:user) { create(:user) }
-  subject { page }
 
   describe "ユーザー認証のテスト" do
     context "新規会員登録のテスト" do
