@@ -2,10 +2,12 @@ require "rails_helper"
 
 RSpec.describe Food, type: :model do
   describe "バリデーション" do
+    subject { food.valid? }
+
     let(:user) { build(:user) }
     let(:sauna) { build(:sauna, user: user) }
     let(:food) { build(:food, user: user, sauna: sauna) }
-    subject { food.valid? }
+
     it "サウナ飯が登録できること" do
       is_expected.to eq true
     end
@@ -25,7 +27,7 @@ RSpec.describe Food, type: :model do
         is_expected.to eq false
       end
       it "20文字以内でないとエラーが出る" do
-        food.name = Faker::Lorem.characters(number:21)
+        food.name = Faker::Lorem.characters(number: 21)
         food.valid?
         expect(food.errors[:name]).to include("は20文字以内で入力してください")
       end
@@ -46,16 +48,14 @@ RSpec.describe Food, type: :model do
         is_expected.to eq false
       end
       it "100文字以内でないとエラーが出る" do
-        food.introduction = Faker::Lorem.characters(number:101)
+        food.introduction = Faker::Lorem.characters(number: 101)
         food.valid?
         expect(food.errors[:introduction]).to include("は100文字以内で入力してください")
       end
     end
-
-    
   end
 
-  describe "アソシエーションのテスト" do  
+  describe "アソシエーションのテスト" do
     let(:association) do
       described_class.reflect_on_association(target)
     end
@@ -66,8 +66,8 @@ RSpec.describe Food, type: :model do
       it "N:1となっている" do
         expect(association.macro).to eq :belongs_to
       end
-      it  "モデル名がUserになっている" do
-        expect(association.class_name).to eq "User" 
+      it "モデル名がUserになっている" do
+        expect(association.class_name).to eq "User"
       end
     end
 
@@ -77,8 +77,8 @@ RSpec.describe Food, type: :model do
       it "N:1となっている" do
         expect(association.macro).to eq :belongs_to
       end
-      it  "モデル名がSaunaになっている" do
-        expect(association.class_name).to eq "Sauna" 
+      it "モデル名がSaunaになっている" do
+        expect(association.class_name).to eq "Sauna"
       end
     end
   end

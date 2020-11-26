@@ -2,11 +2,10 @@ require "rails_helper"
 
 RSpec.describe Sauna, type: :model do
   describe "バリデーションテスト" do
+    subject { sauna.valid? }
 
     let(:user) { build(:user) }
     let(:sauna) { build(:sauna, user: user) }
-
-    subject { sauna.valid? }
 
     it "サウナの新規登録ができること" do
       is_expected.to eq true
@@ -39,11 +38,11 @@ RSpec.describe Sauna, type: :model do
         expect(sauna.errors[:name]).to include("はすでに存在します")
       end
       it "50文字以内であること" do
-        sauna.name = Faker::Lorem.characters(number:51)
+        sauna.name = Faker::Lorem.characters(number: 51)
         is_expected.to eq false
       end
       it "50文字以内でないとエラーが出る" do
-        sauna.name = Faker::Lorem.characters(number:51)
+        sauna.name = Faker::Lorem.characters(number: 51)
         sauna.valid?
         expect(sauna.errors[:name]).to include("は50文字以内で入力してください")
       end
@@ -51,7 +50,7 @@ RSpec.describe Sauna, type: :model do
 
     context "postcode" do
       it "正規表現が正しいこと" do
-        sauna.postcode = Faker::Address.postcode.gsub("-","")
+        sauna.postcode = Faker::Address.postcode.gsub("-", "")
         expect(sauna.postcode).to match(/\A\d{7}\z/)
       end
       it "半角英数字以外の場合はエラーが出る" do
@@ -63,11 +62,11 @@ RSpec.describe Sauna, type: :model do
 
     context "address_city" do
       it "50文字以内であること" do
-        sauna.address_city = Faker::Lorem.characters(number:51)
+        sauna.address_city = Faker::Lorem.characters(number: 51)
         is_expected.to eq false
       end
       it "50文字以内でないとエラーが出る" do
-        sauna.address_city = Faker::Lorem.characters(number:51)
+        sauna.address_city = Faker::Lorem.characters(number: 51)
         sauna.valid?
         expect(sauna.errors[:address_city]).to include("は50文字以内で入力してください")
       end
@@ -75,11 +74,11 @@ RSpec.describe Sauna, type: :model do
 
     context "address_street" do
       it "50文字以内であること" do
-        sauna.address_street = Faker::Lorem.characters(number:51)
+        sauna.address_street = Faker::Lorem.characters(number: 51)
         is_expected.to eq false
       end
       it "50文字以内でないとエラーが出る" do
-        sauna.address_street = Faker::Lorem.characters(number:51)
+        sauna.address_street = Faker::Lorem.characters(number: 51)
         sauna.valid?
         expect(sauna.errors[:address_street]).to include("は50文字以内で入力してください")
       end
@@ -87,11 +86,11 @@ RSpec.describe Sauna, type: :model do
 
     context "address_building" do
       it "50文字以内であること" do
-        sauna.address_building = Faker::Lorem.characters(number:51)
+        sauna.address_building = Faker::Lorem.characters(number: 51)
         is_expected.to eq false
       end
       it "50文字以内でないとエラーが出る" do
-        sauna.address_building = Faker::Lorem.characters(number:51)
+        sauna.address_building = Faker::Lorem.characters(number: 51)
         sauna.valid?
         expect(sauna.errors[:address_building]).to include("は50文字以内で入力してください")
       end
@@ -99,11 +98,11 @@ RSpec.describe Sauna, type: :model do
 
     context "introduction" do
       it "400文字以内であること" do
-        sauna.introduction = Faker::Lorem.characters(number:401)
+        sauna.introduction = Faker::Lorem.characters(number: 401)
         is_expected.to eq false
       end
       it "400文字以内でないとエラーが出る" do
-        sauna.introduction = Faker::Lorem.characters(number:401)
+        sauna.introduction = Faker::Lorem.characters(number: 401)
         sauna.valid?
         expect(sauna.errors[:introduction]).to include("は400文字以内で入力してください")
       end
@@ -145,7 +144,7 @@ RSpec.describe Sauna, type: :model do
     end
   end
 
-  describe "アソシエーションのテスト" do  
+  describe "アソシエーションのテスト" do
     let(:association) do
       described_class.reflect_on_association(target)
     end
@@ -156,8 +155,8 @@ RSpec.describe Sauna, type: :model do
       it "N:1となっている" do
         expect(association.macro).to eq :belongs_to
       end
-      it  "モデル名がUserになっている" do
-        expect(association.class_name).to eq "User" 
+      it "モデル名がUserになっている" do
+        expect(association.class_name).to eq "User"
       end
     end
 
@@ -167,8 +166,8 @@ RSpec.describe Sauna, type: :model do
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がReviewになっている" do
-        expect(association.class_name).to eq "Review" 
+      it "モデル名がReviewになっている" do
+        expect(association.class_name).to eq "Review"
       end
     end
 
@@ -178,8 +177,8 @@ RSpec.describe Sauna, type: :model do
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がIkitaiになっている" do
-        expect(association.class_name).to eq "Ikitai" 
+      it "モデル名がIkitaiになっている" do
+        expect(association.class_name).to eq "Ikitai"
       end
     end
 
@@ -189,30 +188,30 @@ RSpec.describe Sauna, type: :model do
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がFoodになっている" do
-        expect(association.class_name).to eq "Food" 
+      it "モデル名がFoodになっている" do
+        expect(association.class_name).to eq "Food"
       end
     end
 
     context "Genreモデルとのアソシエーション" do
-      let(:target) { :genres}
+      let(:target) { :genres }
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がGenreになっている" do
-        expect(association.class_name).to eq "Genre" 
+      it "モデル名がGenreになっている" do
+        expect(association.class_name).to eq "Genre"
       end
     end
-    
+
     context "SaunaGenreモデルとのアソシエーション" do
-      let(:target) { :sauna_genres}
+      let(:target) { :sauna_genres }
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がSaunaGenreになっている" do
-        expect(association.class_name).to eq "SaunaGenre" 
+      it "モデル名がSaunaGenreになっている" do
+        expect(association.class_name).to eq "SaunaGenre"
       end
     end
   end

@@ -58,11 +58,11 @@ class Sauna < ApplicationRecord
 
   # 緯度経度を取得
   geocoded_by :geocode_full_address
-  after_save :geocode, if: -> {Rails.env == 'production'}
+  after_save :geocode, if: -> { Rails.env.production? }
 
   # geocoder専用住所
   def geocode_full_address
-    self.address_city + self.address_street
+    address_city + address_street
   end
 
   # 「イキタイ」が既に押してあるかの確認
@@ -97,6 +97,6 @@ class Sauna < ApplicationRecord
     if @sum > 0
       @sum /= reviews.length
     end
-    return @sum
+    @sum
   end
 end

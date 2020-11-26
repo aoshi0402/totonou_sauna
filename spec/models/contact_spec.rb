@@ -2,8 +2,10 @@ require "rails_helper"
 
 RSpec.describe Contact, type: :model do
   describe "バリデーション" do
-    let(:contact) { build(:contact) }
     subject { contact.valid? }
+
+    let(:contact) { build(:contact) }
+
     it "お問い合わせが送信できること" do
       is_expected.to eq true
     end
@@ -23,7 +25,7 @@ RSpec.describe Contact, type: :model do
         is_expected.to eq false
       end
       it "20文字以内でないとエラーが出る" do
-        contact.name = Faker::Lorem.characters(number:21)
+        contact.name = Faker::Lorem.characters(number: 21)
         contact.valid?
         expect(contact.errors[:name]).to include("は20文字以内で入力してください")
       end
@@ -56,7 +58,7 @@ RSpec.describe Contact, type: :model do
         is_expected.to eq false
       end
       it "20文字以内でないとエラーが出る" do
-        contact.name = Faker::Lorem.characters(number:21)
+        contact.name = Faker::Lorem.characters(number: 21)
         contact.valid?
         expect(contact.errors[:name]).to include("は20文字以内で入力してください")
       end
@@ -77,7 +79,7 @@ RSpec.describe Contact, type: :model do
         is_expected.to eq false
       end
       it "200文字以内でないとエラーが出る" do
-        contact.body = Faker::Lorem.characters(number:201)
+        contact.body = Faker::Lorem.characters(number: 201)
         contact.valid?
         expect(contact.errors[:body]).to include("は200文字以内で入力してください")
       end

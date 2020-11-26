@@ -2,14 +2,17 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
   describe "バリデーションテスト" do
+    subject { user.valid? }
+
     let(:user) { build(:user) }
     let(:sauna) { build(:sauna, user: user) }
-    subject { user.valid? }
+
     # subjectという変数に当てはめる場合は、expect(処理内容).to　は is_expected.to に置き換え可能
+
     it "ユーザー登録に成功する" do
       is_expected.to eq true
     end
-    
+
     context "name" do
       it "空欄でないこと" do
         user.name = ""
@@ -30,11 +33,11 @@ RSpec.describe User, type: :model do
         expect(user.errors[:name]).to include("はすでに存在します")
       end
       it "20文字以内であること" do
-        user.name = Faker::Lorem.characters(number:21)
+        user.name = Faker::Lorem.characters(number: 21)
         is_expected.to eq false
       end
       it "20文字以内でないとエラーが出る" do
-        user.name = Faker::Lorem.characters(number:21)
+        user.name = Faker::Lorem.characters(number: 21)
         user.valid?
         expect(user.errors[:name]).to include("は20文字以内で入力してください")
       end
@@ -63,7 +66,7 @@ RSpec.describe User, type: :model do
 
     context "postcode" do
       it "正規表現が正しいこと" do
-        user.postcode = Faker::Address.postcode.gsub("-","")
+        user.postcode = Faker::Address.postcode.gsub("-", "")
         expect(user.postcode).to match(/\A\d{7}\z/)
       end
       it "半角英数字以外の場合はエラーが出る" do
@@ -75,11 +78,11 @@ RSpec.describe User, type: :model do
 
     context "address_city" do
       it "50文字以内であること" do
-        user.address_city = Faker::Lorem.characters(number:51)
+        user.address_city = Faker::Lorem.characters(number: 51)
         is_expected.to eq false
       end
       it "50文字以内でないとエラーが出る" do
-        user.address_city = Faker::Lorem.characters(number:51)
+        user.address_city = Faker::Lorem.characters(number: 51)
         user.valid?
         expect(user.errors[:address_city]).to include("は50文字以内で入力してください")
       end
@@ -87,11 +90,11 @@ RSpec.describe User, type: :model do
 
     context "address_street" do
       it "50文字以内であること" do
-        user.address_street = Faker::Lorem.characters(number:51)
+        user.address_street = Faker::Lorem.characters(number: 51)
         is_expected.to eq false
       end
       it "50文字以内でないとエラーが出る" do
-        user.address_street = Faker::Lorem.characters(number:51)
+        user.address_street = Faker::Lorem.characters(number: 51)
         user.valid?
         expect(user.errors[:address_street]).to include("は50文字以内で入力してください")
       end
@@ -99,11 +102,11 @@ RSpec.describe User, type: :model do
 
     context "address_building" do
       it "50文字以内であること" do
-        user.address_building = Faker::Lorem.characters(number:51)
+        user.address_building = Faker::Lorem.characters(number: 51)
         is_expected.to eq false
       end
       it "50文字以内でないとエラーが出る" do
-        user.address_building = Faker::Lorem.characters(number:51)
+        user.address_building = Faker::Lorem.characters(number: 51)
         user.valid?
         expect(user.errors[:address_building]).to include("は50文字以内で入力してください")
       end
@@ -111,11 +114,11 @@ RSpec.describe User, type: :model do
 
     context "introduction" do
       it "150文字以内であること" do
-        user.introduction = Faker::Lorem.characters(number:151)
+        user.introduction = Faker::Lorem.characters(number: 151)
         is_expected.to eq false
       end
       it "150文字以内でないとエラーが出る" do
-        user.introduction = Faker::Lorem.characters(number:151)
+        user.introduction = Faker::Lorem.characters(number: 151)
         user.valid?
         expect(user.errors[:introduction]).to include("は150文字以内で入力してください")
       end
@@ -149,8 +152,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-
-  describe "アソシエーションのテスト" do  
+  describe "アソシエーションのテスト" do
     let(:association) do
       described_class.reflect_on_association(target)
     end
@@ -161,8 +163,8 @@ RSpec.describe User, type: :model do
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がSaunaになっている" do
-        expect(association.class_name).to eq "Sauna" 
+      it "モデル名がSaunaになっている" do
+        expect(association.class_name).to eq "Sauna"
       end
     end
 
@@ -172,8 +174,8 @@ RSpec.describe User, type: :model do
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がIkitaiになっている" do
-        expect(association.class_name).to eq "Ikitai" 
+      it "モデル名がIkitaiになっている" do
+        expect(association.class_name).to eq "Ikitai"
       end
     end
 
@@ -183,85 +185,85 @@ RSpec.describe User, type: :model do
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がLikeになっている" do
-        expect(association.class_name).to eq "Like" 
+      it "モデル名がLikeになっている" do
+        expect(association.class_name).to eq "Like"
       end
     end
 
     context "Foodモデルとのアソシエーション" do
-      let(:target) { :foods}
+      let(:target) { :foods }
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がFoodになっている" do
-        expect(association.class_name).to eq "Food" 
+      it "モデル名がFoodになっている" do
+        expect(association.class_name).to eq "Food"
       end
     end
-    
+
     context "Reviewモデルとのアソシエーション" do
-      let(:target) { :reviews}
+      let(:target) { :reviews }
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がReviewになっている" do
-        expect(association.class_name).to eq "Review" 
+      it "モデル名がReviewになっている" do
+        expect(association.class_name).to eq "Review"
       end
     end
 
     context "Commentモデルとのアソシエーション" do
-      let(:target) { :comments}
+      let(:target) { :comments }
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がCommentになっている" do
-        expect(association.class_name).to eq "Comment" 
+      it "モデル名がCommentになっている" do
+        expect(association.class_name).to eq "Comment"
       end
     end
 
     context "Entryモデルとのアソシエーション" do
-      let(:target) { :entries}
+      let(:target) { :entries }
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がEntryになっている" do
-        expect(association.class_name).to eq "Entry" 
+      it "モデル名がEntryになっている" do
+        expect(association.class_name).to eq "Entry"
       end
     end
 
     context "Messageモデルとのアソシエーション" do
-      let(:target) { :messages}
+      let(:target) { :messages }
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がMessageになっている" do
-        expect(association.class_name).to eq "Message" 
+      it "モデル名がMessageになっている" do
+        expect(association.class_name).to eq "Message"
       end
     end
 
     context "Notificationモデル(active_notifications)との関連" do
-      let(:target) { :active_notifications}
+      let(:target) { :active_notifications }
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がNotificationになっている" do
-        expect(association.class_name).to eq "Notification" 
+      it "モデル名がNotificationになっている" do
+        expect(association.class_name).to eq "Notification"
       end
     end
 
     context "Notificationモデル(passive_notifications)との関連" do
-      let(:target) { :passive_notifications}
+      let(:target) { :passive_notifications }
 
       it "1:Nとなっている" do
         expect(association.macro).to eq :has_many
       end
-      it  "モデル名がNotificationになっている" do
-        expect(association.class_name).to eq "Notification" 
+      it "モデル名がNotificationになっている" do
+        expect(association.class_name).to eq "Notification"
       end
     end
 
