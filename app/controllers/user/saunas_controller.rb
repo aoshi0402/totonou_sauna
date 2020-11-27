@@ -55,18 +55,18 @@ class User::SaunasController < ApplicationController
   end
 
   def keyword_search
-    @saunas = Sauna.keyword_search(params[:keyword_search])
+    @saunas = Sauna.keyword_search(params[:keyword_search]).page(params[:page]).per(12)
     @keyword_search = params[:keyword_search]
   end
 
   def prefecture_search
-    @saunas = Sauna.prefecture_search(params[:prefecture_search])
+    @saunas = Sauna.prefecture_search(params[:prefecture_search]).page(params[:page]).per(12)
     @prefecture_search = params[:prefecture_search]
     @prefecture = JpPrefecture::Prefecture.find(code: @prefecture_search)
   end
 
   def genre_search
-    @saunas = Sauna.genre_search(params[:genre_search])
+    @saunas = Sauna.genre_search(params[:genre_search]).page(params[:page]).per(12)
     @genre_search = params[:genre_search]
     @genre = Genre.find_by(id: @genre_search)
   end
@@ -74,7 +74,7 @@ class User::SaunasController < ApplicationController
   # イキタイ一覧
   def ikitais
     user_ikitai = current_user.ikitais.pluck(:sauna_id)
-    @user_ikitai_saunas = Sauna.where(id: user_ikitai)
+    @user_ikitai_saunas = Sauna.where(id: user_ikitai).page(params[:page]).per(12)
     if Rails.env.production?
       @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/?????-thumbnail."
     end

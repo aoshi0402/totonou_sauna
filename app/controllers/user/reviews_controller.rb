@@ -21,13 +21,13 @@ class User::ReviewsController < ApplicationController
 
   def index
     @sauna = Sauna.find(params[:sauna_id])
-    @reviews = @sauna.reviews
+    @reviews = @sauna.reviews.page(params[:page]).per(5)
   end
 
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new
-    @comments = @review.comments
+    @comments = @review.comments.page(params[:page]).per(10)
   end
 
   def edit

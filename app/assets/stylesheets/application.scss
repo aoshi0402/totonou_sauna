@@ -609,6 +609,25 @@ background-color: #FF0000;
   }
 }
 
+  .pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+  }
+
+  nav.pagination1{
+    text-align: center;
+  }
+
+  .pagination>.active>a {     
+    background: #93c9ff;  
+    border-radius: 15px;     
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {        
+    border-radius: 15px;    
+  }
+
 @media (max-width: 490px) {
 
   .top-search-title-sub{
