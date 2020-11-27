@@ -1,0 +1,7 @@
+$("input").val("");
+$("textarea").val("");
+$(".comment_<%= @review.id %>").html("<%= j(render 'user/comments/comment', comments: @comments, review: @review) %>");
+
+
+<%# エラーメッセージ %>
+<%# $(".comment_error_messages").html("<%= j(render 'layouts/error_messages', comment: @comment) %>
