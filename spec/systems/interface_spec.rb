@@ -1,11 +1,13 @@
 require "rails_helper"
 
 RSpec.describe "表示画面のテスト", type: :feature do
+  subject { page }
+
   let(:admin) { create(:admin) }
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:sauna) { create(:sauna, user: user) }
-  subject { page }
+
   before do
     visit new_user_session_path
   end

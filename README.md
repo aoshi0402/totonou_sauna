@@ -24,7 +24,7 @@ URL: https://totonousauna.work
 **「短時間でより、リラックスできて、頭の中を軽くする方法はないか」**
 と感じていました。  
 
-そんな悩みを吐露している時、友人がサウナがおすすめだよという提案を受け友人の指示通りにサウナに入る頭が軽くなり、非常にリラックスできたのです。
+そんな悩みを吐露している時、友人がサウナがおすすめだよという提案を受け友人の指示通りにサウナに入ると、頭が軽くなり非常にリラックスできたのです。
 
 <br />
 
@@ -74,7 +74,7 @@ https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=shari
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
-- 本番環境 : AWS(EC2、RDS for MySQL、Route53)、Nginx、Puma
+- 本番環境 : AWS(EC2、RDS for MySQL、Route53、S3、Lamda)、Nginx、Puma
 
 
 

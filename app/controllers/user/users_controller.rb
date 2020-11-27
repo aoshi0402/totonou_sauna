@@ -32,22 +32,31 @@ class User::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:notice] = "会員情報の更新完了しました"
-      redirect_to user_user_path(@user)
+    if @user.email == 'guest@example.com'
+      flash[:alert] = "ゲストユーザーは編集できません。"
+      redirect_to root_path 
     else
-      flash.now[:alart_flash] = "会員情報の更新に失敗しました"
-      render "edit"
+      if @user.update(user_params)
+        flash[:notice] = "会員情報の更新完了しました"
+        redirect_to user_user_path(@user)
+      else
+        flash.now[:alart_flash] = "会員情報の更新に失敗しました"
+        render "edit"
+      end
     end
   end
 
   def destroy
     @user = User.find(params[:id])
-    @user.is_deleted = true
-    @user.save
-    reset_session
-    flash[:notice] = "退会が完了しました"
-    redirect_to root_path
+    if @user.email == 'guest@example.com'
+      flash[:alert] = "ゲストユーザーは削除できません。"
+      redirect_to root_path
+    else
+      @user.update(is_deleted: true)
+      reset_session
+      flash[:notice] = "退会が完了しました"
+      redirect_to root_path
+    end
   end
 
   private

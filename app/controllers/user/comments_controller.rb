@@ -4,17 +4,16 @@ class User::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    @review = @comment.review
+    @review = Review.find(params[:review_id])
+    @comment.review_id = @review.id
+    @comments = @review.comments
     if @comment.save
-      flash[:notice] = "コメントが送信されました"
-      redirect_to user_sauna_review_path(@review.sauna, @review)
     else
-      flash.now[:alart_flash] = "コメントの投稿に失敗しました"
       @comments = @review.comments
       render '/user/reviews/show'
     end
   end
-
+  
   def edit
     @comment = Comment.find(params[:id])
     unless @comment.user == current_user
@@ -36,9 +35,8 @@ class User::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @review = @comment.review
+    @comments = @review.comments
     @comment.destroy
-    flash[:notice] = "コメントの削除に成功しました"
-    redirect_to user_sauna_review_path(@comment.review.sauna, @comment.review)
   end
 
   private
