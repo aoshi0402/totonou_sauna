@@ -21,7 +21,7 @@ class User::FoodsController < ApplicationController
 
   def index
     @sauna = Sauna.find(params[:sauna_id])
-    @foods = @sauna.foods
+    @foods = @sauna.foods.page(params[:page]).per(5)
   end
 
   def show
