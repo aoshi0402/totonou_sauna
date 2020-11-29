@@ -65,3 +65,13 @@ $(function(){
     });
   });
 });
+
+//aboutページ画像プレビュー
+
+$(function() {
+    $('.about-slide-show').slick({
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+    });
+});
