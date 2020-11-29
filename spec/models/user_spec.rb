@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     let(:user) { build(:user) }
     let(:sauna) { build(:sauna, user: user) }
 
-    # subjectという変数に当てはめる場合は、expect(処理内容).to　は is_expected.to に置き換え可能
+    # subjectという変数に当てはめる場合は、expect(処理内容).toは is_expected.to に置き換え可能
 
     it "ユーザー登録に成功する" do
       is_expected.to eq true
