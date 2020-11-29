@@ -72,6 +72,6 @@ $(function() {
     $('.about-slide-show').slick({
         dots: true,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 1500,
     });
 });
