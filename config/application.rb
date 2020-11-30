@@ -10,6 +10,7 @@ Bundler.require(*Rails.groups)
 module TotonouSauna
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.paths.add 'lib', eager_load: true
     config.load_defaults 5.2
     config.i18n.default_locale = :ja # 日本語に変換
     config.time_zone = 'Tokyo' # 日本時間に変換
