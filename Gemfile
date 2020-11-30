@@ -91,6 +91,7 @@ gem 'geocoder'
 gem 'roo'
 gem "highcharts-rails"
 gem 'lazy_high_charts'
+gem 'whenever', require: false
 
 group :production do
   gem 'mysql2'
