@@ -1,8 +1,8 @@
 class CreateReviews < ActiveRecord::Migration[5.2]
   def change
     create_table :reviews do |t|
-      t.integer "user_id", null: false
-      t.integer "sauna_id", null: false
+      t.bigint "user_id", null: false
+      t.bigint "sauna_id", null: false
       t.string "title", null: false
       t.integer "score", null: false
       t.text "body", null: false
