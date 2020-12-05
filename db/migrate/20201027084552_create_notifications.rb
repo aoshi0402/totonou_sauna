@@ -3,8 +3,8 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
     create_table :notifications do |t|
       t.integer :visitor_id
       t.integer :visited_id
-      t.integer :room_id
-      t.integer :message_id
+      t.bigint :room_id
+      t.bigint :message_id
       t.string :action, default: '', null: false
       t.boolean :checked, default: false, null: false
 
