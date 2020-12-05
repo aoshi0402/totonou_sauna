@@ -11,6 +11,21 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "会員情報の更新完了しました"
+      redirect_to admin_user_path(@user)
+    else
+      flash.now[:alart_flash] = "会員情報の更新に失敗しました"
+      render "edit"
+    end
+  end
+
   def show
     @user = User.find(params[:id])
   end
@@ -47,6 +62,7 @@ class Admin::UsersController < ApplicationController
         :address_building,
         :introduction,
         :image,
+        :is_deleted
       )
     end
 end
