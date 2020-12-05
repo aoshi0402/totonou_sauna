@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="card card-container2">
+    <h4 class="text-center"><%=@user.name %></h4>
+    <div>
+      <%= attachment_image_tag @user, :image, size: "150x150",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+				'center-block img-thumbnail img-responsive img_prev'%>
+    </div>
+    <div class="table-responsive table-sauna">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="active">id</th>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <th class="th-width active">氏名</th>
+            <td><%= @user.name %></td>
+          </tr>
+
+          <tr>
+            <th class="active">性別</th>
+            <td>
+              <% @user.sex %>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="active">紹介文</th>
+            <td><%= @user.introduction %></td>
+          </tr>
+
+          <tr>
+            <th class="active">メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+
+          <tr>
+            <th class="active">会員ステータス</th>
+            <td><%= @user.is_deleted %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-primary" %>
+  </div>
+</div>
