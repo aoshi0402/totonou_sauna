@@ -64,7 +64,7 @@ https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=shari
 
 ## :wrench: インフラ構成図
 
-![infranew](https://user-images.githubusercontent.com/68432256/101274230-a88d4f80-37df-11eb-83ca-7b7d58176995.png)
+![infra5](https://user-images.githubusercontent.com/68432256/101274360-dc1ca980-37e0-11eb-973a-3f5e03fc2701.png)
 
 
 
