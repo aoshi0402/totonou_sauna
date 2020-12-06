@@ -64,7 +64,7 @@ https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=shari
 
 ## :wrench: インフラ構成図
 
-![infra](https://user-images.githubusercontent.com/68432256/100052499-6835e500-2e61-11eb-9bce-f0d28f29d2c4.png)
+![infra5](https://user-images.githubusercontent.com/68432256/101274360-dc1ca980-37e0-11eb-973a-3f5e03fc2701.png)
 
 
 ## :closed_book: 使用技術、開発環境
@@ -75,7 +75,3 @@ https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=shari
 - JS ライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
 - 本番環境 : AWS(EC2、RDS for MySQL、Route53、S3、Lamda)、Nginx、Puma
-
-
-
-
