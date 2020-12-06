@@ -138,15 +138,6 @@ RSpec.describe "Userモデルのリクエストテスト", type: :request do
         expect(response).to have_http_status "200"
       end
     end
-
-    context "ログインしている場合" do
-      it "自分以外のユーザーのリクエストが成功すること" do
-        sign_in(user)
-        another_user = create(:user)
-        get user_user_path(another_user.id)
-        expect(response).to redirect_to new_user_session_path
-      end
-    end
   end
   describe "ユーザーの編集を更新" do
     let(:user_params) { { name: "改名" } }

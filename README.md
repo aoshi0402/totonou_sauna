@@ -76,8 +76,6 @@ https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=shari
 - 仮想環境：Vagrant,VirtualBox
 - 本番環境 : AWS(EC2、RDS for MySQL、Route53、S3、Lamda)、Nginx、Puma
 
-<!-- #circleci test -->
-
 
 
 
