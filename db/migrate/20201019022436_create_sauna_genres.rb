@@ -5,5 +5,6 @@ class CreateSaunaGenres < ActiveRecord::Migration[5.2]
       t.bigint "sauna_id"
       t.timestamps
     end
+    add_index :sauna_genres, [:sauna_id, :genre_id], unique: true
   end
 end

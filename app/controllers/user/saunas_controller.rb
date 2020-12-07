@@ -31,7 +31,7 @@ class User::SaunasController < ApplicationController
   end
 
   def update
-    @sauna = Sauna.find(params[:id])
+    @sauna = Sauna.find(params[:id])    
     if @sauna.update(sauna_params)
       flash[:notice] = "編集内容を更新しました"
       redirect_to user_sauna_path(@sauna)
@@ -81,7 +81,7 @@ class User::SaunasController < ApplicationController
   end
 
   def sauna_params
-    params.require(:sauna).permit(
+    values = params.require(:sauna).permit(
       :name,
       :postcode,
       :prefecture_code,
@@ -98,5 +98,9 @@ class User::SaunasController < ApplicationController
       :image,
       genre_ids: []
     )
+    if values[:genre_ids].nil?
+      values[:genre_ids] = [] 
+    end
+    return values
   end
 end

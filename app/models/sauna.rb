@@ -43,7 +43,7 @@ class Sauna < ApplicationRecord
 
   # 「イキタイ」ランキング
   def self.ikitai_ranking
-    self.find(Ikitai.group(:sauna_id).order("count_sauna_id DESC").limit(10).count(:sauna_id).keys)
+    self.includes(:ikitais).find(Ikitai.group(:sauna_id).order("count_sauna_id DESC").limit(10).count(:sauna_id).keys)
   end
 
   # 「PV数」ランキング
@@ -53,7 +53,7 @@ class Sauna < ApplicationRecord
 
   # 「サウナ飯数」ランキング
   def self.food_ranking
-    self.find(Food.group(:sauna_id).order("count_sauna_id DESC").limit(10).count(:sauna_id).keys)
+    self.includes(:foods).find(Food.group(:sauna_id).order("count_sauna_id DESC").limit(10).count(:sauna_id).keys)
   end
 
   # 緯度経度を取得

@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.bigint "sauna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sauna_id", "genre_id"], name: "index_sauna_genres_on_sauna_id_and_genre_id", unique: true
   end
 
   create_table "saunas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
