@@ -95,3 +95,4 @@ gem 'lazy_high_charts'
 gem 'whenever', require: false
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
+gem 'meta-tags'

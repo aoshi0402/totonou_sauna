@@ -85,7 +85,7 @@ class Sauna < ApplicationRecord
 
   # ジャンル検索
   def self.genre_search(genre_search_id)
-    Sauna.joins(:sauna_genres).where("sauna_genres.genre_id = #{genre_search_id}")
+    Sauna.joins(:sauna_genres).includes(:ikitais).where("sauna_genres.genre_id = #{genre_search_id}")
   end
 
   # レビューの平均点
