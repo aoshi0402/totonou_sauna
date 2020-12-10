@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -61,6 +63,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.string "home_page"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sauna_id"], name: "index_foods_on_sauna_id"
+    t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -75,6 +79,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.bigint "sauna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sauna_id"], name: "index_ikitais_on_sauna_id"
+    t.index ["user_id"], name: "index_ikitais_on_user_id"
   end
 
   create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -108,6 +114,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.bigint "review_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_likes_on_review_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -146,6 +154,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sauna_id"], name: "index_reviews_on_sauna_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -158,7 +168,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.bigint "sauna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["sauna_id", "genre_id"], name: "index_sauna_genres_on_sauna_id_and_genre_id", unique: true
+    t.index ["genre_id"], name: "index_sauna_genres_on_genre_id"
+    t.index ["sauna_id"], name: "index_sauna_genres_on_sauna_id"
   end
 
   create_table "saunas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -181,6 +192,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_saunas_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -207,8 +219,21 @@ ActiveRecord::Schema.define(version: 2020_10_30_010033) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "reviews"
+  add_foreign_key "comments", "users"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
+  add_foreign_key "foods", "saunas"
+  add_foreign_key "foods", "users"
+  add_foreign_key "ikitais", "saunas"
+  add_foreign_key "ikitais", "users"
+  add_foreign_key "likes", "reviews"
+  add_foreign_key "likes", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "reviews", "saunas"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "sauna_genres", "genres"
+  add_foreign_key "sauna_genres", "saunas"
+  add_foreign_key "saunas", "users"
 end

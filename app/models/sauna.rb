@@ -72,7 +72,7 @@ class Sauna < ApplicationRecord
 
   # キーワード検索
   def self.keyword_search(keyword_search)
-    Sauna.where([
+    Sauna.includes(:ikitais, :reviews).where([
       "name LIKE ? OR introduction LIKE ? OR address_city LIKE ? OR address_street LIKE ?",
       "%#{keyword_search}%", "%#{keyword_search}%", "%#{keyword_search}%", "%#{keyword_search}%",
     ])
@@ -80,12 +80,12 @@ class Sauna < ApplicationRecord
 
   # 都道府県検索
   def self.prefecture_search(prefecture_search)
-    Sauna.where(prefecture_code: prefecture_search)
+    Sauna.includes(:ikitais, :reviews).where(prefecture_code: prefecture_search)
   end
 
   # ジャンル検索
   def self.genre_search(genre_search_id)
-    Sauna.joins(:sauna_genres).includes(:ikitais).where("sauna_genres.genre_id = #{genre_search_id}")
+    Sauna.joins(:sauna_genres).includes(:reviews).where("sauna_genres.genre_id = #{genre_search_id}")
   end
 
   # レビューの平均点
