@@ -32,7 +32,7 @@ end
     introduction:"日本最大級のサウナ施設です",
     business_hour:"11:30〜翌10:00",
     tel:"06-3986-3726",
-    home_page:"https://karumaru.jp/ikebukuro/",
+    home_page:"https://totonousauna.work/",
     water_temperature:"8.3",
     sauna_temperature:"90",
   )
@@ -49,7 +49,7 @@ end
     introduction:"まさに天空にいる様な気分になります",
     business_hour:"12:00〜翌9:00 土日は24時間営業",
     tel:"05-3376-5225",
-    home_page:"http://marushinspa.jp/",
+    home_page:"https://totonousauna.work/",
     water_temperature:"18",
     sauna_temperature:"110",
   )
@@ -65,7 +65,7 @@ end
     introduction:"自家製生薬風呂は香り良く効用も魅力。こちらの水風呂はミント水風呂15.5水深90cmとレベル高い。水風呂に12分計設置のきめこまやかさ！",
     business_hour:"6時00分～1時00分",
     tel:"05-3116-5225",
-    home_page:"http://thermae-yu.jp/",
+    home_page:"https://totonousauna.work/",
     water_temperature:"16.4",
     sauna_temperature:"80",
   )
@@ -81,7 +81,7 @@ end
     introduction:"コミック書籍 10,000冊以上 ・女性浴室で泥パック使い放題 ・2020年1月より試験的にタトゥー入館可(顔写真付き身分証の提示と会員登録220円が必須・サウナハットかけるフックなし。棚もなくサウナハット置き場なし。",
     business_hour:"10時00分～21時00分",
     tel:"05-3336-5225",
-    home_page:"	http://ofurocafe-utatane.com/",
+    home_page:"https://totonousauna.work/",
     water_temperature:"18",
     sauna_temperature:"88",
   )
@@ -97,7 +97,7 @@ end
     introduction:"コミック書籍 10,000冊以上 顔写真付き身分証の提示と会員登録220円が必須） ・サウナハットかけるフックなし。棚もなくサウナハット置き場なし。",
     business_hour:"10時00分～21時00分",
     tel:"05-3111-5225",
-    home_page:"http://rainbow-motoyawata.wix.com/rainbow",
+    home_page:"https://totonousauna.work/",
     water_temperature:"16",
     sauna_temperature:"126",
   )
@@ -113,7 +113,7 @@ end
     introduction:"温浴施設（スーパー銭湯・サウナ・スパ施設）",
     business_hour:"24時間",
     tel:"03-5285-5435",
-    home_page:"http://thermae-yu.jp/",
+    home_page:"https://totonousauna.work/",
     water_temperature:"15",
     sauna_temperature:"94",
   )
@@ -129,25 +129,25 @@ end
     introduction:"北海道といえばここ。水風呂が気持ち良すぎます",
     business_hour:"24時間",
     tel:"011-261-0108",
-    home_page:"	http://www.nikoh.info/",
+    home_page:"https://totonousauna.work/",
     water_temperature:"16",
     sauna_temperature:"86",
   )
 
   Sauna.create!(
-    name:"金春湯",
+    name:"ドシー五反田",
     user_id:"1",
     image: File.open("./app/assets/images/saunas/kinnharu.jpg"),
-    postcode:"1040061",
+    postcode:"1410022",
     prefecture_code:"13",
-    address_city:"品川区",
-    address_street:"大崎３丁目１８−８",
-    introduction:"北海道といえばここ。水風呂が気持ち良すぎます",
-    business_hour:"15時30分～24時00分、火曜日定休日",
-    tel:"03-3492-4150",
-    home_page:"http://kom-pal.com/",
+    address_city:"東五反田",
+    address_street:"1-20-15",
+    introduction:"五反田の穴場スポット",
+    business_hour:"24時間",
+    tel:"011-221-0108",
+    home_page:"https://totonousauna.work/",
     water_temperature:"16",
-    sauna_temperature:"95",
+    sauna_temperature:"86",
   )
 
   Sauna.create!(
@@ -161,7 +161,7 @@ end
     introduction:"本格フレンチ・マクロビオティックやファスティングプランを提供しているウェルネスリゾートであり、各種人気ホテルランキングや特集の常連",
     business_hour:"	チェックイン15:00、チェックアウト11:00。レイトチェックアウトサービスもあり。",
     tel:"012-089-0932",
-    home_page:"http://kurbio.com/",
+    home_page:"https://totonousauna.work/",
     water_temperature:"14",
     sauna_temperature:"77",
   )
@@ -177,9 +177,88 @@ end
     introduction:"ロッカーと浴場までがかなり離れていて迷ってしまう。 和テイストであったり洋風である",
     business_hour:"10時00分～9時00分",
     tel:"028-033-4126",
-    home_page:"http://5650-sakai.jp/",
+    home_page:"https://totonousauna.work/",
     water_temperature:"16.4",
     sauna_temperature:"88",
+  )
+
+  Sauna.create!(
+    name:"改良湯",
+    user_id:"1",
+    image: File.open("./app/assets/images/saunas/gotoukou.jpg"),
+    postcode:"1500011",
+    prefecture_code:"13",
+    address_city:"渋谷区",
+    address_street:"東2丁目19-9",
+    introduction:"いちいちスタイリッシュ（褒め言葉）浴室もなんだかスタイリッシュで、壁の絵も銭湯の絵、というよりはなんだかモダンなアート作品みたい。",
+    business_hour:"8時00分～9時00分",
+    tel:"045-033-4126",
+    home_page:"https://totonousauna.work/",
+    water_temperature:"100",
+    sauna_temperature:"16",
+  )
+
+  Sauna.create!(
+    name:"ドシー恵比寿",
+    user_id:"1",
+    image: File.open("./app/assets/images/saunas/gotoukou.jpg"),
+    postcode:"1500013",
+    prefecture_code:"13",
+    address_city:"渋谷区",
+    address_street:"恵比寿1-8-1",
+    introduction:"サウナの祈り部屋感は格別、ウォーターピラーもコツを掴めば◎。",
+    business_hour:"12時00分～10時00分",
+    tel:"028-033-4006",
+    home_page:"https://totonousauna.work/",
+    water_temperature:"15",
+    sauna_temperature:"95",
+  )
+  
+  Sauna.create!(
+    name:"サウナ・アダムアンドイブ",
+    user_id:"1",
+    image: File.open("./app/assets/images/saunas/gotoukou.jpg"),
+    postcode:"1060031",
+    prefecture_code:"13",
+    address_city:"港区",
+    address_street:"西麻布3丁目5-5",
+    introduction:"サウナも二つ、ドライサウナとよもぎスチームサウナ。こちらのスチームサウナは香りが強烈で浴室がコンパクトなせいもあるが、浴室全体がこのスチームの香りがする。",
+    business_hour:"2時00分～10時00分",
+    tel:"028-000-4006",
+    home_page:"https://totonousauna.work/",
+    water_temperature:"15",
+    sauna_temperature:"98",
+  )
+  Sauna.create!(
+    name:"みどり湯",
+    user_id:"1",
+    image: File.open("./app/assets/images/saunas/gotoukou.jpg"),
+    postcode:"1520034",
+    prefecture_code:"13",
+    address_city:"目黒区",
+    address_street:"緑が丘2丁目7-14",
+    introduction:"サウナも二つ、ドライサウナとよもぎスチームサウナ。こちらのスチームサウナは香りが強烈で浴室がコンパクトなせいもあるが、浴室全体がこのスチームの香りがする。",
+    business_hour:"8時00分～10時00分",
+    tel:"028-000-4563",
+    home_page:"https://totonousauna.work/",
+    water_temperature:"22",
+    sauna_temperature:"98",
+  )
+
+  Sauna.create!(
+    name:"大黒湯",
+    user_id:"1",
+    image: File.open("./app/assets/images/saunas/gotoukou.jpg"),
+    postcode:"1300003",
+    prefecture_code:"13",
+    address_city:"港区",
+    address_street:"西麻布3丁目5-5",
+    introduction:"扉を開けると一見、蛍光灯と見間違える天井の遠赤ストーブ。そこはまるでドラマ『太陽にほえろ』のようなコントラストが強い黒とオレンジ色の世界・灯りと言えるのは、裸電球一つ、戸の15cm角の灯取窓、そして天井遠赤のほの灯りのみ",
+    business_hour:"8時00分～23時00分",
+    tel:"028-0045-4563",
+    home_page:"https://totonousauna.work/",
+    water_temperature:"20",
+    sauna_temperature:"90",
   )
 
   Food.create!(
@@ -414,4 +493,3 @@ end
     follower_id: 10,
     followed_id: 1
   )
-
