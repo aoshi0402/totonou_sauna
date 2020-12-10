@@ -5,6 +5,7 @@ FROM ruby:2.5.7
 RUN apt-get update && apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get install -y default-mysql-client --no-install-recommends && rm -rf /var/lib/apt/lists/*
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN apt-get install -y cron
 
 # Docker内部でworkdirをどこに置くか、どういう名前にするかを決める記述
 RUN mkdir /totonou_sauna
