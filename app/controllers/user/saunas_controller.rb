@@ -74,7 +74,7 @@ class User::SaunasController < ApplicationController
   # イキタイ一覧
   def ikitais
     user_ikitai = current_user.ikitais.pluck(:sauna_id)
-    @user_ikitai_saunas = Sauna.where(id: user_ikitai).page(params[:page]).per(12)
+    @user_ikitai_saunas = Sauna.includes(:ikitais, :reviews).where(id: user_ikitai).page(params[:page]).per(12)
     if Rails.env.production?
       @saunas_image_url = "https://refile-totonousauna.s3-ap-northeast-1.amazonaws.com/store/?????-thumbnail."
     end
