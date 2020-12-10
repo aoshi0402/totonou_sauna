@@ -58,7 +58,7 @@
               </span>
               <%= link_to user_sauna_review_path(review.sauna, review) do %>
                 <i class="fas fa-comment-dots">コメント
-                  <%= review.comments.count %>
+                  <%= review.comments.size %>
                 </i>
               <% end %>
             <% end %>

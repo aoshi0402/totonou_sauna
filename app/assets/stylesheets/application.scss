@@ -580,6 +580,11 @@ background-color: #FF0000;
 // レスポンシブ
 
 @media (max-width: 890px) {
+
+  .main-visual {
+    height: 400px;
+    }
+
   .main-visual-content{
     padding: 50px;
   }
@@ -594,6 +599,7 @@ background-color: #FF0000;
   }
   .top-search-title-sub{
     font-size: 20px;
+    margin-top: 70px;
   } 
   .top-search-title-main{
     font-size: 30px;
@@ -645,8 +651,12 @@ background-color: #FF0000;
 
 @media (max-width: 490px) {
 
+  .main-visual {
+    height: 300px;
+    }
   .top-search-title-sub{
     font-size: 10px;
+    margin-top: 0px;
   } 
   .top-search-title-main{
     font-size: 20px;
