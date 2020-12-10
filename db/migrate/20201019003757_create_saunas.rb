@@ -2,6 +2,7 @@ class CreateSaunas < ActiveRecord::Migration[5.2]
   def change
     create_table :saunas do |t|
       t.bigint "user_id", null: false
+      t.references :user, null: false, foreign_key: true
       t.string "name", null: false
       t.string "image_id"
       t.string "postcode", null: false
