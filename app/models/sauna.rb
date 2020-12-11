@@ -58,7 +58,7 @@ class Sauna < ApplicationRecord
 
   # 緯度経度を取得
   geocoded_by :geocode_full_address
-  after_save :geocode
+  after_validation :geocode, if: -> { Rails.env.production? }
 
   # geocoder専用住所
   def geocode_full_address
