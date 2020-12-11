@@ -32,10 +32,10 @@ class User::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    # if @user.email == 'guest@example.com'
-    #   flash[:alert] = "ゲストユーザーは編集できません。"
-    #   redirect_to root_path 
-    # else
+    if @user.email == 'guest@example.com'
+      flash[:alert] = "ゲストユーザーは編集できません。"
+      redirect_to root_path 
+    else
       if @user.update(user_params)
         flash[:notice] = "会員情報の更新完了しました"
         redirect_to user_user_path(@user)
@@ -43,7 +43,7 @@ class User::UsersController < ApplicationController
         flash.now[:alart_flash] = "会員情報の更新に失敗しました"
         render "edit"
       end
-    # end
+    end
   end
 
   def destroy
