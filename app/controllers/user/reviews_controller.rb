@@ -21,7 +21,7 @@ class User::ReviewsController < ApplicationController
 
   def index
     @sauna = Sauna.find(params[:sauna_id])
-    @reviews = @sauna.reviews.page(params[:page]).per(5)
+    @reviews = @sauna.reviews.includes(:user, :likes, :comments).page(params[:page]).per(5)
   end
 
   def show
