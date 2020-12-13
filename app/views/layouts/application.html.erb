@@ -32,12 +32,6 @@
           </div>
 
           <div class="collapse navbar-collapse" id="navbarEexample7">
-            <% if user_signed_in? %>
-            <p class="navbar-text">
-              <span>ようこそ</span>
-              <%= link_to current_user.name, user_user_path(current_user) %>さん！
-            </p>
-            <% end %>
             <ul class="nav navbar-nav navbar-right">
               <% unless admin_signed_in? %>
                 <li class="dropdown" role="presentation">
