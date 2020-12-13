@@ -2,8 +2,7 @@
 サウナで"ととのう"はサウナの検索、レビューサイトです。<br />
 全国の登録されたサウナ、レビューにいち早くアクセスできます。
 
-![top-page](https://user-images.githubusercontent.com/68432256/99056606-e1217b00-25dd-11eb-910f-e624366b00fd.jpg)
-
+<img width="900" alt="スクリーンショット 2020-12-13 21 24 18" src="https://user-images.githubusercontent.com/68432256/102011750-aac84e80-3d89-11eb-8b54-6805f854970a.png">
 <br />
 
 ## :globe_with_meridians: URL
