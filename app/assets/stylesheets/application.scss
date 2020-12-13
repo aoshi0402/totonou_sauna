@@ -45,6 +45,11 @@ footer {
   padding: 10px 0px;
 }
 
+.map-style{
+  width:100%;
+  height:600px;
+}
+
 .img_prev:hover {
   cursor: pointer; 
   opacity: 0.7;
@@ -211,8 +216,6 @@ footer {
 .top-search-form-input-container {
   margin-right: 30px;
 }
-
-
   // 新規登録、ログインCSS
 
 .card-container.card {
@@ -601,7 +604,32 @@ background-color: #FF0000;
   cursor: pointer;
 }
 
-// レスポンシブ
+  .pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+  }
+
+  nav.pagination1{
+    text-align: center;
+  }
+
+  .pagination>.active>a {     
+    background: #93c9ff;  
+    border-radius: 15px;     
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {        
+    border-radius: 15px;    
+  }
+
+  // レスポンシブ
+
+  @media (max-width: 1000px) {
+  .top-search-title-main{
+    font-size: 40px;
+  }
+}
 
 @media (max-width: 890px) {
 
@@ -652,26 +680,14 @@ background-color: #FF0000;
     text-align: center;
     position: initial;
   }
+  .map-style{
+  width:100%;
+  height:400px;
+  }
+  .top-search-form-input-container {
+  margin-right: 0px;
 }
-
-  .pagination>li>a {          
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
-  }
-
-  nav.pagination1{
-    text-align: center;
-  }
-
-  .pagination>.active>a {     
-    background: #93c9ff;  
-    border-radius: 15px;     
-  }
-
-  /*ホバー時のデザイン*/
-  .pagination>li>a:hover {        
-    border-radius: 15px;    
-  }
+}
 
 @media (max-width: 490px) {
 
@@ -684,6 +700,10 @@ background-color: #FF0000;
   } 
   .top-search-title-main{
     font-size: 20px;
+  }
+  .map-style{
+  width:100%;
+  height:300px;
   }
 
 }
