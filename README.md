@@ -60,6 +60,9 @@ https://docs.google.com/spreadsheets/d/1pPd1_RFeBQe0W8Pw1cVKYVdRVoPZQAVPavUzoRps
 
 https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=sharing
 
+<img width="1096" alt="スクリーンショット 2020-12-13 21 08 48" src="https://user-images.githubusercontent.com/68432256/102011486-d77b6680-3d87-11eb-846b-826f0cc0c2a0.png">
+
+
 <br />
 
 ## :wrench: インフラ構成図
