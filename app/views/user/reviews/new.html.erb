@@ -20,7 +20,7 @@
       <div class="newform">
         <%=f.label :score, "点数" %>
         <span>
-          <%= f.select :score, options_for_select(1..100), { prompt: "選択してください" }, class: "form-control"%>
+          <%= f.select :score, options_for_select([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]), { prompt: "選択してください" }, class: "form-control"%>
         </span>
       </div>
 

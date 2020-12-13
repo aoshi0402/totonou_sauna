@@ -20,7 +20,7 @@
           <tr>
             <td>
             <%= link_to user_user_path(@review.user) do %>
-              <%= attachment_image_tag @review.user, :image, fallback: "no-image.png",size: "70x70", class: "img-thumbnail img-responsive img-hover"%>
+              <%= attachment_image_tag @review.user,:image, :fill, 50, 50 ,fallback: "no-image.png", size:'50x50' , class: "img-thumbnail img-responsive img-hover"%>
             <% end %>
               <%= @review.user.name %>
               <%= @review.user.sex %>
