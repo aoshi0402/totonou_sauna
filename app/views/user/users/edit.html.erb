@@ -5,8 +5,8 @@
     <%= render 'layouts/error_messages', model: f.object %>
       <div class="newform">
         <%= f.file_field :image, class: 'img_field', style: 'display:none;'%>
-        <%= attachment_image_tag @user, :image, size: "100x100",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
-      'center-block img-thumbnail img-responsive img_prev'%>
+      <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: 'no-image.png', size:'100x100', onClick: "$('.img_field').click()", class:
+				'center-block img-thumbnail img-responsive img_prev'%>
       </div>
       <div class="newform">
         <%= f.label :name, "氏名"%>

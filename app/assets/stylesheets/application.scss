@@ -274,6 +274,12 @@ footer {
     font-weight: 700;
     font-size: 14px;
 }
+.btn.btn-signin3 {
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 8px;
+}
 .btn.btn-signin:hover,
 .btn.btn-signin:active,
 .btn.btn-signin:focus {
@@ -283,6 +289,12 @@ footer {
 .btn.btn-signin2:hover,
 .btn.btn-signin2:active,
 .btn.btn-signin2:focus {
+    background-color: rgb(185, 187, 214);
+}
+
+.btn.btn-signin3:hover,
+.btn.btn-signin3:active,
+.btn.btn-signin3:focus {
     background-color: rgb(185, 187, 214);
 }
 
@@ -575,6 +587,18 @@ background-color: #FF0000;
       color: rgb(60, 60, 60) !important;
     }
   }
+}
+
+.Button-style {
+  font-size: 15px;
+  display: inline-block;
+  padding: 0.4em 1em 0.2em;
+  color: #ffffff;
+  border: #ffffff dashed 1px;
+  box-shadow: 0 0 0 0.2em lightskyblue;
+  border-radius: 10px;
+  background-color: lightblue;
+  cursor: pointer;
 }
 
 // レスポンシブ

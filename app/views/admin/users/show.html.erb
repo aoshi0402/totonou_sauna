@@ -16,24 +16,20 @@
             <th class="th-width active">氏名</th>
             <td><%= @user.name %></td>
           </tr>
-
           <tr>
             <th class="active">性別</th>
             <td>
-              <% @user.sex %>
+              <%= @user.sex %>
             </td>
           </tr>
-
           <tr>
             <th class="active">紹介文</th>
             <td><%= @user.introduction %></td>
           </tr>
-
           <tr>
             <th class="active">メールアドレス</th>
             <td><%= @user.email %></td>
           </tr>
-
           <tr>
             <th class="active">会員ステータス</th>
             <td><%= @user.is_deleted %></td>

@@ -1,9 +1,9 @@
 <% if sauna.iktaied_by?(current_user) %>
-  <%= link_to user_sauna_ikitais_path(sauna), class:"btn btn-default", method: :delete, remote: true do %>
+  <%= link_to user_sauna_ikitais_path(sauna), class:"Button-style", method: :delete, remote: true do %>
     <i class="fas fa-walking" aria-hidden="true" style="color: green;">イキタイ！</i><%= sauna.ikitais.size %>
   <% end %>
 <% else %>
-  <%= link_to user_sauna_ikitais_path(sauna), class:"btn btn-default", method: :post, remote: true do %>
+  <%= link_to user_sauna_ikitais_path(sauna), class:"Button-style", method: :post, remote: true do %>
     <i class="far fa-walking" aria-hidden="true">イキタイ！</i><%= sauna.ikitais.size %>
   <% end %>
 <% end %>
