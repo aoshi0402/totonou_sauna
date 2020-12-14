@@ -13,7 +13,7 @@
         </h4>
         <p class="text-left">キーワードの検索はもちろん、ジャンルや都道府県、現在地から検索することができます。サウナ飯検索も魅力の一つです</p>
       </div>
-
+      
       <div class="col-md-4">
         <span class="service-icon img-circle center-block">
           <i class="far fa-comments icon-1" aria-hidden="true"></i>
@@ -56,7 +56,17 @@
           <tbody>
             <% @saunas_pv.each.with_index(1) do |sauna, index| %>
             <tr>
-              <td class="text-center"><%= index %></td>
+              <td class="text-center">
+                <% case index when 1 %>
+                  <i class="fas fa-crown" style='color: gold;'></i>
+                <% when 2 %>
+                  <i class="fas fa-crown" style='color: silver;'></i>
+                <% when 3 %>
+                  <i class="fas fa-crown" style='color: orange;'></i>
+                <% else %>
+                  <%= index %>
+                <% end %>
+              </td>
               <td class="text-center">
               <%= link_to user_sauna_path(sauna) do %>
                 <%= sauna.name %>
@@ -87,7 +97,17 @@
           <tbody>
             <% @saunas_ikitai.each.with_index(1) do |sauna, index| %>
               <tr>
-                <td class="text-center"><%= index %></td>
+                <td class="text-center">
+                  <% case index when 1 %>
+                    <i class="fas fa-crown" style='color: gold;'></i>
+                  <% when 2 %>
+                    <i class="fas fa-crown" style='color: silver;'></i>
+                  <% when 3 %>
+                    <i class="fas fa-crown" style='color: orange;'></i>
+                  <% else %>
+                    <%= index %>
+                  <% end %>
+                </td>
                 <td class="text-center">
                   <%= link_to user_sauna_path(sauna) do %>
                     <%= sauna.name %>
@@ -118,7 +138,17 @@
           <tbody>
             <% @saunas_food.each.with_index(1) do |sauna, index| %>
             <tr>
-              <td class="text-center"><%= index %></td>
+              <td class="text-center">
+                <% case index when 1 %>
+                  <i class="fas fa-crown" style='color: gold;'></i>
+                <% when 2 %>
+                  <i class="fas fa-crown" style='color: silver;'></i>
+                <% when 3 %>
+                  <i class="fas fa-crown" style='color: orange;'></i>
+                <% else %>
+                  <%= index %>
+                <% end %>
+              </td>
               <td class="text-center">
                 <%= link_to user_sauna_path(sauna) do %>
                   <%= sauna.name %>
@@ -152,12 +182,10 @@
           return;
         }
 
-      // 位置情報を取得
+      // 現在位置情報を取得
       navigator.geolocation.getCurrentPosition(
         function (position) {
-          console.log(position.coords.latitude)
-          console.log(position.coords.longitude)
-          LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);　 // 緯度・経度を変数に格納
           // 取得した位置情報を中心に表示
           map = new google.maps.Map(document.getElementById("map"), {
             center: LatLng,
