@@ -2,8 +2,7 @@
 サウナで"ととのう"はサウナの検索、レビューサイトです。<br />
 全国の登録されたサウナ、レビューにいち早くアクセスできます。
 
-![top-page](https://user-images.githubusercontent.com/68432256/99056606-e1217b00-25dd-11eb-910f-e624366b00fd.jpg)
-
+<img width="900" alt="スクリーンショット 2020-12-13 21 24 18" src="https://user-images.githubusercontent.com/68432256/102011750-aac84e80-3d89-11eb-8b54-6805f854970a.png">
 <br />
 
 ## :globe_with_meridians: URL
@@ -60,11 +59,14 @@ https://docs.google.com/spreadsheets/d/1pPd1_RFeBQe0W8Pw1cVKYVdRVoPZQAVPavUzoRps
 
 https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=sharing
 
+<img width="1096" alt="スクリーンショット 2020-12-13 21 08 48" src="https://user-images.githubusercontent.com/68432256/102011486-d77b6680-3d87-11eb-846b-826f0cc0c2a0.png">
+
+
 <br />
 
 ## :wrench: インフラ構成図
 
-![infra5](https://user-images.githubusercontent.com/68432256/101274360-dc1ca980-37e0-11eb-973a-3f5e03fc2701.png)
+<img width="700" alt="スクリーンショット 2020-12-13 21 17 41" src="https://user-images.githubusercontent.com/68432256/102011627-bf581700-3d88-11eb-9ce4-3a569393a637.png">
 
 
 ## :closed_book: 使用技術、開発環境
@@ -73,5 +75,5 @@ https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=shari
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
-- 仮想環境：Vagrant,VirtualBox
+- 仮想環境：Docker,MySQL
 - 本番環境 : AWS(EC2、RDS for MySQL、Route53、S3、Lamda)、Nginx、Puma
