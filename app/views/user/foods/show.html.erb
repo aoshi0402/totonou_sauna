@@ -2,7 +2,7 @@
   <div class="card card-container">
     <h3 class="text-center"><%= @food.name %>詳細</h3>
     <% if user_signed_in? %>
-    <%= attachment_image_tag @food, :image, size: "200x200",fallback: 'no-image.png', onClick: "$('.img_field').click()", class:
+    <%= attachment_image_tag @food,:image, :fill, 300, 250 ,fallback: 'no-image.png',size:'300x250', onClick: "$('.img_field').click()", class:
       'center-block img-thumbnail img-responsive img_prev'%>
       <div class="table-responsive table-sauna">
         <table class="table table-bordered">
