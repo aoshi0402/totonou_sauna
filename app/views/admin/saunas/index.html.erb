@@ -1,0 +1,31 @@
+<h3 class="text-center">サウナ一覧</h3>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="active">
+          <th class="text-center">ID</th>
+          <th class="text-center">写真</th>
+          <th class="text-center">サウナ名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @saunas.each do |sauna| %>
+          <tr>
+            <td class="text-center">
+              <%= sauna.id %>
+            </td>
+            <td class="text-center">
+              <%= attachment_image_tag sauna, :image, size: '50x50', fallback: 'no-image.png', class: 'img-thumbnail img-responsive img-hover' %>
+            <td class="text-center">
+              <%= sauna.name %>
+            </td>
+            <td class="text-center">
+              <%= link_to "削除", admin_sauna_path(sauna), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
