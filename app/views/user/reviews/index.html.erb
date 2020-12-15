@@ -68,9 +68,8 @@
     <% else %>
       <h4 class="text-center">レビューは存在しません</h4>    
     <% end %>
+    <nav class="pagination1">
+      <%= paginate @reviews %>
+    </nav>
   </div>
 </div>
-
-<nav class="pagination1">
-  <%= paginate @reviews %>
-</nav>
