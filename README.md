@@ -76,4 +76,4 @@ https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=shari
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - 仮想環境：Docker,MySQL
-- 本番環境 : AWS(EC2、RDS for MySQL、Route53、S3、Lamda)、Nginx、Puma
+- 本番環境 : AWS(EC2、RDS for MySQL、Route53、S3、Lamda、ELB)、Nginx、Puma
