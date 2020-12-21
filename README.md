@@ -50,7 +50,7 @@ URL: https://totonousauna.work
 - 今いる自分の位置からすぐ近くにあるサウナの情報にアクセスできるよう**現在地からすぐ近くのサウナにアクセス**できる様に実装しました。
 
 ## :books: 機能一覧
-
+詳細は以下に記載しているので是非ご覧ください！
 https://docs.google.com/spreadsheets/d/1pPd1_RFeBQe0W8Pw1cVKYVdRVoPZQAVPavUzoRps5xM/edit?usp=sharing
 
 <br />
