@@ -74,5 +74,6 @@ https://drive.google.com/file/d/114vR3HL2iOFpXr2NI_hdX1ZD1im7-HSs/view?usp=shari
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
+- CI/CD: CircleCI
 - 仮想環境：Docker,MySQL
 - 本番環境 : AWS(EC2、RDS for MySQL、Route53、S3、Lamda、ELB)、Nginx、Puma
